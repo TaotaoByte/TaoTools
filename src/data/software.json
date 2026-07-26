@@ -1,0 +1,112 @@
+{
+  "categories": [
+    { "id": "all", "name": "全部" },
+    { "id": "dev", "name": "开发工具" },
+    { "id": "productivity", "name": "效率办公" },
+    { "id": "design", "name": "设计创作" },
+    { "id": "system", "name": "系统工具" },
+    { "id": "media", "name": "媒体播放" }
+  ],
+  "items": [
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "description": "微软出品的轻量强大的代码编辑器，插件生态丰富",
+      "category": "dev",
+      "platforms": ["Win", "Mac", "Linux"],
+      "price": "免费",
+      "url": "https://code.visualstudio.com",
+      "icon": "Code"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "description": "AI 驱动的代码编辑器，内置 GPT-4 辅助编程",
+      "category": "dev",
+      "platforms": ["Win", "Mac", "Linux"],
+      "price": "免费额度",
+      "url": "https://cursor.sh",
+      "icon": "Terminal"
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "description": "本地优先的 Markdown 知识库工具，支持双向链接",
+      "category": "productivity",
+      "platforms": ["Win", "Mac", "Linux", "iOS", "Android"],
+      "price": "免费",
+      "url": "https://obsidian.md",
+      "icon": "BookMarked"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "description": "集笔记、数据库、项目管理于一体的协作工具",
+      "category": "productivity",
+      "platforms": ["Win", "Mac", "Web", "iOS", "Android"],
+      "price": "免费版",
+      "url": "https://www.notion.so",
+      "icon": "Notebook"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "description": "主流的在线 UI/UX 设计协作工具",
+      "category": "design",
+      "platforms": ["Win", "Mac", "Web"],
+      "price": "免费版",
+      "url": "https://www.figma.com",
+      "icon": "Figma"
+    },
+    {
+      "id": "blender",
+      "name": "Blender",
+      "description": "开源免费的 3D 建模、动画、渲染全能软件",
+      "category": "design",
+      "platforms": ["Win", "Mac", "Linux"],
+      "price": "开源免费",
+      "url": "https://www.blender.org",
+      "icon": "Box"
+    },
+    {
+      "id": "everything",
+      "name": "Everything",
+      "description": "Windows 下极速文件搜索工具",
+      "category": "system",
+      "platforms": ["Win"],
+      "price": "免费",
+      "url": "https://www.voidtools.com",
+      "icon": "Search"
+    },
+    {
+      "id": "power-toys",
+      "name": "Microsoft PowerToys",
+      "description": "微软官方推出的 Windows 效率工具集合",
+      "category": "system",
+      "platforms": ["Win"],
+      "price": "免费",
+      "url": "https://github.com/microsoft/PowerToys",
+      "icon": "Settings"
+    },
+    {
+      "id": "potplayer",
+      "name": "PotPlayer",
+      "description": "功能强大的本地视频播放器，支持多种格式",
+      "category": "media",
+      "platforms": ["Win"],
+      "price": "免费",
+      "url": "https://potplayer.daum.net",
+      "icon": "Play"
+    },
+    {
+      "id": "vlc",
+      "name": "VLC Media Player",
+      "description": "开源跨平台媒体播放器，几乎支持所有格式",
+      "category": "media",
+      "platforms": ["Win", "Mac", "Linux"],
+      "price": "开源免费",
+      "url": "https://www.videolan.org/vlc",
+      "icon": "PlayCircle"
+    }
+  ]
+}

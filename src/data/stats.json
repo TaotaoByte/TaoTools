@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": "tools",
+      "icon": "Wrench",
+      "label": "工具数量",
+      "value": 50,
+      "suffix": "+"
+    },
+    {
+      "id": "visitors",
+      "icon": "Users",
+      "label": "访客人数",
+      "value": 12580,
+      "suffix": "+"
+    },
+    {
+      "id": "chapters",
+      "icon": "BookOpen",
+      "label": "教程章节",
+      "value": 80,
+      "suffix": "+"
+    },
+    {
+      "id": "likes",
+      "icon": "Heart",
+      "label": "收获点赞",
+      "value": 3200,
+      "suffix": "+"
+    }
+  ]
+}

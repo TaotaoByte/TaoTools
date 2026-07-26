@@ -1,0 +1,52 @@
+{
+  "homeCards": [
+    {
+      "id": "tools",
+      "title": "工具箱",
+      "description": "内置实用小工具，即开即用",
+      "icon": "Wrench",
+      "link": "/tools",
+      "color": "from-blue-500 to-indigo-600"
+    },
+    {
+      "id": "resources",
+      "title": "资源库",
+      "description": "精选模板与素材网站导航",
+      "icon": "Package",
+      "link": "/resources",
+      "color": "from-emerald-500 to-teal-600"
+    },
+    {
+      "id": "software",
+      "title": "软件推荐",
+      "description": "我常用的效率软件分享",
+      "icon": "Monitor",
+      "link": "/software",
+      "color": "from-violet-500 to-purple-600"
+    },
+    {
+      "id": "ai",
+      "title": "AI 中心",
+      "description": "AI 大模型排名与实用技巧",
+      "icon": "Bot",
+      "link": "/ai",
+      "color": "from-rose-500 to-pink-600"
+    },
+    {
+      "id": "knowledge",
+      "title": "知识库",
+      "description": "Markdown、开发笔记、配置教程",
+      "icon": "BookOpen",
+      "link": "/knowledge",
+      "color": "from-amber-500 to-orange-600"
+    },
+    {
+      "id": "about",
+      "title": "关于我",
+      "description": "了解更多",
+      "icon": "User",
+      "link": "#footer",
+      "color": "from-cyan-500 to-blue-600"
+    }
+  ]
+}

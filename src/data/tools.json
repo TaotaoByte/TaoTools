@@ -1,0 +1,120 @@
+{
+  "categories": [
+    { "id": "all", "name": "全部" },
+    { "id": "text", "name": "文本处理" },
+    { "id": "encode", "name": "编码转换" },
+    { "id": "image", "name": "图片工具" },
+    { "id": "calc", "name": "计算工具" },
+    { "id": "other", "name": "其他" }
+  ],
+  "items": [
+    {
+      "id": "text-diff",
+      "name": "文本对比",
+      "description": "左右两栏输入文本，高亮显示差异内容",
+      "category": "text",
+      "type": "internal",
+      "component": "TextDiff",
+      "icon": "GitCompare"
+    },
+    {
+      "id": "json-tool",
+      "name": "JSON 工具",
+      "description": "JSON 格式化、压缩、转义与反转义",
+      "category": "encode",
+      "type": "internal",
+      "component": "JsonTool",
+      "icon": "Braces"
+    },
+    {
+      "id": "base64",
+      "name": "Base64 编解码",
+      "description": "Base64 编码与解码转换",
+      "category": "encode",
+      "type": "internal",
+      "component": "Base64Tool",
+      "icon": "ArrowLeftRight"
+    },
+    {
+      "id": "timestamp",
+      "name": "时间戳转换",
+      "description": "Unix 时间戳与日期时间互转",
+      "category": "calc",
+      "type": "internal",
+      "component": "TimestampTool",
+      "icon": "Clock"
+    },
+    {
+      "id": "regex",
+      "name": "正则表达式测试",
+      "description": "在线测试正则表达式匹配结果",
+      "category": "text",
+      "type": "internal",
+      "component": "RegexTool",
+      "icon": "Search"
+    },
+    {
+      "id": "color",
+      "name": "颜色转换器",
+      "description": "HEX / RGB / HSL 颜色格式互转",
+      "category": "other",
+      "type": "internal",
+      "component": "ColorTool",
+      "icon": "Palette"
+    },
+    {
+      "id": "password",
+      "name": "密码生成器",
+      "description": "生成安全随机密码，支持自定义长度和字符集",
+      "category": "other",
+      "type": "internal",
+      "component": "PasswordTool",
+      "icon": "Key"
+    },
+    {
+      "id": "word-count",
+      "name": "文本字数统计",
+      "description": "统计中文字数、英文单词、字符数等",
+      "category": "text",
+      "type": "internal",
+      "component": "WordCountTool",
+      "icon": "Type"
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "description": "在线平面设计工具，提供海量模板与素材",
+      "category": "image",
+      "type": "external",
+      "url": "https://www.canva.cn",
+      "icon": "Image"
+    },
+    {
+      "id": "remove-bg",
+      "name": "Remove.bg",
+      "description": "AI 自动去除图片背景",
+      "category": "image",
+      "type": "external",
+      "url": "https://www.remove.bg",
+      "icon": "Image"
+    },
+    {
+      "id": "tinypng",
+      "name": "TinyPNG",
+      "description": "PNG/JPG/WebP 图片在线压缩",
+      "category": "image",
+      "type": "external",
+      "url": "https://tinypng.com",
+      "icon": "Image"
+    },
+    {
+      "id": "excalidraw",
+      "name": "Excalidraw",
+      "description": "手绘风格在线白板与流程图工具",
+      "category": "other",
+      "type": "external",
+      "url": "https://excalidraw.com",
+      "icon": "Pencil"
+    }
+  ]
+}

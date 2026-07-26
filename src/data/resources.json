@@ -1,0 +1,102 @@
+{
+  "categories": [
+    { "id": "all", "name": "全部" },
+    { "id": "template", "name": "设计模板" },
+    { "id": "video", "name": "视频素材" },
+    { "id": "image", "name": "图片壁纸" },
+    { "id": "icon", "name": "图标字体" },
+    { "id": "learn", "name": "学习资源" }
+  ],
+  "items": [
+    {
+      "id": "figma-community",
+      "name": "Figma Community",
+      "description": "海量免费设计模板、组件库和插件资源",
+      "category": "template",
+      "url": "https://www.figma.com/community",
+      "tags": ["UI设计", "模板", "免费"],
+      "icon": "Figma"
+    },
+    {
+      "id": "pexels",
+      "name": "Pexels",
+      "description": "免费高质量图片与视频素材，可商用",
+      "category": "image",
+      "url": "https://www.pexels.com",
+      "tags": ["图片", "壁纸", "免费商用"],
+      "icon": "Image"
+    },
+    {
+      "id": "pixabay",
+      "name": "Pixabay",
+      "description": "丰富的图片、视频、音乐素材库",
+      "category": "image",
+      "url": "https://pixabay.com",
+      "tags": ["图片", "视频", "音乐"],
+      "icon": "Image"
+    },
+    {
+      "id": "unsplash",
+      "name": "Unsplash",
+      "description": "高质量摄影图片，适合用作壁纸与配图",
+      "category": "image",
+      "url": "https://unsplash.com",
+      "tags": ["摄影", "壁纸", "高质量"],
+      "icon": "Camera"
+    },
+    {
+      "id": "coverr",
+      "name": "Coverr",
+      "description": "免费可商用的视频素材网站",
+      "category": "video",
+      "url": "https://coverr.co",
+      "tags": ["视频", "免费商用"],
+      "icon": "Video"
+    },
+    {
+      "id": "lucide",
+      "name": "Lucide Icons",
+      "description": "开源、简洁、高质量的图标库",
+      "category": "icon",
+      "url": "https://lucide.dev",
+      "tags": ["图标", "开源"],
+      "icon": "Icons"
+    },
+    {
+      "id": "fontawesome",
+      "name": "Font Awesome",
+      "description": "最流行的图标字体与图标库",
+      "category": "icon",
+      "url": "https://fontawesome.com",
+      "tags": ["图标", "字体"],
+      "icon": "Font"
+    },
+    {
+      "id": "google-fonts",
+      "name": "Google Fonts",
+      "description": "免费开源字体库，包含大量中英文字体",
+      "category": "icon",
+      "url": "https://fonts.google.com",
+      "tags": ["字体", "免费"],
+      "icon": "Type"
+    },
+    {
+      "id": "mdn",
+      "name": "MDN Web Docs",
+      "description": "最权威的 Web 开发文档与学习资源",
+      "category": "learn",
+      "url": "https://developer.mozilla.org",
+      "tags": ["开发", "文档"],
+      "icon": "BookOpen"
+    },
+    {
+      "id": "freecodecamp",
+      "name": "freeCodeCamp",
+      "description": "免费的编程学习平台，提供实战项目",
+      "category": "learn",
+      "url": "https://www.freecodecamp.org",
+      "tags": ["编程", "免费课程"],
+      "icon": "Code"
+    }
+  ]
+}

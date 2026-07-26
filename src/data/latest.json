@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "id": "latest-1",
+      "type": "tool",
+      "tag": "新工具",
+      "title": "JSON 格式化工具上线",
+      "description": "支持 JSON 格式化、压缩、转义，开发调试更高效。",
+      "date": "2025-02-25",
+      "link": "/tools"
+    },
+    {
+      "id": "latest-2",
+      "type": "article",
+      "tag": "知识库",
+      "title": "Docker 常用命令入门",
+      "description": "整理了 Docker 镜像、容器、数据卷和 Compose 的常用命令。",
+      "date": "2025-02-20",
+      "link": "/knowledge/docker-basic"
+    },
+    {
+      "id": "latest-3",
+      "type": "resource",
+      "tag": "资源库",
+      "title": "新增免费素材网站合集",
+      "description": "精选 Pexels、Unsplash、Coverr 等高质量免费素材站。",
+      "date": "2025-02-18",
+      "link": "/resources"
+    },
+    {
+      "id": "latest-4",
+      "type": "ai",
+      "tag": "AI 中心",
+      "title": "AI 大模型排名更新",
+      "description": "新增 Kimi K2、DeepSeek-V3、豆包等最新模型信息。",
+      "date": "2025-02-15",
+      "link": "/ai"
+    }
+  ]
+}

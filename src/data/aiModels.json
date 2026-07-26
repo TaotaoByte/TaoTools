@@ -1,0 +1,76 @@
+{
+  "models": [
+    {
+      "id": "gpt-4o",
+      "name": "GPT-4o",
+      "company": "OpenAI",
+      "context": "128K",
+      "features": "多模态、速度快、推理能力强",
+      "free": "有限免费额度",
+      "url": "https://openai.com"
+    },
+    {
+      "id": "claude-3-5",
+      "name": "Claude 3.5 Sonnet",
+      "company": "Anthropic",
+      "context": "200K",
+      "features": "长上下文、代码能力强、安全性高",
+      "free": "免费额度",
+      "url": "https://claude.ai"
+    },
+    {
+      "id": "gemini-1-5",
+      "name": "Gemini 1.5 Pro",
+      "company": "Google",
+      "context": "200万",
+      "features": "超长上下文、多模态、与 Google 生态整合",
+      "free": "免费额度",
+      "url": "https://gemini.google.com"
+    },
+    {
+      "id": "kimi-k2",
+      "name": "Kimi K2",
+      "company": "月之暗面",
+      "context": "256K / 200万",
+      "features": "超长上下文、中文能力强、适合长文档",
+      "free": "每日免费额度",
+      "url": "https://kimi.moonshot.cn"
+    },
+    {
+      "id": "wenxin-4",
+      "name": "文心一言 4.0",
+      "company": "百度",
+      "context": "8K",
+      "features": "中文理解好、搜索整合、多模态",
+      "free": "部分免费",
+      "url": "https://yiyan.baidu.com"
+    },
+    {
+      "id": "tongyi-qwen",
+      "name": "通义千问",
+      "company": "阿里巴巴",
+      "context": "128K",
+      "features": "开源模型强、中文优秀、多模态",
+      "free": "免费额度",
+      "url": "https://tongyi.aliyun.com"
+    },
+    {
+      "id": "deepseek-v3",
+      "name": "DeepSeek-V3",
+      "company": "DeepSeek",
+      "context": "64K",
+      "features": "开源、推理强、性价比高",
+      "free": "API 低价/免费试用",
+      "url": "https://www.deepseek.com"
+    },
+    {
+      "id": "doubao",
+      "name": "豆包",
+      "company": "字节跳动",
+      "context": "128K",
+      "features": "中文对话自然、语音交互、免费使用",
+      "free": "免费",
+      "url": "https://www.doubao.com"
+    }
+  ]
+}

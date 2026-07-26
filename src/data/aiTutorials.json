@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "id": "prompt-engineering",
+      "title": "如何写好 Prompt：从入门到进阶",
+      "tags": ["Prompt", "AI技巧"],
+      "summary": "掌握角色设定、任务描述、输出格式、示例提供等 Prompt 工程核心技巧，让 AI 输出更精准。",
+      "readTime": "8 分钟",
+      "date": "2025-01-15"
+    },
+    {
+      "id": "ai-coding",
+      "title": "AI 辅助编程实战技巧",
+      "tags": ["编程", "Cursor", "效率"],
+      "summary": "在 Cursor、GitHub Copilot 等工具中高效使用 AI 进行代码补全、重构、调试和代码审查。",
+      "readTime": "12 分钟",
+      "date": "2025-01-20"
+    },
+    {
+      "id": "ai-image",
+      "title": "AI 绘图入门：Midjourney 与 Stable Diffusion",
+      "tags": ["AI绘图", "设计"],
+      "summary": "从零开始学习 AI 绘画的关键词写法、参数调整和风格控制，快速生成高质量图片。",
+      "readTime": "10 分钟",
+      "date": "2025-01-25"
+    },
+    {
+      "id": "ai-writing",
+      "title": "用 AI 提升写作效率的 5 个场景",
+      "tags": ["写作", "效率"],
+      "summary": "涵盖大纲生成、初稿撰写、润色改写、标题优化和多语言翻译等实用写作场景。",
+      "readTime": "6 分钟",
+      "date": "2025-02-01"
+    }
+  ]
+}
