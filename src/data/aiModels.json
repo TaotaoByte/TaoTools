@@ -1,94 +1,94 @@
 {
   "models": [
     {
-      "id": "gemini-2-5-pro",
-      "name": "Gemini 2.5 Pro",
-      "company": "Google",
-      "context": "200万",
-      "features": "超长上下文、原生多模态、推理与代码能力均衡",
-      "free": "Google AI Studio 免费额度",
-      "url": "https://gemini.google.com"
-    },
-    {
-      "id": "claude-opus-4",
-      "name": "Claude 4 Opus",
+      "id": "claude-opus-5",
+      "name": "Claude Opus 5",
       "company": "Anthropic",
-      "context": "20万",
-      "features": "复杂工程与推理、代码能力顶尖、企业级安全",
-      "free": "Claude Pro 订阅",
+      "context": "100万+",
+      "features": "2026 年 7 月综合排名第一，编程、推理与 Agent 能力全面领先",
+      "free": "Claude Pro / API",
       "url": "https://claude.ai"
     },
     {
-      "id": "openai-o3",
-      "name": "OpenAI o3",
-      "company": "OpenAI",
-      "context": "20万",
-      "features": "深度推理、数学与科学任务领先",
-      "free": "ChatGPT Plus / API",
-      "url": "https://openai.com"
+      "id": "claude-fable-5",
+      "name": "Claude Fable 5",
+      "company": "Anthropic",
+      "context": "100万+",
+      "features": "长文本严谨推理、大型软件工程、幻觉控制顶尖",
+      "free": "Claude Pro / API",
+      "url": "https://claude.ai"
     },
     {
-      "id": "gpt-4o",
-      "name": "GPT-4o",
+      "id": "gpt-5-6-sol",
+      "name": "GPT-5.6 Sol",
       "company": "OpenAI",
-      "context": "12.8万",
-      "features": "多模态、响应快、生态成熟",
-      "free": "ChatGPT 免费版有限额度",
+      "context": "100万",
+      "features": "通用全能旗舰，Codex 编程智能体，生态最成熟",
+      "free": "ChatGPT Plus / API",
       "url": "https://chat.openai.com"
     },
     {
-      "id": "grok-4",
-      "name": "Grok-4",
-      "company": "xAI",
-      "context": "未公开",
-      "features": "实时信息、社交媒体理解、长思维链",
-      "free": "X Premium+ 订阅",
-      "url": "https://grok.com"
-    },
-    {
-      "id": "deepseek-r1",
-      "name": "DeepSeek-R1",
-      "company": "DeepSeek",
-      "context": "12.8万",
-      "features": "开源推理模型、数学代码强、可本地部署",
-      "free": "免费 / API 低价",
-      "url": "https://www.deepseek.com"
-    },
-    {
-      "id": "kimi-k2",
-      "name": "Kimi K2",
+      "id": "kimi-k3",
+      "name": "Kimi K3",
       "company": "月之暗面",
-      "context": "25.6万 / 200万",
-      "features": "超长上下文、中文理解优秀、长文档处理",
-      "free": "每日免费额度",
+      "context": "105万",
+      "features": "国产首个进入全球前三，超长上下文、代码库通读、可开源部署",
+      "free": "免费额度 / API",
       "url": "https://kimi.moonshot.cn"
     },
     {
-      "id": "qwen3",
-      "name": "通义千问 Qwen3",
+      "id": "claude-opus-4-8",
+      "name": "Claude Opus 4.8",
+      "company": "Anthropic",
+      "context": "100万",
+      "features": "Fable 5 的平替，复杂工程任务稳定，性价比高",
+      "free": "Claude Pro / API",
+      "url": "https://claude.ai"
+    },
+    {
+      "id": "grok-4-5",
+      "name": "Grok 4.5",
+      "company": "xAI",
+      "context": "50万",
+      "features": "实时联网资讯、X 平台数据、开放对话风格",
+      "free": "X Premium+ / API",
+      "url": "https://grok.com"
+    },
+    {
+      "id": "gemini-3-6-flash",
+      "name": "Gemini 3.6 Flash",
+      "company": "Google",
+      "context": "100万",
+      "features": "原生多模态、视频/图像解析、响应速度快、成本低",
+      "free": "Google AI Studio / API",
+      "url": "https://gemini.google.com"
+    },
+    {
+      "id": "qwen-3-7-max",
+      "name": "通义千问 Qwen3.7 Max",
       "company": "阿里巴巴",
-      "context": "12.8万",
-      "features": "开源标杆、中文技术场景强、Agent 能力",
-      "free": "免费额度",
+      "context": "100万",
+      "features": "国产第一梯队，中文原生、Agent 与办公生产力强",
+      "free": "免费额度 / API",
       "url": "https://tongyi.aliyun.com"
     },
     {
-      "id": "doubao",
-      "name": "豆包",
-      "company": "字节跳动",
-      "context": "12.8万",
-      "features": "中文对话自然、语音交互、免费使用",
-      "free": "免费",
-      "url": "https://www.doubao.com"
+      "id": "gpt-5-4",
+      "name": "GPT-5.4",
+      "company": "OpenAI",
+      "context": "105万",
+      "features": "上一代旗舰，综合能力均衡，成本低于 5.6 Sol",
+      "free": "ChatGPT Plus / API",
+      "url": "https://chat.openai.com"
     },
     {
-      "id": "wenxin",
-      "name": "文心一言 4.5 Turbo",
-      "company": "百度",
-      "context": "8K / 12.8万",
-      "features": "中文搜索整合、多模态、办公助手",
-      "free": "部分免费",
-      "url": "https://yiyan.baidu.com"
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "company": "DeepSeek",
+      "context": "100万",
+      "features": "国产代码与数学推理标杆，开源可私有化，性价比极高",
+      "free": "免费 / API 低价",
+      "url": "https://www.deepseek.com"
     }
   ]
 }

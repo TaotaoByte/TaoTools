@@ -5,7 +5,7 @@ title: 从 GitHub Copilot 到 AI Agent：AI 辅助编程进阶
 category: other
 cover: /covers/ai-coding-agent.jpg
 summary: 对比主流 AI 编程工具，讲解代码补全、重构、Debug 技巧，深入剖析 Agent 模式工作流，并探讨 AI 编程安全与高效协作方法。
-date: 2025-07-26
+date: 2026-07-26
 readTime: 16 分钟
 order: 20
 tags:
@@ -18,7 +18,7 @@ tags:
 
 ## 引言：AI 正在重塑编程工作流
 
-从 2021 年 GitHub Copilot 横空出世，到 2025 年 Cursor、Claude Code、Trae 等 AI 原生工具百花齐放，AI 辅助编程已经走过了“代码补全”阶段，进入了“AI Agent”阶段。
+从 2021 年 GitHub Copilot 横空出世，到 2026 年 Cursor、Claude Code、Trae 等 AI 原生工具百花齐放，AI 辅助编程已经走过了“代码补全”阶段，进入了“AI Agent”阶段。
 
 今天的开发者不仅要会用 AI 写代码，还要学会让 AI 理解需求、规划方案、执行命令、验证结果。这意味着编程工作流正在被重新定义：人类负责提出问题和审查结果，AI 负责实现细节和重复劳动。
 
@@ -36,11 +36,11 @@ Copilot 的局限在于它主要是“单行或片段级”补全，缺乏对整
 
 Cursor 是一款 AI 原生代码编辑器，基于 VS Code 开发，继承了 VS Code 的插件生态，同时内置了强大的 AI 对话和 Agent 能力。Cursor 支持 Composer、Agent 模式，可以根据自然语言需求生成、修改多个文件，甚至运行终端命令和测试。
 
-Cursor 的优势在于交互体验流畅、模型选择灵活（支持 Claude、GPT-4o、DeepSeek 等）、对代码库的理解能力强。它适合全栈开发、原型快速搭建、大型项目重构等场景。
+Cursor 的优势在于交互体验流畅、模型选择灵活（支持 Claude Opus 5 / Fable 5、GPT-5.6 Sol / GPT-5.4、DeepSeek V4 Pro 等）、对代码库的理解能力强。它适合全栈开发、原型快速搭建、大型项目重构等场景。
 
 ### Claude Code
 
-Claude Code 是 Anthropic 推出的命令行 AI 编程工具，面向喜欢在终端中工作的开发者。它基于 Claude 4 模型，擅长复杂推理、代码审查和长上下文任务。Claude Code 可以直接读取项目文件、执行命令、修改代码，并通过对话与用户确认每一步操作。
+Claude Code 是 Anthropic 推出的命令行 AI 编程工具，面向喜欢在终端中工作的开发者。它基于 Claude Fable 5 / Opus 5 模型，擅长复杂推理、代码审查和长上下文任务。Claude Code 可以直接读取项目文件、执行命令、修改代码，并通过对话与用户确认每一步操作。
 
 Claude Code 的优势在于强大的模型能力和对大型代码库的理解，适合高级开发者进行深度代码分析、架构改造和疑难问题排查。
 

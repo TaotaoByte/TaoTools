@@ -21,7 +21,7 @@
     {
       "id": "cursor",
       "name": "Cursor",
-      "description": "AI 驱动的代码编辑器，内置 GPT-4 辅助编程",
+      "description": "AI 驱动的代码编辑器，支持 Claude Opus 5 / Fable 5、GPT-5.6 Sol 等模型辅助编程",
       "category": "dev",
       "platforms": ["Win", "Mac", "Linux"],
       "price": "免费额度",

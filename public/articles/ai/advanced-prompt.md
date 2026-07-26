@@ -5,7 +5,7 @@ title: Prompt 工程进阶：让 AI 输出更精准
 category: other
 cover: /covers/advanced-prompt.jpg
 summary: 从角色设定、上下文工程到 Few-shot、Chain-of-Thought、结构化输出，系统讲解 Prompt 进阶技巧与常见反模式。
-date: 2025-07-26
+date: 2026-07-26
 readTime: 15 分钟
 order: 30
 tags:

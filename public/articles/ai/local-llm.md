@@ -5,7 +5,7 @@ title: 本地部署大模型实战：Ollama 与量化模型
 category: other
 cover: /covers/local-llm.jpg
 summary: 详解本地部署大模型的原因、Ollama 安装使用、模型量化概念、推荐模型、WebUI 与 API 调用方式，以及硬件要求和性能权衡。
-date: 2025-07-26
+date: 2026-07-26
 readTime: 16 分钟
 order: 40
 tags:
@@ -56,11 +56,11 @@ Windows 用户可以下载官方安装包，按向导完成安装。安装完成
 
 ### 拉取并运行模型
 
-Ollama 提供了丰富的预置模型库。以运行 Llama 3 为例：
+Ollama 提供了丰富的预置模型库。以运行 Llama 4 Scout 为例：
 
 ```bash
-ollama pull llama3
-ollama run llama3
+ollama pull llama4:scout
+ollama run llama4:scout
 ```
 
 进入交互界面后，你就可以像使用 ChatGPT 一样与本地模型对话。退出交互模式可以输入 `/bye`。
@@ -68,9 +68,9 @@ ollama run llama3
 ### 常用命令
 
 ```bash
-ollama list          # 查看已下载的模型
-ollama rm llama3     # 删除指定模型
-ollama serve         # 启动 API 服务
+ollama list              # 查看已下载的模型
+ollama rm llama4:scout   # 删除指定模型
+ollama serve             # 启动 API 服务
 ```
 
 ## 模型量化：GGUF 与 Q4_K_M
@@ -111,42 +111,42 @@ GGUF 是 llama.cpp 项目定义的一种模型文件格式，专为本地高效�
 
 ## 推荐可本地运行的模型
 
-### DeepSeek-R1
+### DeepSeek V4 Pro
 
-DeepSeek-R1 是近年来最受关注的开源推理模型之一。它有多个参数规模版本，从 1.5B 到 70B 不等。本地部署时，7B 或 14B 的量化版本在消费级显卡上即可获得不错的推理效果。
+DeepSeek V4 Pro 是 2026 年开源阵营的代码与数学推理标杆，采用 MoE 架构，参数规模覆盖多个档位。本地部署时，7B 或 14B 的量化版本在消费级显卡上即可获得接近云端大模型的推理效果。
 
 ```bash
-ollama pull deepseek-r1:7b
-ollama run deepseek-r1:7b
+ollama pull deepseek-v4:7b
+ollama run deepseek-v4:7b
 ```
 
-DeepSeek-R1 特别适合数学、代码和逻辑推理任务。
+DeepSeek V4 Pro 特别适合数学、代码和逻辑推理任务，性价比极高。
 
-### 阿里通义千问 Qwen3
+### 阿里通义千问 Qwen3.7
 
-Qwen3 系列模型在中文理解和多语言能力上表现优异，开源生态丰富。Qwen3 的 4B、7B、14B 量化版本都适合本地部署。
+Qwen3.7 系列模型在中文理解和多语言能力上表现优异，开源生态丰富。Qwen3.7 的 4B、7B、14B 量化版本都适合本地部署，是企业中文场景和国际化业务的常用选择。
 
 ```bash
-ollama pull qwen3:7b
-ollama run qwen3:7b
+ollama pull qwen3.7:7b
+ollama run qwen3.7:7b
 ```
 
-对于中文用户来说，Qwen3 是本地部署的优先选择之一。
+对于中文用户来说，Qwen3.7 是本地部署的优先选择之一。
 
-### Meta Llama 3
+### Meta Llama 4 Scout
 
-Llama 3 是 Meta 推出的开源模型系列，英文能力强，社区支持广泛。8B 版本对硬件要求低，非常适合入门学习和轻量应用。
+Llama 4 是 Meta 在 2026 年推出的开源模型系列，英文能力强，社区支持广泛。Scout 版本参数量适中，对硬件要求低，非常适合入门学习和轻量应用。
 
 ```bash
-ollama pull llama3:8b
-ollama run llama3:8b
+ollama pull llama4:scout
+ollama run llama4:scout
 ```
 
 ### 其他值得关注的模型
 
 - **Mistral**：欧洲团队开发，7B 版本性能出色。
-- **Phi-4**：微软出品，小参数模型中表现优异。
-- **Gemma**：Google 开源，适合轻量部署和微调。
+- **Gemma 4**：Google 开源，适合轻量部署、多模态探索和微调。
+- **Qwen3.5**：阿里推出的高效小参数模型，量化后可在低配置设备上流畅运行。
 
 ## WebUI 与 API 调用
 
@@ -168,7 +168,7 @@ Ollama 默认提供兼容 OpenAI 格式的 API，方便集成到现有应用中�
 curl http://localhost:11434/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "llama3:8b",
+    "model": "llama4:scout",
     "messages": [
       {"role": "user", "content": "请介绍一下本地部署大模型的优势"}
     ]
@@ -182,7 +182,7 @@ from openai import OpenAI
 
 client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 response = client.chat.completions.create(
-    model="llama3:8b",
+    model="llama4:scout",
     messages=[{"role": "user", "content": "你好"}]
 )
 print(response.choices[0].message.content)
