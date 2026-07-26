@@ -90,13 +90,13 @@ npm run build
 
 ## 6. 配置 Nginx
 
-项目已提供 Nginx 配置示例 `nginx/taotools.conf`，默认已通过 `server_name _;` 支持无域名 IP 访问。如果你已有域名，可将 `server_name` 改为你自己的域名。
+本项目使用域名 `taotools.top`（同时兼容 `www.taotools.top`）。部署前请先将域名 A 记录解析到服务器公网 IP。
 
 ```bash
 # 复制配置文件
 sudo cp nginx/taotools.conf /etc/nginx/sites-available/taotools
 
-# 如需使用域名，编辑配置文件修改 server_name
+# 如需换用其他域名，编辑配置文件修改 server_name
 sudo nano /etc/nginx/sites-available/taotools
 ```
 
@@ -107,9 +107,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    # 无域名时保留 `_`，通过服务器 IP 访问
-    # 有域名时改为：server_name example.com www.example.com;
-    server_name _;
+    server_name taotools.top www.taotools.top;
 
     root /home/tao/TaoTools/dist;
     index index.html;
@@ -151,20 +149,18 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-现在访问 `http://<你的服务器IP>` 即可看到 TaoTools 网站。如果配置了域名，则访问 `http://your-domain.com`。
+现在访问 `http://taotools.top` 即可看到 TaoTools 网站。DNS 解析生效前，也可以暂时通过服务器 IP 访问。
 
-## 7. 配置 HTTPS（可选，需要域名）
+## 7. 配置 HTTPS（推荐）
 
-> 注意：Let's Encrypt 申请证书必须有域名，无法为裸 IP 签发证书。如果你的服务器只有 IP，可跳过本节，使用 HTTP 访问。
-
-如果你已有域名并解析到服务器，可使用 Let's Encrypt 免费证书，通过 Certbot 自动配置 HTTPS。
+本项目域名已配置为 `taotools.top`，直接使用 Let's Encrypt 免费证书并自动配置 HTTPS：
 
 ```bash
 # 安装 Certbot 和 Nginx 插件
 sudo apt install -y certbot python3-certbot-nginx
 
 # 申请并自动配置证书
-sudo certbot --nginx -d example.com -d www.example.com
+sudo certbot --nginx -d taotools.top -d www.taotools.top
 ```
 
 按提示操作，选择是否强制 HTTP 重定向到 HTTPS（建议选择是）。
