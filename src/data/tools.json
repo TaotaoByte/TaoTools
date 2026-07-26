@@ -15,7 +15,8 @@
       "category": "text",
       "type": "internal",
       "component": "TextDiff",
-      "icon": "GitCompare"
+      "icon": "GitCompare",
+      "featured": true
     },
     {
       "id": "json-tool",
@@ -24,7 +25,8 @@
       "category": "encode",
       "type": "internal",
       "component": "JsonTool",
-      "icon": "Braces"
+      "icon": "Braces",
+      "featured": true
     },
     {
       "id": "base64",
@@ -33,7 +35,8 @@
       "category": "encode",
       "type": "internal",
       "component": "Base64Tool",
-      "icon": "ArrowLeftRight"
+      "icon": "ArrowLeftRight",
+      "featured": true
     },
     {
       "id": "timestamp",
@@ -42,7 +45,8 @@
       "category": "calc",
       "type": "internal",
       "component": "TimestampTool",
-      "icon": "Clock"
+      "icon": "Clock",
+      "featured": true
     },
     {
       "id": "regex",
@@ -51,7 +55,8 @@
       "category": "text",
       "type": "internal",
       "component": "RegexTool",
-      "icon": "Search"
+      "icon": "Search",
+      "featured": true
     },
     {
       "id": "color",
@@ -60,7 +65,8 @@
       "category": "other",
       "type": "internal",
       "component": "ColorTool",
-      "icon": "Palette"
+      "icon": "Palette",
+      "featured": true
     },
     {
       "id": "password",

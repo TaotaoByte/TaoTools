@@ -63,8 +63,17 @@ export default function Knowledge() {
         {filteredArticles.map((item, index) => (
           <ScrollReveal key={item.id} delay={index * 0.05}>
             <Link to={`/knowledge/${item.slug}`}>
-              <Card className="p-5 h-full group flex flex-col">
-                <div className="flex-1">
+              <Card className="overflow-hidden h-full group flex flex-col">
+                {item.cover && (
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img
+                      src={item.cover}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <div className="p-5 flex-1 flex flex-col">
                   <span className="inline-block px-2.5 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-medium mb-3">
                     {knowledgeData.categories.find((c) => c.id === item.category)?.name}
                   </span>
@@ -74,17 +83,17 @@ export default function Knowledge() {
                   <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-4">
                     {item.summary}
                   </p>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-700/50">
-                  <div className="flex items-center gap-3 text-xs text-slate-400 dark:text-slate-500">
-                    <span className="inline-flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5" /> {item.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5" /> {item.readTime}
-                    </span>
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-700/50 mt-auto">
+                    <div className="flex items-center gap-3 text-xs text-slate-400 dark:text-slate-500">
+                      <span className="inline-flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" /> {item.date}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5" /> {item.readTime}
+                      </span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 group-hover:translate-x-1 transition-all" />
                   </div>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 group-hover:translate-x-1 transition-all" />
                 </div>
               </Card>
             </Link>

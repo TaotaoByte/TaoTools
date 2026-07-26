@@ -4,13 +4,13 @@ import { ArrowLeft, Clock, Calendar, Tag } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
 import { MarkdownRenderer } from '../components/MarkdownRenderer.jsx'
-import knowledgeData from '../data/knowledge.json'
+import aiTutorialsData from '../data/aiTutorials.json'
 
-export default function KnowledgeDetail() {
+export default function AITutorialDetail() {
   const { slug } = useParams()
 
   const article = useMemo(() => {
-    return knowledgeData.items.find((item) => item.slug === slug)
+    return aiTutorialsData.items.find((item) => item.slug === slug)
   }, [slug])
 
   const toc = useMemo(() => {
@@ -28,23 +28,21 @@ export default function KnowledgeDetail() {
         <p className="text-slate-600 dark:text-slate-400 mb-6">
           抱歉，你访问的文章不存在或已被移除。
         </p>
-        <Link to="/knowledge" className="btn-primary">
-          返回知识库
+        <Link to="/ai" className="btn-primary">
+          返回 AI 中心
         </Link>
       </div>
     )
   }
 
-  const categoryName = knowledgeData.categories.find((c) => c.id === article.category)?.name
-
   return (
     <div className="page-container">
       <div className="max-w-5xl mx-auto">
         <Link
-          to="/knowledge"
+          to="/ai"
           className="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors mb-6"
         >
-          <ArrowLeft className="w-4 h-4" /> 返回知识库
+          <ArrowLeft className="w-4 h-4" /> 返回 AI 中心
         </Link>
 
         {article.cover && (
@@ -62,9 +60,14 @@ export default function KnowledgeDetail() {
         <ScrollReveal>
           <Card hover={false} className="p-6 sm:p-10 mb-8">
             <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-medium">
-                <Tag className="w-3.5 h-3.5" /> {categoryName}
-              </span>
+              {article.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-medium"
+                >
+                  <Tag className="w-3.5 h-3.5" /> {tag}
+                </span>
+              ))}
               <span className="inline-flex items-center gap-1 text-xs text-slate-400 dark:text-slate-500">
                 <Calendar className="w-3.5 h-3.5" /> {article.date}
               </span>
@@ -82,7 +85,6 @@ export default function KnowledgeDetail() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* 目录 */}
           {toc.length > 0 && (
             <ScrollReveal className="lg:col-span-1 order-2 lg:order-1">
               <div className="sticky top-24">
@@ -113,7 +115,6 @@ export default function KnowledgeDetail() {
             </ScrollReveal>
           )}
 
-          {/* 正文 */}
           <ScrollReveal
             className={`order-1 ${toc.length > 0 ? 'lg:col-span-3' : 'lg:col-span-4'}`}
           >

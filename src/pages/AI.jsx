@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ExternalLink, Copy, Check, Clock, Calendar, BookOpen, Wand2 } from 'lucide-react'
+import { ExternalLink, Copy, Check, Clock, Calendar, Wand2, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
@@ -106,12 +107,18 @@ export default function AI() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
           {aiTutorialsData.items.map((item, index) => (
             <ScrollReveal key={item.id} delay={index * 0.08}>
-              <Card className="p-6 h-full group">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center shrink-0">
-                    <BookOpen className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-                  </div>
-                  <div className="flex-1 min-w-0">
+              <Link to={`/ai/tutorials/${item.slug}`}>
+                <Card className="overflow-hidden h-full group flex flex-col">
+                  {item.cover && (
+                    <div className="aspect-[16/9] overflow-hidden">
+                      <img
+                        src={item.cover}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  <div className="p-5 flex-1 flex flex-col">
                     <div className="flex flex-wrap gap-2 mb-2">
                       {item.tags.map((tag) => (
                         <span
@@ -125,20 +132,23 @@ export default function AI() {
                     <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2 flex-1">
                       {item.summary}
                     </p>
-                    <div className="flex items-center gap-4 text-xs text-slate-400 dark:text-slate-500">
-                      <span className="inline-flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" /> {item.date}
-                      </span>
-                      <span className="inline-flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" /> {item.readTime}
-                      </span>
+                    <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-700/50">
+                      <div className="flex items-center gap-4 text-xs text-slate-400 dark:text-slate-500">
+                        <span className="inline-flex items-center gap-1">
+                          <Calendar className="w-3.5 h-3.5" /> {item.date}
+                        </span>
+                        <span className="inline-flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5" /> {item.readTime}
+                        </span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 group-hover:translate-x-1 transition-all" />
                     </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

@@ -11,6 +11,7 @@ const Tools = lazy(() => import('./pages/Tools.jsx'))
 const Resources = lazy(() => import('./pages/Resources.jsx'))
 const Software = lazy(() => import('./pages/Software.jsx'))
 const AI = lazy(() => import('./pages/AI.jsx'))
+const AITutorialDetail = lazy(() => import('./pages/AITutorialDetail.jsx'))
 const Knowledge = lazy(() => import('./pages/Knowledge.jsx'))
 const KnowledgeDetail = lazy(() => import('./pages/KnowledgeDetail.jsx'))
 
@@ -38,6 +39,7 @@ function AppRoutes() {
         <Route path="/resources" element={<PageWrapper><Resources /></PageWrapper>} />
         <Route path="/software" element={<PageWrapper><Software /></PageWrapper>} />
         <Route path="/ai" element={<PageWrapper><AI /></PageWrapper>} />
+        <Route path="/ai/tutorials/:slug" element={<PageWrapper><AITutorialDetail /></PageWrapper>} />
         <Route path="/knowledge" element={<PageWrapper><Knowledge /></PageWrapper>} />
         <Route path="/knowledge/:slug" element={<PageWrapper><KnowledgeDetail /></PageWrapper>} />
       </Routes>
