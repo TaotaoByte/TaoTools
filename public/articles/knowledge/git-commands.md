@@ -3,7 +3,7 @@ id: git-commands
 slug: git-commands
 title: 常用 Git 命令清单
 category: dev
-cover: /covers/git-commands.jpg
+cover: /covers/git-commands.png
 summary: 开发中高频使用的 Git 命令，涵盖仓库初始化、分支管理、提交与推送。
 date: 2025-01-18
 readTime: 8 分钟

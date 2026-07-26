@@ -40,16 +40,15 @@ export function Footer() {
                 GitHub
               </a>
               <a
-                href="mailto:hello@taotools.dev"
+                href="mailto:2042184732@qq.com"
                 className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                hello@taotools.dev
+                2042184732@qq.com
               </a>
             </div>
             <div className="pt-2 text-xs text-slate-500 dark:text-slate-500">
-              <p>备案信息占位</p>
-              <p>友情链接占位</p>
+              <p>友链：<a href="https://www.taotaobyte.cn/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">taotaobyte.cn</a></p>
             </div>
           </div>
         </div>

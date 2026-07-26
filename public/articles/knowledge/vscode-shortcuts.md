@@ -3,7 +3,7 @@ id: vscode-shortcuts
 slug: vscode-shortcuts
 title: VS Code 提高效率的快捷键
 category: efficiency
-cover: /covers/vscode-shortcuts.jpg
+cover: /covers/vscode-shortcuts.png
 summary: 整理 VS Code 中最实用的快捷键，帮助你更快地完成编码任务。
 date: 2025-02-12
 readTime: 6 分钟

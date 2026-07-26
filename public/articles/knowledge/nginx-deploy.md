@@ -3,7 +3,7 @@ id: nginx-deploy
 slug: nginx-deploy
 title: Nginx 部署静态网站配置
 category: config
-cover: /covers/nginx-deploy.jpg
+cover: /covers/nginx-deploy.png
 summary: 使用 Nginx 部署 React/Vite 构建的静态网站，包含基础配置与常见问题。
 date: 2025-02-05
 readTime: 10 分钟

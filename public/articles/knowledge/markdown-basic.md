@@ -3,7 +3,7 @@ id: markdown-basic
 slug: markdown-basic
 title: Markdown 基础语法速查
 category: markdown
-cover: /covers/markdown-basic.jpg
+cover: /covers/markdown-basic.png
 summary: Markdown 常用语法速查表，包括标题、列表、链接、图片、代码块等。
 date: 2025-01-10
 readTime: 5 分钟

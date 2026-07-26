@@ -3,7 +3,7 @@ id: docker-basic
 slug: docker-basic
 title: Docker 常用命令入门
 category: dev
-cover: /covers/docker-basic.jpg
+cover: /covers/docker-basic.png
 summary: Docker 基础命令速查，包括镜像、容器、卷和网络管理。
 date: 2025-02-20
 readTime: 9 分钟
