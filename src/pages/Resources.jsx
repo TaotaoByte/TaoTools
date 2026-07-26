@@ -4,6 +4,7 @@ import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
 import { Icon } from '../components/Icon.jsx'
+import { Favicon } from '../components/Favicon.jsx'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
 import resourcesData from '../data/resources.json'
 
@@ -100,7 +101,7 @@ export default function Resources() {
 
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/20 flex items-center justify-center shrink-0">
-                      <Icon name={item.icon} className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                      <Favicon id={item.id} url={item.url} fallbackIcon={item.icon} className="w-7 h-7 rounded" />
                     </div>
                     <div className="flex-1 min-w-0 pr-6">
                       <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">

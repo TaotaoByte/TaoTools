@@ -4,6 +4,7 @@ import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
 import { Icon } from '../components/Icon.jsx'
+import { Favicon } from '../components/Favicon.jsx'
 import toolsData from '../data/tools.json'
 
 // 动态导入内置工具组件
@@ -138,7 +139,11 @@ export default function Tools() {
               )}
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/20 flex items-center justify-center shrink-0 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/30 transition-colors">
-                  <Icon name={tool.icon} className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                  {tool.type === 'external' ? (
+                    <Favicon id={tool.id} url={tool.url} fallbackIcon={tool.icon} className="w-7 h-7 rounded" />
+                  ) : (
+                    <Icon name={tool.icon} className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 pr-16">{tool.name}</h3>
