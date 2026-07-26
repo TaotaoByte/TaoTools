@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:data": "node scripts/build-data.cjs",
+    "add": "node scripts/add-item.cjs"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.4",

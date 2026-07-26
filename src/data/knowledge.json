@@ -1,11 +1,29 @@
 {
   "categories": [
-    { "id": "all", "name": "全部" },
-    { "id": "markdown", "name": "Markdown 语法" },
-    { "id": "dev", "name": "开发笔记" },
-    { "id": "config", "name": "软件安装配置" },
-    { "id": "efficiency", "name": "效率技巧" },
-    { "id": "other", "name": "其他" }
+    {
+      "id": "all",
+      "name": "全部"
+    },
+    {
+      "id": "markdown",
+      "name": "Markdown 语法"
+    },
+    {
+      "id": "dev",
+      "name": "开发笔记"
+    },
+    {
+      "id": "config",
+      "name": "软件安装配置"
+    },
+    {
+      "id": "efficiency",
+      "name": "效率技巧"
+    },
+    {
+      "id": "other",
+      "name": "其他"
+    }
   ],
   "items": [
     {
@@ -17,7 +35,8 @@
       "summary": "Markdown 常用语法速查表，包括标题、列表、链接、图片、代码块等。",
       "date": "2025-01-10",
       "readTime": "5 分钟",
-      "content": "# Markdown 基础语法速查\n\n## 1. 标题\n\n```markdown\n# 一级标题\n## 二级标题\n### 三级标题\n```\n\n## 2. 段落与换行\n\n段落之间用空行分隔。\n\n## 3. 强调\n\n```markdown\n**粗体**\n*斜体*\n~~删除线~~\n```\n\n## 4. 列表\n\n无序列表：\n\n```markdown\n- 项目一\n- 项目二\n  - 子项目\n```\n\n有序列表：\n\n```markdown\n1. 第一步\n2. 第二步\n```\n\n## 5. 链接与图片\n\n```markdown\n[链接文字](https://example.com)\n![图片描述](https://example.com/image.png)\n```\n\n## 6. 代码\n\n行内代码使用反引号：`console.log()`\n\n代码块：\n\n```javascript\nfunction hello() {\n  console.log('Hello, Markdown!');\n}\n```\n\n## 7. 引用\n\n```markdown\n> 这是一段引用文字。\n```\n\n## 8. 分隔线\n\n```markdown\n---\n```\n\n## 9. 表格\n\n```markdown\n| 姓名 | 年龄 |\n|------|------|\n| 张三 | 25   |\n| 李四 | 30   |\n```\n"
+      "tags": [],
+      "content": "# Markdown 基础语法速查\n\n## 1. 标题\n\n```markdown\n# 一级标题\n## 二级标题\n### 三级标题\n```\n\n## 2. 段落与换行\n\n段落之间用空行分隔。\n\n## 3. 强调\n\n```markdown\n**粗体**\n*斜体*\n~~删除线~~\n```\n\n## 4. 列表\n\n无序列表：\n\n```markdown\n- 项目一\n- 项目二\n  - 子项目\n```\n\n有序列表：\n\n```markdown\n1. 第一步\n2. 第二步\n```\n\n## 5. 链接与图片\n\n```markdown\n[链接文字](https://example.com)\n![图片描述](https://example.com/image.png)\n```\n\n## 6. 代码\n\n行内代码使用反引号：`console.log()`\n\n代码块：\n\n```javascript\nfunction hello() {\n  console.log('Hello, Markdown!');\n}\n```\n\n## 7. 引用\n\n```markdown\n> 这是一段引用文字。\n```\n\n## 8. 分隔线\n\n```markdown\n---\n```\n\n## 9. 表格\n\n```markdown\n| 姓名 | 年龄 |\n|------|------|\n| 张三 | 25   |\n| 李四 | 30   |\n```"
     },
     {
       "id": "git-commands",
@@ -28,7 +47,8 @@
       "summary": "开发中高频使用的 Git 命令，涵盖仓库初始化、分支管理、提交与推送。",
       "date": "2025-01-18",
       "readTime": "8 分钟",
-      "content": "# 常用 Git 命令清单\n\n## 仓库初始化\n\n```bash\n# 初始化仓库\ngit init\n\n# 克隆远程仓库\ngit clone <repository-url>\n```\n\n## 基本操作\n\n```bash\n# 查看状态\ngit status\n\n# 添加文件到暂存区\ngit add <file>\ngit add .\n\n# 提交更改\ngit commit -m \"提交信息\"\n\n# 推送至远程\ngit push origin <branch>\n```\n\n## 分支管理\n\n```bash\n# 查看分支\ngit branch\n\n# 创建并切换分支\ngit checkout -b <branch-name>\n\n# 切换分支\ngit checkout <branch-name>\n\n# 合并分支\ngit merge <branch-name>\n\n# 删除本地分支\ngit branch -d <branch-name>\n```\n\n## 查看历史\n\n```bash\n# 查看提交历史\ngit log --oneline\n\n# 查看某文件的修改历史\ngit log -p <file>\n```\n\n## 撤销操作\n\n```bash\n# 撤销工作区修改\ngit checkout -- <file>\n\n# 撤销暂存区\ngit reset HEAD <file>\n\n# 回退到指定版本\ngit reset --hard <commit-id>\n```\n"
+      "tags": [],
+      "content": "# 常用 Git 命令清单\n\n## 仓库初始化\n\n```bash\n# 初始化仓库\ngit init\n\n# 克隆远程仓库\ngit clone <repository-url>\n```\n\n## 基本操作\n\n```bash\n# 查看状态\ngit status\n\n# 添加文件到暂存区\ngit add <file>\ngit add .\n\n# 提交更改\ngit commit -m \"提交信息\"\n\n# 推送至远程\ngit push origin <branch>\n```\n\n## 分支管理\n\n```bash\n# 查看分支\ngit branch\n\n# 创建并切换分支\ngit checkout -b <branch-name>\n\n# 切换分支\ngit checkout <branch-name>\n\n# 合并分支\ngit merge <branch-name>\n\n# 删除本地分支\ngit branch -d <branch-name>\n```\n\n## 查看历史\n\n```bash\n# 查看提交历史\ngit log --oneline\n\n# 查看某文件的修改历史\ngit log -p <file>\n```\n\n## 撤销操作\n\n```bash\n# 撤销工作区修改\ngit checkout -- <file>\n\n# 撤销暂存区\ngit reset HEAD <file>\n\n# 回退到指定版本\ngit reset --hard <commit-id>\n```"
     },
     {
       "id": "nginx-deploy",
@@ -39,7 +59,8 @@
       "summary": "使用 Nginx 部署 React/Vite 构建的静态网站，包含基础配置与常见问题。",
       "date": "2025-02-05",
       "readTime": "10 分钟",
-      "content": "# Nginx 部署静态网站配置\n\n## 安装 Nginx\n\n```bash\n# Ubuntu/Debian\nsudo apt update\nsudo apt install nginx\n\n# 启动并设置开机自启\nsudo systemctl start nginx\nsudo systemctl enable nginx\n```\n\n## 基础配置\n\n编辑站点配置文件：\n\n```nginx\nserver {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n\n    location / {\n        try_files $uri $uri/ /index.html;\n    }\n\n    gzip on;\n    gzip_types text/plain text/css application/json application/javascript text/xml;\n}\n```\n\n## 启用配置\n\n```bash\n# 测试配置\nsudo nginx -t\n\n# 重载配置\nsudo systemctl reload nginx\n```\n\n## 使用 HTTPS\n\n推荐使用 Certbot 申请免费证书：\n\n```bash\nsudo apt install certbot python3-certbot-nginx\nsudo certbot --nginx -d example.com\n```\n\n## 注意事项\n\n- 确保防火墙放行 80/443 端口\n- 静态资源建议开启 gzip 压缩\n- 单页应用需要配置 `try_files` 回退到 index.html\n"
+      "tags": [],
+      "content": "# Nginx 部署静态网站配置\n\n## 安装 Nginx\n\n```bash\n# Ubuntu/Debian\nsudo apt update\nsudo apt install nginx\n\n# 启动并设置开机自启\nsudo systemctl start nginx\nsudo systemctl enable nginx\n```\n\n## 基础配置\n\n编辑站点配置文件：\n\n```nginx\nserver {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n\n    location / {\n        try_files $uri $uri/ /index.html;\n    }\n\n    gzip on;\n    gzip_types text/plain text/css application/json application/javascript text/xml;\n}\n```\n\n## 启用配置\n\n```bash\n# 测试配置\nsudo nginx -t\n\n# 重载配置\nsudo systemctl reload nginx\n```\n\n## 使用 HTTPS\n\n推荐使用 Certbot 申请免费证书：\n\n```bash\nsudo apt install certbot python3-certbot-nginx\nsudo certbot --nginx -d example.com\n```\n\n## 注意事项\n\n- 确保防火墙放行 80/443 端口\n- 静态资源建议开启 gzip 压缩\n- 单页应用需要配置 `try_files` 回退到 index.html"
     },
     {
       "id": "vscode-shortcuts",
@@ -50,7 +71,8 @@
       "summary": "整理 VS Code 中最实用的快捷键，帮助你更快地完成编码任务。",
       "date": "2025-02-12",
       "readTime": "6 分钟",
-      "content": "# VS Code 提高效率的快捷键\n\n## 编辑\n\n| 快捷键 | 功能 |\n|--------|------|\n| `Ctrl + P` | 快速打开文件 |\n| `Ctrl + Shift + P` | 命令面板 |\n| `Ctrl + Shift + F` | 全局搜索 |\n| `Ctrl + /` | 注释/取消注释 |\n| `Alt + ↑/↓` | 移动当前行 |\n| `Ctrl + D` | 选中下一个相同词 |\n| `Ctrl + Shift + L` | 选中所有相同词 |\n\n## 导航\n\n| 快捷键 | 功能 |\n|--------|------|\n| `Ctrl + G` | 跳转到指定行 |\n| `F12` | 跳转到定义 |\n| `Alt + ←` | 返回上一个位置 |\n| `Ctrl + Tab` | 切换标签页 |\n\n## 终端\n\n| 快捷键 | 功能 |\n|--------|------|\n| `Ctrl + \\`` | 显示/隐藏终端 |\n| `Ctrl + Shift + \\`` | 新建终端 |\n\n掌握这些快捷键可以显著提升日常开发效率。\n"
+      "tags": [],
+      "content": "# VS Code 提高效率的快捷键\n\n## 编辑\n\n| 快捷键 | 功能 |\n|--------|------|\n| `Ctrl + P` | 快速打开文件 |\n| `Ctrl + Shift + P` | 命令面板 |\n| `Ctrl + Shift + F` | 全局搜索 |\n| `Ctrl + /` | 注释/取消注释 |\n| `Alt + ↑/↓` | 移动当前行 |\n| `Ctrl + D` | 选中下一个相同词 |\n| `Ctrl + Shift + L` | 选中所有相同词 |\n\n## 导航\n\n| 快捷键 | 功能 |\n|--------|------|\n| `Ctrl + G` | 跳转到指定行 |\n| `F12` | 跳转到定义 |\n| `Alt + ←` | 返回上一个位置 |\n| `Ctrl + Tab` | 切换标签页 |\n\n## 终端\n\n| 快捷键 | 功能 |\n|--------|------|\n| `Ctrl + \\`` | 显示/隐藏终端 |\n| `Ctrl + Shift + \\`` | 新建终端 |\n\n掌握这些快捷键可以显著提升日常开发效率。"
     },
     {
       "id": "docker-basic",
@@ -61,7 +83,8 @@
       "summary": "Docker 基础命令速查，包括镜像、容器、卷和网络管理。",
       "date": "2025-02-20",
       "readTime": "9 分钟",
-      "content": "# Docker 常用命令入门\n\n## 镜像管理\n\n```bash\n# 拉取镜像\ndocker pull nginx:latest\n\n# 查看本地镜像\ndocker images\n\n# 删除镜像\ndocker rmi <image-id>\n```\n\n## 容器管理\n\n```bash\n# 运行容器\ndocker run -d -p 80:80 --name my-nginx nginx\n\n# 查看运行中的容器\ndocker ps\n\n# 停止容器\ndocker stop my-nginx\n\n# 删除容器\ndocker rm my-nginx\n\n# 进入容器内部\ndocker exec -it my-nginx /bin/bash\n```\n\n## 数据卷\n\n```bash\n# 创建卷\ndocker volume create my-data\n\n# 挂载卷运行容器\ndocker run -v my-data:/data nginx\n```\n\n## Docker Compose\n\n```bash\n# 启动服务\ndocker-compose up -d\n\n# 停止服务\ndocker-compose down\n\n# 查看日志\ndocker-compose logs -f\n```\n"
+      "tags": [],
+      "content": "# Docker 常用命令入门\n\n## 镜像管理\n\n```bash\n# 拉取镜像\ndocker pull nginx:latest\n\n# 查看本地镜像\ndocker images\n\n# 删除镜像\ndocker rmi <image-id>\n```\n\n## 容器管理\n\n```bash\n# 运行容器\ndocker run -d -p 80:80 --name my-nginx nginx\n\n# 查看运行中的容器\ndocker ps\n\n# 停止容器\ndocker stop my-nginx\n\n# 删除容器\ndocker rm my-nginx\n\n# 进入容器内部\ndocker exec -it my-nginx /bin/bash\n```\n\n## 数据卷\n\n```bash\n# 创建卷\ndocker volume create my-data\n\n# 挂载卷运行容器\ndocker run -v my-data:/data nginx\n```\n\n## Docker Compose\n\n```bash\n# 启动服务\ndocker-compose up -d\n\n# 停止服务\ndocker-compose down\n\n# 查看日志\ndocker-compose logs -f\n```"
     }
   ]
 }

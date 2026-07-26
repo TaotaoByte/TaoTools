@@ -68,7 +68,14 @@ sudo systemctl reload nginx
 
 ```
 TaoTools/
-├── public/                 # 静态资源
+├── public/
+│   ├── articles/           # Markdown 文章源文件
+│   │   ├── knowledge/
+│   │   └── ai/
+│   └── covers/             # 文章封面图
+├── scripts/                # 数据生成与管理脚本
+│   ├── build-data.cjs      # 扫描 Markdown 生成 JSON
+│   └── add-item.cjs        # 交互式添加工具/资源/软件/文章
 ├── src/
 │   ├── components/         # 可复用组件
 │   ├── contexts/           # React Context
@@ -90,9 +97,58 @@ TaoTools/
 └── README.md
 ```
 
-## 数据维护
+## 内容管理
 
-所有展示数据集中在 `src/data/` 目录下的 JSON 文件中，修改对应文件即可更新网站内容，无需改动组件代码。
+### 文章（知识库 / AI 教学）
+
+文章使用 Markdown 文件管理，存放在：
+
+- `public/articles/knowledge/` - 知识库文章
+- `public/articles/ai/` - AI 教学文章
+
+每篇文章顶部使用 YAML frontmatter 定义元数据：
+
+```yaml
+---
+id: markdown-basic
+slug: markdown-basic
+title: Markdown 基础语法速查
+category: markdown
+cover: /covers/markdown-basic.jpg
+summary: Markdown 常用语法速查表。
+date: 2025-01-10
+readTime: 5 分钟
+---
+```
+
+新增或修改文章后，运行以下命令重新生成 JSON 数据：
+
+```bash
+npm run build:data
+```
+
+### 工具 / 资源 / 软件
+
+提供交互式命令行脚本，自动写入对应 JSON 文件：
+
+```bash
+npm run add
+```
+
+按提示选择类型并填写字段即可。完成后直接构建部署。
+
+### 完整发布流程
+
+```bash
+# 1. 添加文章 Markdown 文件或运行 npm run add 添加工具/资源/软件
+# 2. 重新生成文章数据
+npm run build:data
+
+# 3. 构建
+npm run build
+
+# 4. 部署 dist/ 目录到服务器
+```
 
 ## 许可证
 
