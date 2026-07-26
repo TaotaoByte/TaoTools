@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ExternalLink, Copy, Check, Clock, Calendar, Sparkles, BookOpen, Wand2 } from 'lucide-react'
+import { ExternalLink, Copy, Check, Clock, Calendar, BookOpen, Wand2 } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'

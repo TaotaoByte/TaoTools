@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { Search, ExternalLink, Download } from 'lucide-react'
+import { Search, Download } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
