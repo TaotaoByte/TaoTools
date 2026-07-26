@@ -5,8 +5,8 @@
 ## 环境要求
 
 - 操作系统：Ubuntu 24.04 LTS
-- 域名：一个已解析到服务器的域名（可选，用于 HTTPS）
 - 服务器配置：最低 1 核 1G 内存即可运行
+- 域名：可选。如果没有域名，可直接通过服务器 IP 访问（HTTP）
 
 ## 1. 服务器基础准备
 
@@ -90,13 +90,13 @@ npm run build
 
 ## 6. 配置 Nginx
 
-项目已提供 Nginx 配置示例 `nginx/taotools.conf`，复制并修改为你的域名。
+项目已提供 Nginx 配置示例 `nginx/taotools.conf`，默认已通过 `server_name _;` 支持无域名 IP 访问。如果你已有域名，可将 `server_name` 改为你自己的域名。
 
 ```bash
 # 复制配置文件
 sudo cp nginx/taotools.conf /etc/nginx/sites-available/taotools
 
-# 编辑配置文件，将 example.com 替换为你的域名
+# 如需使用域名，编辑配置文件修改 server_name
 sudo nano /etc/nginx/sites-available/taotools
 ```
 
@@ -106,7 +106,10 @@ sudo nano /etc/nginx/sites-available/taotools
 server {
     listen 80;
     listen [::]:80;
-    server_name example.com www.example.com;
+
+    # 无域名时保留 `_`，通过服务器 IP 访问
+    # 有域名时改为：server_name example.com www.example.com;
+    server_name _;
 
     root /home/tao/TaoTools/dist;
     index index.html;
@@ -148,11 +151,13 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-现在访问 `http://your-domain.com` 或服务器 IP，即可看到 TaoTools 网站。
+现在访问 `http://<你的服务器IP>` 即可看到 TaoTools 网站。如果配置了域名，则访问 `http://your-domain.com`。
 
-## 7. 配置 HTTPS（推荐）
+## 7. 配置 HTTPS（可选，需要域名）
 
-使用 Let's Encrypt 免费证书，通过 Certbot 自动配置 HTTPS。
+> 注意：Let's Encrypt 申请证书必须有域名，无法为裸 IP 签发证书。如果你的服务器只有 IP，可跳过本节，使用 HTTP 访问。
+
+如果你已有域名并解析到服务器，可使用 Let's Encrypt 免费证书，通过 Certbot 自动配置 HTTPS。
 
 ```bash
 # 安装 Certbot 和 Nginx 插件
