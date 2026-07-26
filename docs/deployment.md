@@ -54,9 +54,11 @@ sudo systemctl status nginx
 
 ## 4. 拉取项目代码
 
+项目将部署到 `/home/tao/TaoTools` 目录下：
+
 ```bash
-# 进入 /var/www 目录
-cd /var/www
+# 进入用户主目录
+cd ~
 
 # 克隆项目
 git clone git@github.com:TaotaoByte/TaoTools.git
@@ -106,7 +108,7 @@ server {
     listen [::]:80;
     server_name example.com www.example.com;
 
-    root /var/www/TaoTools/dist;
+    root /home/tao/TaoTools/dist;
     index index.html;
 
     # Gzip 压缩
@@ -175,7 +177,7 @@ Certbot 默认会安装定时任务自动续期证书，无需额外配置。
 当代码有更新时，执行以下命令重新部署：
 
 ```bash
-cd /var/www/TaoTools
+cd /home/tao/TaoTools
 
 # 拉取最新代码
 git pull origin main
@@ -196,7 +198,7 @@ sudo systemctl reload nginx
 如果你使用 `npm run add` 添加了新的工具/资源/软件，直接构建即可：
 
 ```bash
-cd /var/www/TaoTools
+cd /home/tao/TaoTools
 npm install
 npm run build
 sudo systemctl reload nginx
@@ -209,7 +211,7 @@ sudo systemctl reload nginx
 检查 Nginx 配置文件中的 `root` 路径是否指向 `dist` 目录：
 
 ```bash
-ls /var/www/TaoTools/dist
+ls /home/tao/TaoTools/dist
 ```
 
 确认 `location /` 块中配置了 `try_files $uri $uri/ /index.html;`，因为 TaoTools 使用 Hash Router，刷新页面需要回退到 `index.html`。
@@ -271,7 +273,7 @@ sudo nano /usr/local/bin/deploy-taotools
 #!/bin/bash
 set -e
 
-cd /var/www/TaoTools
+cd /home/tao/TaoTools
 git pull origin main
 npm install
 npm run build:data
