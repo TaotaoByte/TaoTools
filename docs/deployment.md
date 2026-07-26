@@ -104,8 +104,9 @@ sudo nano /etc/nginx/sites-available/taotools
 
 ```nginx
 server {
-    listen 80;
-    listen [::]:80;
+    # 加 default_server，域名备案期间可直接用服务器 IP 访问
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
     server_name taotools.top www.taotools.top;
 
@@ -141,6 +142,9 @@ server {
 ```bash
 # 创建符号链接启用站点
 sudo ln -s /etc/nginx/sites-available/taotools /etc/nginx/sites-enabled/
+
+# 如果存在默认站点，建议删除或禁用，避免 IP 访问落到欢迎页
+sudo rm -f /etc/nginx/sites-enabled/default
 
 # 检查配置是否正确
 sudo nginx -t
@@ -217,7 +221,19 @@ ls /home/tao/TaoTools/dist
 
 确认 `location /` 块中配置了 `try_files $uri $uri/ /index.html;`，因为 TaoTools 使用 Hash Router，刷新页面需要回退到 `index.html`。
 
-### 9.2 构建失败
+### 9.2 访问 IP 显示 "Welcome to nginx!"
+
+说明请求落到了 Nginx 默认站点。检查并删除默认站点配置：
+
+```bash
+sudo rm -f /etc/nginx/sites-enabled/default
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+同时确保 TaoTools 站点配置了 `listen 80 default_server;`，这样域名备案期间也能通过 IP 直接访问。
+
+### 9.3 构建失败
 
 检查 Node.js 版本：
 
@@ -232,7 +248,7 @@ rm -rf node_modules package-lock.json
 npm install
 ```
 
-### 9.3 样式或图标未生效
+### 9.4 样式或图标未生效
 
 可能是浏览器缓存了旧版本资源。尝试强制刷新：
 
@@ -242,7 +258,7 @@ Ctrl + Shift + R
 
 或在 Nginx 配置中缩短静态资源缓存时间，部署完成后再恢复。
 
-### 9.4 HTTPS 证书过期
+### 9.5 HTTPS 证书过期
 
 检查 Certbot 自动续期状态：
 
