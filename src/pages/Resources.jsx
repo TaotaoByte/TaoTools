@@ -73,63 +73,66 @@ export default function Resources() {
           const isFavorite = favorites.includes(item.id)
           return (
             <ScrollReveal key={item.id} delay={index * 0.05}>
-              <Card className="p-5 h-full group relative flex flex-col">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    toggleFavorite(item.id)
-                  }}
-                  className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-                  aria-label={isFavorite ? '取消收藏' : '收藏'}
-                >
-                  <Heart
-                    className={`w-4 h-4 transition-colors ${
-                      isFavorite
-                        ? 'fill-rose-500 text-rose-500'
-                        : 'text-slate-400 dark:text-slate-500'
-                    }`}
-                  />
-                </button>
-
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/20 flex items-center justify-center shrink-0">
-                    <Icon name={item.icon} className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                  </div>
-                  <div className="flex-1 min-w-0 pr-6">
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
-                      {item.name}
-                    </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {item.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-auto flex items-center justify-between">
-                  <span className="text-xs text-slate-400 dark:text-slate-500">
-                    {resourcesData.categories.find((c) => c.id === item.category)?.name}
-                  </span>
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full group"
+              >
+                <Card className="p-5 h-full group relative flex flex-col cursor-pointer hover:border-primary-200 dark:hover:border-primary-800">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      toggleFavorite(item.id)
+                    }}
+                    className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors z-10"
+                    aria-label={isFavorite ? '取消收藏' : '收藏'}
                   >
-                    访问 <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </Card>
+                    <Heart
+                      className={`w-4 h-4 transition-colors ${
+                        isFavorite
+                          ? 'fill-rose-500 text-rose-500'
+                          : 'text-slate-400 dark:text-slate-500'
+                      }`}
+                    />
+                  </button>
+
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/20 flex items-center justify-center shrink-0">
+                      <Icon name={item.icon} className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                    </div>
+                    <div className="flex-1 min-w-0 pr-6">
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                        {item.name}
+                      </h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between">
+                    <span className="text-xs text-slate-400 dark:text-slate-500">
+                      {resourcesData.categories.find((c) => c.id === item.category)?.name}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 dark:text-primary-400 group-hover:translate-x-1 transition-transform">
+                      访问 <ExternalLink className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Card>
+              </a>
             </ScrollReveal>
           )
         })}

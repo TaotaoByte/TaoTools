@@ -62,55 +62,57 @@ export default function Software() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {filteredSoftware.map((item, index) => (
           <ScrollReveal key={item.id} delay={index * 0.05}>
-            <Card className="p-5 h-full group relative flex flex-col">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/20 flex items-center justify-center shrink-0">
-                  <Icon name={item.icon} className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block h-full group"
+            >
+              <Card className="p-5 h-full group relative flex flex-col cursor-pointer hover:border-primary-200 dark:hover:border-primary-800">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/20 flex items-center justify-center shrink-0">
+                    <Icon name={item.icon} className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                      {item.name}
+                    </h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
-                    {item.name}
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
 
-              <div className="flex flex-wrap gap-2 mb-4">
-                {item.platforms.map((platform) => (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {item.platforms.map((platform) => (
+                    <span
+                      key={platform}
+                      className="text-xs px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                    >
+                      {platform}
+                    </span>
+                  ))}
                   <span
-                    key={platform}
-                    className="text-xs px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                    className={`text-xs px-2 py-1 rounded-lg font-medium ${
+                      item.price.includes('免费') || item.price.includes('开源')
+                        ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
+                        : 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300'
+                    }`}
                   >
-                    {platform}
+                    {item.price}
                   </span>
-                ))}
-                <span
-                  className={`text-xs px-2 py-1 rounded-lg font-medium ${
-                    item.price.includes('免费') || item.price.includes('开源')
-                      ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
-                      : 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300'
-                  }`}
-                >
-                  {item.price}
-                </span>
-              </div>
+                </div>
 
-              <div className="mt-auto flex items-center justify-between">
-                <span className="text-xs text-slate-400 dark:text-slate-500">
-                  {softwareData.categories.find((c) => c.id === item.category)?.name}
-                </span>
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
-                >
-                  <Download className="w-3.5 h-3.5" /> 官网
-                </a>
-              </div>
-            </Card>
+                <div className="mt-auto flex items-center justify-between">
+                  <span className="text-xs text-slate-400 dark:text-slate-500">
+                    {softwareData.categories.find((c) => c.id === item.category)?.name}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 dark:text-primary-400 group-hover:translate-x-1 transition-transform">
+                    <Download className="w-3.5 h-3.5" /> 官网
+                  </span>
+                </div>
+              </Card>
+            </a>
           </ScrollReveal>
         ))}
       </div>

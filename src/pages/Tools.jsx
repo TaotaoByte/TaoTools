@@ -128,9 +128,9 @@ export default function Tools() {
 
       {/* 工具网格 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-        {filteredTools.map((tool, index) => (
-          <ScrollReveal key={tool.id} delay={index * 0.05}>
-            <Card onClick={() => openTool(tool)} className="p-5 h-full group relative">
+        {filteredTools.map((tool, index) => {
+          const cardContent = (
+            <>
               {tool.type === 'external' && (
                 <span className="absolute top-4 right-4 inline-flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
                   外部工具 <ExternalLink className="w-3 h-3" />
@@ -153,9 +153,30 @@ export default function Tools() {
                   {tool.type === 'external' ? '访问 →' : '使用 →'}
                 </span>
               </div>
-            </Card>
-          </ScrollReveal>
-        ))}
+            </>
+          )
+
+          return (
+            <ScrollReveal key={tool.id} delay={index * 0.05}>
+              {tool.type === 'external' ? (
+                <a
+                  href={tool.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Card className="p-5 h-full group relative cursor-pointer">
+                    {cardContent}
+                  </Card>
+                </a>
+              ) : (
+                <Card onClick={() => openTool(tool)} className="p-5 h-full group relative cursor-pointer">
+                  {cardContent}
+                </Card>
+              )}
+            </ScrollReveal>
+          )
+        })}
       </div>
 
       {filteredTools.length === 0 && (
