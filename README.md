@@ -51,7 +51,7 @@ npm run build
 
 ## Nginx 部署
 
-将 `dist/` 目录上传到服务器，例如 `/var/www/taotools`。
+将 `dist/` 目录上传到服务器，例如 `/home/tao/TaoTools`。
 
 复制 `nginx/taotools.conf` 到 `/etc/nginx/sites-available/taotools` 并启用：
 
