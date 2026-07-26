@@ -78,11 +78,15 @@ function scanArticles(type) {
         summary: meta.summary || '',
         date: meta.date || '',
         readTime: meta.readTime || '',
+        order: meta.order === undefined ? 9999 : Number(meta.order),
         tags: meta.tags || [],
         content: body.trim(),
       }
     })
-    .sort((a, b) => new Date(a.date || 0) - new Date(b.date || 0))
+    .sort((a, b) => {
+      if (a.order !== b.order) return a.order - b.order
+      return new Date(a.date || 0) - new Date(b.date || 0)
+    })
 }
 
 function buildKnowledge() {

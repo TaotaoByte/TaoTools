@@ -137,6 +137,29 @@ npm run add
 
 按提示选择类型并填写字段即可。完成后直接构建部署。
 
+### 调整展示顺序
+
+**工具 / 资源 / 软件**
+
+直接编辑对应 JSON 文件中 `items` 数组内对象的顺序即可，数组中越靠前展示越靠前：
+
+- `src/data/tools.json`
+- `src/data/resources.json`
+- `src/data/software.json`
+
+**文章（知识库 / AI 教学）**
+
+在 Markdown 文件的 frontmatter 中添加 `order` 字段，数字越小排序越靠前：
+
+```yaml
+---
+order: 1
+date: 2025-01-10
+---
+```
+
+未设置 `order` 的文章默认按 `date` 日期从早到晚排序。修改后运行 `npm run build:data` 生效。
+
 ### 完整发布流程
 
 ```bash
