@@ -4,6 +4,7 @@ import { ArrowLeft, Clock, Calendar, Tag } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
 import { MarkdownRenderer } from '../components/MarkdownRenderer.jsx'
+import { LikeButton } from '../components/LikeButton.jsx'
 import aiTutorialsData from '../data/aiTutorials.json'
 
 export default function AITutorialDetail() {
@@ -78,9 +79,12 @@ export default function AITutorialDetail() {
             <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               {article.title}
             </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
+            <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
               {article.summary}
             </p>
+            <div className="flex items-center gap-3">
+              <LikeButton id={article.id} initialCount={article.likes ?? 0} />
+            </div>
           </Card>
         </ScrollReveal>
 

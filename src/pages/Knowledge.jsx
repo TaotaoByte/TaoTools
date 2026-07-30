@@ -1,9 +1,10 @@
 import { useState, useMemo } from 'react'
-import { Search, Clock, Calendar, ArrowRight } from 'lucide-react'
+import { Search, Clock, Calendar } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
+import { LikeButton } from '../components/LikeButton.jsx'
 import knowledgeData from '../data/knowledge.json'
 
 export default function Knowledge() {
@@ -92,7 +93,7 @@ export default function Knowledge() {
                         <Clock className="w-3.5 h-3.5" /> {item.readTime}
                       </span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 group-hover:translate-x-1 transition-all" />
+                    <LikeButton id={item.id} initialCount={item.likes ?? 0} size="sm" />
                   </div>
                 </div>
               </Card>

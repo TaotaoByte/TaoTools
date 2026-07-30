@@ -5,12 +5,12 @@ import { AnimatedCounter } from '../components/AnimatedCounter.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
 import { Card } from '../components/Card.jsx'
 import { Icon } from '../components/Icon.jsx'
-import statsData from '../data/stats.json'
 import categoriesData from '../data/categories.json'
 import latestData from '../data/latest.json'
 import toolsData from '../data/tools.json'
 import resourcesData from '../data/resources.json'
 import aiTutorialsData from '../data/aiTutorials.json'
+import { useStats } from '../hooks/useStats.js'
 
 const statColors = [
   'bg-blue-500 text-blue-600 dark:text-blue-400',
@@ -53,6 +53,8 @@ function NumberBadge({ number }) {
 }
 
 export default function Home() {
+  const stats = useStats()
+
   const featuredItems = [
     { ...latestData.items[0], type: '精选', number: 1 },
     { ...aiTutorialsData.items[0], type: '教程', number: 2 },
@@ -129,7 +131,7 @@ export default function Home() {
             className="max-w-4xl mx-auto"
           >
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              {statsData.items.map((stat, index) => (
+              {stats.map((stat, index) => (
                 <Card key={stat.id} className="p-4 sm:p-5 text-center backdrop-blur-sm bg-white/70 dark:bg-slate-800/70">
                   <div className={`w-10 h-10 mx-auto mb-3 rounded-xl ${statBgColors[index % statBgColors.length]} flex items-center justify-center`}>
                     <Icon name={stat.icon} className={`w-5 h-5 ${statColors[index % statColors.length]}`} />

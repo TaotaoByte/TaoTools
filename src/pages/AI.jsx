@@ -5,6 +5,7 @@ import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
 import { copyToClipboard } from '../utils/helpers.js'
+import { LikeButton } from '../components/LikeButton.jsx'
 import aiModelsData from '../data/aiModels.json'
 import aiTutorialsData from '../data/aiTutorials.json'
 import aiTipsData from '../data/aiTips.json'
@@ -144,7 +145,7 @@ export default function AI() {
                           <Clock className="w-3.5 h-3.5" /> {item.readTime}
                         </span>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 group-hover:translate-x-1 transition-all" />
+                      <LikeButton id={item.id} initialCount={item.likes ?? 0} size="sm" />
                     </div>
                   </div>
                 </Card>
