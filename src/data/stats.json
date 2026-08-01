@@ -11,7 +11,7 @@
       "id": "visitors",
       "icon": "Users",
       "label": "访客人数",
-      "value": 12580,
+      "value": 10,
       "suffix": "+"
     },
     {
@@ -25,7 +25,7 @@
       "id": "likes",
       "icon": "Heart",
       "label": "收获点赞",
-      "value": 3200,
+      "value": 290,
       "suffix": "+"
     }
   ]

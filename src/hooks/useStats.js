@@ -7,6 +7,26 @@ import statsData from '../data/stats.json'
 
 const VISITOR_STORAGE_KEY = 'taotools-visitor-count'
 const VISITOR_API_URL = 'https://api.counterapi.dev/v1/taotools/visitors/up'
+const VISITOR_FALLBACK = 10
+
+function getInitialVisitorCount() {
+  if (typeof window === 'undefined') return VISITOR_FALLBACK
+  try {
+    const saved = window.localStorage.getItem(VISITOR_STORAGE_KEY)
+    return saved ? Number(saved) : VISITOR_FALLBACK
+  } catch {
+    return VISITOR_FALLBACK
+  }
+}
+
+function saveVisitorCount(value) {
+  if (typeof window === 'undefined') return
+  try {
+    window.localStorage.setItem(VISITOR_STORAGE_KEY, String(value))
+  } catch {
+    // ignore
+  }
+}
 
 function getBaseLikeCounts() {
   const counts = {}
@@ -22,31 +42,24 @@ function getBaseLikeCounts() {
 }
 
 export function useStats() {
-  const [visitorCount, setVisitorCount] = useState(() => {
-    if (typeof window === 'undefined') return 0
-    const saved = window.localStorage.getItem(VISITOR_STORAGE_KEY)
-    return saved ? Number(saved) : statsData.items.find((s) => s.id === 'visitors')?.value || 0
-  })
+  const [visitorCount, setVisitorCount] = useState(getInitialVisitorCount)
 
   const baseLikeCounts = useMemo(() => getBaseLikeCounts(), [])
   const liveLikes = useTotalLikes(baseLikeCounts)
 
   useEffect(() => {
     let mounted = true
-    fetch(VISITOR_API_URL)
+    fetch(VISITOR_API_URL, { cache: 'no-store' })
       .then((res) => res.json())
       .then((data) => {
         if (mounted && typeof data.count === 'number') {
           setVisitorCount(data.count)
-          try {
-            window.localStorage.setItem(VISITOR_STORAGE_KEY, String(data.count))
-          } catch {
-            // ignore
-          }
+          saveVisitorCount(data.count)
         }
       })
-      .catch(() => {
-        // 网络失败时使用本地缓存或默认值，静默处理
+      .catch((err) => {
+        // 网络失败时使用本地缓存，避免显示过期默认值
+        console.warn('[useStats] 访客计数接口失败，使用本地缓存:', err)
       })
     return () => {
       mounted = false
