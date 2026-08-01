@@ -6,7 +6,7 @@ import knowledgeData from '../data/knowledge.json'
 import statsData from '../data/stats.json'
 
 const VISITOR_STORAGE_KEY = 'taotools-visitor-count'
-const COUNT_API_URL = 'https://api.countapi.xyz/hit/taotools/visitors'
+const VISITOR_API_URL = 'https://api.counterapi.dev/v1/taotools/visitors/up'
 const LIKE_BASE_TOTAL = statsData.items.find((s) => s.id === 'likes')?.value || 0
 
 function getBaseLikeCounts() {
@@ -34,13 +34,13 @@ export function useStats() {
 
   useEffect(() => {
     let mounted = true
-    fetch(COUNT_API_URL)
+    fetch(VISITOR_API_URL)
       .then((res) => res.json())
       .then((data) => {
-        if (mounted && typeof data.value === 'number') {
-          setVisitorCount(data.value)
+        if (mounted && typeof data.count === 'number') {
+          setVisitorCount(data.count)
           try {
-            window.localStorage.setItem(VISITOR_STORAGE_KEY, String(data.value))
+            window.localStorage.setItem(VISITOR_STORAGE_KEY, String(data.count))
           } catch {
             // ignore
           }
