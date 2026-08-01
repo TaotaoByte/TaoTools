@@ -80,6 +80,7 @@ function scanArticles(type) {
         readTime: meta.readTime || '',
         order: meta.order === undefined ? 9999 : Number(meta.order),
         tags: meta.tags || [],
+        likes: meta.likes === undefined ? 10 : Number(meta.likes),
         content: body.trim(),
       }
     })

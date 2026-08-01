@@ -7,7 +7,6 @@ import statsData from '../data/stats.json'
 
 const VISITOR_STORAGE_KEY = 'taotools-visitor-count'
 const VISITOR_API_URL = 'https://api.counterapi.dev/v1/taotools/visitors/up'
-const LIKE_BASE_TOTAL = statsData.items.find((s) => s.id === 'likes')?.value || 0
 
 function getBaseLikeCounts() {
   const counts = {}
@@ -64,7 +63,7 @@ export function useStats() {
         case 'visitors':
           return { ...item, value: visitorCount }
         case 'likes':
-          return { ...item, value: LIKE_BASE_TOTAL + liveLikes }
+          return { ...item, value: liveLikes }
         default:
           return item
       }

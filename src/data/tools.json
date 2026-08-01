@@ -16,7 +16,8 @@
       "type": "internal",
       "component": "TextDiff",
       "icon": "GitCompare",
-      "featured": true
+      "featured": true,
+      "likes": 10
     },
     {
       "id": "json-tool",
@@ -26,7 +27,8 @@
       "type": "internal",
       "component": "JsonTool",
       "icon": "Braces",
-      "featured": true
+      "featured": true,
+      "likes": 10
     },
     {
       "id": "base64",
@@ -36,7 +38,8 @@
       "type": "internal",
       "component": "Base64Tool",
       "icon": "ArrowLeftRight",
-      "featured": true
+      "featured": true,
+      "likes": 10
     },
     {
       "id": "timestamp",
@@ -46,7 +49,8 @@
       "type": "internal",
       "component": "TimestampTool",
       "icon": "Clock",
-      "featured": true
+      "featured": true,
+      "likes": 10
     },
     {
       "id": "regex",
@@ -56,7 +60,8 @@
       "type": "internal",
       "component": "RegexTool",
       "icon": "Search",
-      "featured": true
+      "featured": true,
+      "likes": 10
     },
     {
       "id": "color",
@@ -66,7 +71,8 @@
       "type": "internal",
       "component": "ColorTool",
       "icon": "Palette",
-      "featured": true
+      "featured": true,
+      "likes": 10
     },
     {
       "id": "password",
@@ -75,7 +81,8 @@
       "category": "other",
       "type": "internal",
       "component": "PasswordTool",
-      "icon": "Key"
+      "icon": "Key",
+      "likes": 10
     },
     {
       "id": "word-count",
@@ -84,7 +91,8 @@
       "category": "text",
       "type": "internal",
       "component": "WordCountTool",
-      "icon": "Type"
+      "icon": "Type",
+      "likes": 10
     },
     {
       "id": "canva",
@@ -93,7 +101,8 @@
       "category": "image",
       "type": "external",
       "url": "https://www.canva.cn",
-      "icon": "Image"
+      "icon": "Image",
+      "likes": 10
     },
     {
       "id": "remove-bg",
@@ -102,7 +111,8 @@
       "category": "image",
       "type": "external",
       "url": "https://www.remove.bg",
-      "icon": "Image"
+      "icon": "Image",
+      "likes": 10
     },
     {
       "id": "tinypng",
@@ -111,7 +121,8 @@
       "category": "image",
       "type": "external",
       "url": "https://tinypng.com",
-      "icon": "Image"
+      "icon": "Image",
+      "likes": 10
     },
     {
       "id": "excalidraw",
@@ -120,7 +131,8 @@
       "category": "other",
       "type": "external",
       "url": "https://excalidraw.com",
-      "icon": "Pencil"
+      "icon": "Pencil",
+      "likes": 10
     }
   ]
 }
