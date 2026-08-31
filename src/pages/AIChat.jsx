@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { Send, Settings, Trash2, MessageSquare, User, Bot, Loader2, ChevronDown, Eye, EyeOff, Check, X } from 'lucide-react'
+import { Send, Settings, Trash2, MessageSquare, User, Bot, Loader2, ChevronDown, Eye, EyeOff, Check, X, Download, FileText, FileJson } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
 import { cn } from '../utils/helpers.js'
@@ -64,6 +64,7 @@ export default function AIChat() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
+  const [showDownloadMenu, setShowDownloadMenu] = useState(false)
   const [showKey, setShowKey] = useState(false)
   const [error, setError] = useState('')
   const [streaming, setStreaming] = useState(true)
@@ -111,6 +112,64 @@ export default function AIChat() {
   const clearMessages = () => {
     setMessages([])
     setError('')
+  }
+
+  // 导出为 Markdown
+  const exportMarkdown = () => {
+    const validMessages = messages.filter((m) => !m.error)
+    if (validMessages.length === 0) return
+
+    const lines = []
+    lines.push(`# AI 对话记录`)
+    lines.push('')
+    lines.push(`> 模型: ${settings.model || '未知'}  |  时间: ${new Date().toLocaleString('zh-CN')}`)
+    lines.push('')
+    if (settings.systemPrompt) {
+      lines.push(`## 系统提示`)
+      lines.push('')
+      lines.push(settings.systemPrompt)
+      lines.push('')
+    }
+    validMessages.forEach((msg) => {
+      const role = msg.role === 'user' ? '🧑 我' : msg.role === 'assistant' ? '🤖 AI' : '⚙️ 系统'
+      lines.push(`### ${role}`)
+      lines.push('')
+      lines.push(msg.content)
+      lines.push('')
+    })
+    lines.push('---')
+    lines.push(`*由 TaoTools AI 对话导出*`)
+
+    const blob = new Blob([lines.join('\n')], { type: 'text/markdown;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `ai-chat-${new Date().toISOString().slice(0, 10)}.md`
+    a.click()
+    URL.revokeObjectURL(url)
+    setShowDownloadMenu(false)
+  }
+
+  // 导出为 JSON
+  const exportJson = () => {
+    const validMessages = messages.filter((m) => !m.error)
+    if (validMessages.length === 0) return
+
+    const data = {
+      model: settings.model,
+      baseUrl: settings.baseUrl,
+      exportedAt: new Date().toISOString(),
+      systemPrompt: settings.systemPrompt || '',
+      messages: validMessages.map((m) => ({ role: m.role, content: m.content })),
+    }
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `ai-chat-${new Date().toISOString().slice(0, 10)}.json`
+    a.click()
+    URL.revokeObjectURL(url)
+    setShowDownloadMenu(false)
   }
 
   const handleStop = () => {
@@ -288,6 +347,38 @@ export default function AIChat() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            {/* 导出按钮 */}
+            <div className="relative">
+              <button
+                onClick={() => setShowDownloadMenu(!showDownloadMenu)}
+                disabled={messages.length === 0}
+                className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors disabled:opacity-30"
+                title="导出对话"
+              >
+                <Download className="w-4 h-4" />
+              </button>
+              {showDownloadMenu && (
+                <>
+                  <div className="fixed inset-0 z-10" onClick={() => setShowDownloadMenu(false)} />
+                  <div className="absolute right-0 top-full mt-1 z-20 w-44 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl overflow-hidden">
+                    <button
+                      onClick={exportMarkdown}
+                      className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors text-left"
+                    >
+                      <FileText className="w-4 h-4 text-slate-400" />
+                      导出为 Markdown
+                    </button>
+                    <button
+                      onClick={exportJson}
+                      className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors text-left"
+                    >
+                      <FileJson className="w-4 h-4 text-slate-400" />
+                      导出为 JSON
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
             <button
               onClick={clearMessages}
               className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
@@ -349,6 +440,9 @@ export default function AIChat() {
                   placeholder="https://api.openai.com/v1"
                   className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
+                <p className="text-xs text-slate-400 mt-1">
+                  带 <code className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">/v1</code> 的是 OpenAI 兼容接口版本前缀，代码会自动拼接 <code className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">/chat/completions</code>。实际请求地址如：<code className="text-slate-500">{settings.baseUrl.replace(/\/$/, '')}/chat/completions</code>
+                </p>
               </div>
 
               {/* API Key */}
@@ -549,7 +643,7 @@ export default function AIChat() {
 
         {/* 底部说明 */}
         <p className="text-center text-xs text-slate-400 dark:text-slate-500 mt-4">
-          支持 OpenAI 兼容接口（DeepSeek、Kimi、通义、GLM 等）· 数据仅保存在本地浏览器
+          支持 OpenAI 兼容接口（DeepSeek、Kimi、通义、GLM 等）· 对话历史自动保存到本地，刷新不丢失
         </p>
       </div>
     </div>
