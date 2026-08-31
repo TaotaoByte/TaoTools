@@ -15,7 +15,7 @@ export default [
     "type": "tool",
     "id": "password",
     "title": "密码生成器",
-    "description": "生成安全随机密码，支持自定义字符集、排除字符与历史记录",
+    "description": "生成安全随机密码，支持按总长度或按类型指定数量、自定义字符集、排除字符与历史记录",
     "category": "其他",
     "tags": [],
     "icon": "Key",
