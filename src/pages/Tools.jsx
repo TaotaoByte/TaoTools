@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Search, ExternalLink, X } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
@@ -17,6 +18,11 @@ const toolComponents = {
   ColorTool: () => import('../tools/ColorTool.jsx'),
   PasswordTool: () => import('../tools/PasswordTool.jsx'),
   WordCountTool: () => import('../tools/WordCountTool.jsx'),
+  UrlCodecTool: () => import('../tools/UrlCodecTool.jsx'),
+  UuidTool: () => import('../tools/UuidTool.jsx'),
+  JwtTool: () => import('../tools/JwtTool.jsx'),
+  NumberBaseTool: () => import('../tools/NumberBaseTool.jsx'),
+  QrCodeTool: () => import('../tools/QrCodeTool.jsx'),
 }
 
 export default function Tools() {
@@ -24,6 +30,7 @@ export default function Tools() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [activeTool, setActiveTool] = useState(null)
   const [ToolComponent, setToolComponent] = useState(null)
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const filteredTools = useMemo(() => {
     return toolsData.items.filter((tool) => {
@@ -52,7 +59,21 @@ export default function Tools() {
   const closeTool = () => {
     setActiveTool(null)
     setToolComponent(null)
+    if (searchParams.get('tool')) {
+      setSearchParams({}, { replace: true })
+    }
   }
+
+  // 支持 ?tool=<id> 深链：自动打开对应内置工具
+  const toolParam = searchParams.get('tool')
+  useEffect(() => {
+    if (!toolParam) return
+    const tool = toolsData.items.find((t) => t.id === toolParam)
+    if (tool && tool.type === 'internal') {
+      openTool(tool)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toolParam])
 
   if (activeTool) {
     return (

@@ -97,6 +97,60 @@
       "url": "https://www.freecodecamp.org",
       "tags": ["编程", "免费课程"],
       "icon": "Code"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "全球最大开源社区与代码托管平台，开发者必备",
+      "category": "learn",
+      "url": "https://github.com",
+      "tags": ["开源", "代码托管", "社区"],
+      "icon": "GitFork"
+    },
+    {
+      "id": "gitee",
+      "name": "Gitee 码云",
+      "description": "国内代码托管与 DevOps 平台，访问速度快",
+      "category": "learn",
+      "url": "https://gitee.com",
+      "tags": ["代码托管", "国内"],
+      "icon": "GitBranch"
+    },
+    {
+      "id": "hellogithub",
+      "name": "HelloGitHub",
+      "description": "定期推荐 GitHub 上有趣、入门级的开源项目",
+      "category": "learn",
+      "url": "https://hellogithub.com",
+      "tags": ["开源项目", "推荐"],
+      "icon": "Star"
+    },
+    {
+      "id": "caniuse",
+      "name": "Can I Use",
+      "description": "查询浏览器对各种 Web 特性的兼容性支持情况",
+      "category": "learn",
+      "url": "https://caniuse.com",
+      "tags": ["前端", "兼容性"],
+      "icon": "Globe"
+    },
+    {
+      "id": "undraw",
+      "name": "unDraw",
+      "description": "免费可商用的扁平风格插画素材，可自定义配色",
+      "category": "template",
+      "url": "https://undraw.co",
+      "tags": ["插画", "免费商用", "SVG"],
+      "icon": "Brush"
+    },
+    {
+      "id": "squoosh",
+      "name": "Squoosh",
+      "description": "Google 开源的图片压缩工具，支持多格式本地压缩",
+      "category": "image",
+      "url": "https://squoosh.app",
+      "tags": ["图片压缩", "开源", "WebP"],
+      "icon": "Image"
     }
   ]
 }

@@ -5,6 +5,7 @@ import { Card } from '../components/Card.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
 import { MarkdownRenderer } from '../components/MarkdownRenderer.jsx'
 import { LikeButton } from '../components/LikeButton.jsx'
+import { ShareButton } from '../components/ShareButton.jsx'
 import knowledgeData from '../data/knowledge.json'
 
 export default function KnowledgeDetail() {
@@ -81,6 +82,7 @@ export default function KnowledgeDetail() {
             </p>
             <div className="flex items-center gap-3">
               <LikeButton id={article.id} initialCount={article.likes ?? 0} />
+              <ShareButton title={article.title} />
             </div>
           </Card>
         </ScrollReveal>

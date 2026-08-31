@@ -1,5 +1,29 @@
 import { useState, useEffect } from 'react'
 
+function Channel({ label, value, min, max, onChange }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="w-5 text-sm font-medium text-slate-600 dark:text-slate-300">{label}</span>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary-600"
+      />
+      <input
+        type="number"
+        min={min}
+        max={max}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-20 px-2 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+      />
+    </div>
+  )
+}
+
 export default function ColorTool() {
   const [hex, setHex] = useState('#6366f1')
   const [rgb, setRgb] = useState({ r: 99, g: 102, b: 241 })
@@ -108,75 +132,69 @@ export default function ColorTool() {
     navigator.clipboard.writeText(text)
   }
 
+  const validHex = /^#[0-9a-fA-F]{6}$/.test(hex) ? hex : '#000000'
+
   return (
     <div className="space-y-6">
-      <div
-        className="w-full h-32 rounded-2xl shadow-inner border border-slate-200 dark:border-slate-700 transition-colors"
-        style={{ backgroundColor: hex }}
-      />
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">HEX</label>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              value={hex}
-              onChange={(e) => setHex(e.target.value)}
-              className="flex-1 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent uppercase"
-            />
-            <button onClick={() => copyValue(hex)} className="btn-secondary text-sm py-2 px-3">复制</button>
-          </div>
+      {/* 预览 + 色盘 */}
+      <div className="flex items-stretch gap-4">
+        <div
+          className="flex-1 h-28 rounded-2xl shadow-inner border border-slate-200 dark:border-slate-700 transition-colors"
+          style={{ backgroundColor: validHex }}
+        />
+        <div className="flex flex-col items-center justify-center gap-1.5 px-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+          <input
+            type="color"
+            value={validHex}
+            onChange={(e) => setHex(e.target.value)}
+            className="w-12 h-12 rounded-lg cursor-pointer border border-slate-200 dark:border-slate-700"
+            aria-label="色盘"
+          />
+          <span className="text-xs text-slate-400 dark:text-slate-500">色盘</span>
         </div>
+      </div>
 
-        <div className="space-y-2">
+      {/* HEX */}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">HEX</label>
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={hex}
+            onChange={(e) => setHex(e.target.value)}
+            className="flex-1 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent uppercase"
+          />
+          <button onClick={() => copyValue(hex)} className="btn-secondary text-sm py-2 px-3">复制</button>
+        </div>
+      </div>
+
+      {/* RGB */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">RGB</label>
-          <div className="flex gap-2">
-            <input
-              type="number"
-              value={rgb.r}
-              onChange={(e) => handleRgbChange('r', e.target.value)}
-              className="w-16 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            />
-            <input
-              type="number"
-              value={rgb.g}
-              onChange={(e) => handleRgbChange('g', e.target.value)}
-              className="w-16 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            />
-            <input
-              type="number"
-              value={rgb.b}
-              onChange={(e) => handleRgbChange('b', e.target.value)}
-              className="w-16 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            />
-            <button onClick={() => copyValue(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`)} className="btn-secondary text-sm py-2 px-3">复制</button>
-          </div>
+          <button onClick={() => copyValue(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`)} className="text-xs text-primary-600 dark:text-primary-400 hover:underline">
+            复制 rgb({rgb.r}, {rgb.g}, {rgb.b})
+          </button>
         </div>
+        <div className="space-y-2.5">
+          <Channel label="R" value={rgb.r} min={0} max={255} onChange={(v) => handleRgbChange('r', v)} />
+          <Channel label="G" value={rgb.g} min={0} max={255} onChange={(v) => handleRgbChange('g', v)} />
+          <Channel label="B" value={rgb.b} min={0} max={255} onChange={(v) => handleRgbChange('b', v)} />
+        </div>
+      </div>
 
-        <div className="space-y-2">
+      {/* HSL */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">HSL</label>
-          <div className="flex gap-2">
-            <input
-              type="number"
-              value={hsl.h}
-              onChange={(e) => handleHslChange('h', e.target.value)}
-              className="w-16 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            />
-            <input
-              type="number"
-              value={hsl.s}
-              onChange={(e) => handleHslChange('s', e.target.value)}
-              className="w-16 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            />
-            <input
-              type="number"
-              value={hsl.l}
-              onChange={(e) => handleHslChange('l', e.target.value)}
-              className="w-16 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            />
-            <button onClick={() => copyValue(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`)} className="btn-secondary text-sm py-2 px-3">复制</button>
-          </div>
+          <button onClick={() => copyValue(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`)} className="text-xs text-primary-600 dark:text-primary-400 hover:underline">
+            复制 hsl({hsl.h}, {hsl.s}%, {hsl.l}%)
+          </button>
+        </div>
+        <div className="space-y-2.5">
+          <Channel label="H" value={hsl.h} min={0} max={360} onChange={(v) => handleHslChange('h', v)} />
+          <Channel label="S" value={hsl.s} min={0} max={100} onChange={(v) => handleHslChange('s', v)} />
+          <Channel label="L" value={hsl.l} min={0} max={100} onChange={(v) => handleHslChange('l', v)} />
         </div>
       </div>
     </div>

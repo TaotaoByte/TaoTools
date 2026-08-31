@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Wrench } from 'lucide-react'
+import { Menu, X, Wrench, Search, Heart } from 'lucide-react'
 import { ThemeToggle } from './ThemeToggle.jsx'
+import { SearchModal } from './SearchModal.jsx'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
@@ -16,10 +17,24 @@ const navLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const location = useLocation()
 
+  // Cmd/Ctrl + K 快捷唤起搜索
+  useEffect(() => {
+    const onKey = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setSearchOpen((v) => !v)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 glass">
+    <>
+      <header className="fixed top-0 left-0 right-0 z-40 glass">
       <nav className="max-w-7xl mx-auto section-padding">
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo */}
@@ -51,7 +66,23 @@ export function Navbar() {
           </div>
 
           {/* 右侧操作区 */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              aria-label="搜索"
+              title="搜索 (Ctrl+K)"
+            >
+              <Search className="w-5 h-5 text-slate-600 dark:text-slate-300" />
+            </button>
+            <Link
+              to="/favorites"
+              className="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              aria-label="我的收藏"
+              title="我的收藏"
+            >
+              <Heart className="w-5 h-5 text-slate-600 dark:text-slate-300" />
+            </Link>
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -97,6 +128,8 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+      </header>
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+    </>
   )
 }

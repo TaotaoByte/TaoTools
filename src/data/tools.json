@@ -9,6 +9,36 @@
   ],
   "items": [
     {
+      "id": "qrcode",
+      "name": "二维码生成器",
+      "description": "生成二维码，支持自定义尺寸、颜色与纠错等级，可下载 PNG / SVG",
+      "category": "other",
+      "type": "internal",
+      "component": "QrCodeTool",
+      "icon": "QrCode",
+      "likes": 10
+    },
+    {
+      "id": "password",
+      "name": "密码生成器",
+      "description": "生成安全随机密码，支持自定义字符集、排除字符与历史记录",
+      "category": "other",
+      "type": "internal",
+      "component": "PasswordTool",
+      "icon": "Key",
+      "likes": 10
+    },
+    {
+      "id": "excalidraw",
+      "name": "Excalidraw",
+      "description": "手绘风格在线白板与流程图工具",
+      "category": "other",
+      "type": "external",
+      "url": "https://excalidraw.com",
+      "icon": "Pencil",
+      "likes": 10
+    },
+    {
       "id": "text-diff",
       "name": "文本对比",
       "description": "左右两栏输入文本，高亮显示差异内容",
@@ -66,22 +96,12 @@
     {
       "id": "color",
       "name": "颜色转换器",
-      "description": "HEX / RGB / HSL 颜色格式互转",
+      "description": "HEX / RGB / HSL 颜色格式互转，含色盘与滑块",
       "category": "other",
       "type": "internal",
       "component": "ColorTool",
       "icon": "Palette",
       "featured": true,
-      "likes": 10
-    },
-    {
-      "id": "password",
-      "name": "密码生成器",
-      "description": "生成安全随机密码，支持自定义长度和字符集",
-      "category": "other",
-      "type": "internal",
-      "component": "PasswordTool",
-      "icon": "Key",
       "likes": 10
     },
     {
@@ -92,6 +112,46 @@
       "type": "internal",
       "component": "WordCountTool",
       "icon": "Type",
+      "likes": 10
+    },
+    {
+      "id": "url-codec",
+      "name": "URL 编解码",
+      "description": "URL 编码与解码转换，处理特殊字符",
+      "category": "encode",
+      "type": "internal",
+      "component": "UrlCodecTool",
+      "icon": "Link2",
+      "likes": 10
+    },
+    {
+      "id": "uuid",
+      "name": "UUID 生成器",
+      "description": "批量生成 UUID v4，支持大小写与去除连字符",
+      "category": "other",
+      "type": "internal",
+      "component": "UuidTool",
+      "icon": "Fingerprint",
+      "likes": 10
+    },
+    {
+      "id": "jwt",
+      "name": "JWT 解码",
+      "description": "在线解析 JWT 的 Header 与 Payload，展示时间声明",
+      "category": "encode",
+      "type": "internal",
+      "component": "JwtTool",
+      "icon": "KeyRound",
+      "likes": 10
+    },
+    {
+      "id": "number-base",
+      "name": "数字进制转换",
+      "description": "二进制、八进制、十进制、十六进制互转",
+      "category": "calc",
+      "type": "internal",
+      "component": "NumberBaseTool",
+      "icon": "Binary",
       "likes": 10
     },
     {
@@ -122,16 +182,6 @@
       "type": "external",
       "url": "https://tinypng.com",
       "icon": "Image",
-      "likes": 10
-    },
-    {
-      "id": "excalidraw",
-      "name": "Excalidraw",
-      "description": "手绘风格在线白板与流程图工具",
-      "category": "other",
-      "type": "external",
-      "url": "https://excalidraw.com",
-      "icon": "Pencil",
       "likes": 10
     }
   ]
