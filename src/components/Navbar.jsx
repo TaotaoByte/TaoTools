@@ -10,6 +10,7 @@ const navLinks = [
   { path: '/resources', label: '资源库' },
   { path: '/software', label: '软件推荐' },
   { path: '/ai', label: 'AI 中心' },
+  { path: '/chat', label: 'AI 对话' },
   { path: '/knowledge', label: '知识库' },
 ]
 

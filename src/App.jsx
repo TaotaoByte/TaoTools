@@ -14,6 +14,7 @@ const AI = lazy(() => import('./pages/AI.jsx'))
 const AITutorialDetail = lazy(() => import('./pages/AITutorialDetail.jsx'))
 const Knowledge = lazy(() => import('./pages/Knowledge.jsx'))
 const KnowledgeDetail = lazy(() => import('./pages/KnowledgeDetail.jsx'))
+const AIChat = lazy(() => import('./pages/AIChat.jsx'))
 
 function PageWrapper({ children }) {
   return (
@@ -42,6 +43,7 @@ function AppRoutes() {
         <Route path="/ai/tutorials/:slug" element={<PageWrapper><AITutorialDetail /></PageWrapper>} />
         <Route path="/knowledge" element={<PageWrapper><Knowledge /></PageWrapper>} />
         <Route path="/knowledge/:slug" element={<PageWrapper><KnowledgeDetail /></PageWrapper>} />
+        <Route path="/chat" element={<PageWrapper><AIChat /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   )
