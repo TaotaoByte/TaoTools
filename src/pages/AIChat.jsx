@@ -4,50 +4,50 @@ import { Card } from '../components/Card.jsx'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
 import { cn } from '../utils/helpers.js'
 
-// 预设服务商，方便用户快速选择
+// 预设服务商，模型名严格对照各厂商 2026-08 官方文档
 const PRESETS = [
   {
     name: 'OpenAI',
     baseUrl: 'https://api.openai.com/v1',
-    model: 'gpt-4o',
-    models: ['gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo', 'gpt-3.5-turbo'],
+    model: 'gpt-5.6-sol',
+    models: ['gpt-5.6-sol', 'gpt-5.6-terra', 'gpt-5.6-luna', 'gpt-4.1', 'gpt-4.1-mini'],
   },
   {
     name: 'DeepSeek',
-    baseUrl: 'https://api.deepseek.com/v1',
-    model: 'deepseek-chat',
-    models: ['deepseek-chat', 'deepseek-reasoner'],
+    baseUrl: 'https://api.deepseek.com',
+    model: 'deepseek-v4-flash',
+    models: ['deepseek-v4-flash', 'deepseek-v4-pro', 'deepseek-v4-flash-vision-exp'],
   },
   {
     name: '月之暗面 Kimi',
     baseUrl: 'https://api.moonshot.cn/v1',
-    model: 'moonshot-v1-8k',
-    models: ['moonshot-v1-8k', 'moonshot-v1-32k', 'moonshot-v1-128k'],
+    model: 'kimi-k3',
+    models: ['kimi-k3', 'kimi-k2.7-code', 'kimi-k2.7-code-highspeed', 'kimi-k2.6'],
   },
   {
     name: '通义千问',
     baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
-    model: 'qwen-plus',
-    models: ['qwen-plus', 'qwen-turbo', 'qwen-max'],
+    model: 'qwen3.8-max',
+    models: ['qwen3.8-max', 'qwen3.8-flash', 'qwen3.7-plus', 'qwen3.7-flash'],
   },
   {
     name: '智谱 GLM',
     baseUrl: 'https://open.bigmodel.cn/api/paas/v4',
-    model: 'glm-4',
-    models: ['glm-4', 'glm-4-flash', 'glm-4-air'],
+    model: 'glm-5.3',
+    models: ['glm-5.3', 'glm-5.3-flash', 'glm-5.2', 'glm-5.1'],
   },
   {
     name: '硅基流动',
     baseUrl: 'https://api.siliconflow.cn/v1',
-    model: 'deepseek-ai/DeepSeek-V3',
-    models: ['deepseek-ai/DeepSeek-V3', 'Qwen/Qwen2.5-72B-Instruct'],
+    model: 'deepseek-ai/DeepSeek-V4-Flash',
+    models: ['deepseek-ai/DeepSeek-V4-Flash', 'deepseek-ai/DeepSeek-V4-Pro', 'zai-org/GLM-5.2', 'moonshotai/Kimi-K2.7-Code'],
   },
 ]
 
 const DEFAULT_SETTINGS = {
-  baseUrl: 'https://api.deepseek.com/v1',
+  baseUrl: 'https://api.deepseek.com',
   apiKey: '',
-  model: 'deepseek-chat',
+  model: 'deepseek-v4-flash',
   systemPrompt: '',
   temperature: 0.7,
 }
@@ -520,31 +520,44 @@ export default function AIChat() {
               </div>
 
               {/* 温度与流式 */}
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex-1">
-                  <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">
-                    温度 <span className="text-slate-400 font-normal">({settings.temperature})</span>
-                  </label>
-                  <input
-                    type="range"
-                    min="0"
-                    max="2"
-                    step="0.1"
-                    value={settings.temperature}
-                    onChange={(e) => updateSetting('temperature', e.target.value)}
-                    className="w-full accent-primary-500"
-                  />
-                </div>
-                <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300 cursor-pointer whitespace-nowrap">
-                  <input
-                    type="checkbox"
-                    checked={streaming}
-                    onChange={(e) => setStreaming(e.target.checked)}
-                    className="accent-primary-500"
-                  />
-                  流式输出
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">
+                  温度 Temperature
+                  <span className="ml-2 text-xs font-normal text-slate-400">
+                    当前 {settings.temperature} · 取值 0–2，越大越发散
+                  </span>
                 </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="2"
+                  step="0.1"
+                  value={settings.temperature}
+                  onChange={(e) => updateSetting('temperature', e.target.value)}
+                  className="w-full accent-primary-500"
+                />
+                <div className="flex justify-between text-xs text-slate-400 mt-1">
+                  <span>0 严谨</span>
+                  <span>0.7 平衡</span>
+                  <span>1.0 创意</span>
+                  <span>2.0 随机</span>
+                </div>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  控制回答的随机性。<span className="text-slate-600 dark:text-slate-300 font-medium">0</span> 几乎每次相同（适合代码、翻译、事实问答）；
+                  <span className="text-slate-600 dark:text-slate-300 font-medium">0.7</span> 默认，兼顾准确与灵活；
+                  <span className="text-slate-600 dark:text-slate-300 font-medium">1.0 以上</span> 更有创意，但可能不严谨（适合写作、头脑风暴）。
+                  <span className="block mt-1 text-slate-400">注：推理类模型（如 GLM-5.3、DeepSeek-V4 thinking 模式）通常锁定 temperature=1.0，调节可能无效。</span>
+                </p>
               </div>
+              <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300 cursor-pointer whitespace-nowrap">
+                <input
+                  type="checkbox"
+                  checked={streaming}
+                  onChange={(e) => setStreaming(e.target.checked)}
+                  className="accent-primary-500"
+                />
+                流式输出
+              </label>
             </div>
           </Card>
         )}
