@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { Send, Settings, Trash2, MessageSquare, User, Bot, Loader2, ChevronDown, Eye, EyeOff, Check, X, Download, FileText, FileJson } from 'lucide-react'
+import { Send, Settings, Trash2, MessageSquare, User, Bot, Loader2, ChevronDown, Eye, EyeOff, Check, X, Download, FileText, FileJson, Sparkles, Code2, Languages, PenLine, Theater, Plus, Pencil } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
 import { MarkdownRenderer } from '../components/MarkdownRenderer.jsx'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
@@ -53,6 +53,57 @@ const DEFAULT_SETTINGS = {
   temperature: 0.7,
 }
 
+// 预设智能体：本质是「角色 + 系统提示词 + 建议温度」的快捷组合
+const PRESET_AGENTS = [
+  {
+    id: 'general',
+    name: '通用助手',
+    desc: '日常问答、知识解答',
+    systemPrompt: '你是一个乐于助人、知识渊博的 AI 助手，回答准确、清晰、友好，必要时分点阐述。',
+    icon: Sparkles,
+    builtin: true,
+  },
+  {
+    id: 'coder',
+    name: '编程助手',
+    desc: '写代码、调试、讲解技术',
+    systemPrompt: '你是一名资深软件工程师。回答代码问题时给出可运行、带必要注释的代码，语言简洁，重点讲清原理与用法，并指出常见坑点。',
+    temperature: 0.3,
+    icon: Code2,
+    builtin: true,
+  },
+  {
+    id: 'translator',
+    name: '翻译专家',
+    desc: '多语言互译、润色',
+    systemPrompt: '你是一名专业翻译。只输出翻译结果，不附带解释或原文，保持原意与语气，用词地道自然。',
+    temperature: 0.3,
+    icon: Languages,
+    builtin: true,
+  },
+  {
+    id: 'writer',
+    name: '写作助手',
+    desc: '文章、文案、润色创作',
+    systemPrompt: '你是一名优秀的写作助手。根据用户需求创作内容，文笔流畅、结构清晰、符合场景语气，可应要求润色或改写。',
+    temperature: 0.9,
+    icon: PenLine,
+    builtin: true,
+  },
+  {
+    id: 'roleplay',
+    name: '角色扮演',
+    desc: '沉浸式角色对话',
+    systemPrompt: '你可以投入地进行角色扮演，生动自然地扮演用户指定的角色，始终贴合角色设定与语气。',
+    temperature: 1.0,
+    icon: Theater,
+    builtin: true,
+  },
+]
+
+// 自定义智能体的表单初始值
+const EMPTY_AGENT_FORM = { name: '', desc: '', systemPrompt: '', temperature: '0.7' }
+
 const ROLE_LABELS = {
   user: { icon: User, label: '我', color: 'bg-primary-500' },
   assistant: { icon: Bot, label: 'AI', color: 'bg-emerald-500' },
@@ -69,9 +120,16 @@ export default function AIChat() {
   const [showKey, setShowKey] = useState(false)
   const [error, setError] = useState('')
   const [streaming, setStreaming] = useState(true)
+  const [activeAgentId, setActiveAgentId] = useState(null)
+  const [customAgents, setCustomAgents] = useLocalStorage('taotools-ai-agents', [])
+  const [agentModalOpen, setAgentModalOpen] = useState(false)
+  const [editingAgentId, setEditingAgentId] = useState(null)
+  const [agentForm, setAgentForm] = useState(EMPTY_AGENT_FORM)
   const messagesEndRef = useRef(null)
   const textareaRef = useRef(null)
   const abortRef = useRef(null)
+
+  const allAgents = [...PRESET_AGENTS, ...customAgents]
 
   // 初始问候
   useEffect(() => {
@@ -108,6 +166,68 @@ export default function AIChat() {
       baseUrl: preset.baseUrl,
       model: preset.model,
     }))
+  }
+
+  // 切换智能体：将角色 + 建议温度写入设置
+  const applyAgent = (agent) => {
+    setActiveAgentId(agent.id)
+    setSettings((prev) => ({
+      ...prev,
+      systemPrompt: agent.systemPrompt,
+      ...(agent.temperature != null ? { temperature: agent.temperature } : {}),
+    }))
+  }
+
+  // 打开「新建」智能体弹窗
+  const openCreateAgent = () => {
+    setEditingAgentId(null)
+    setAgentForm(EMPTY_AGENT_FORM)
+    setAgentModalOpen(true)
+  }
+
+  // 打开「编辑」智能体弹窗（仅自定义）
+  const openEditAgent = (agent) => {
+    setEditingAgentId(agent.id)
+    setAgentForm({
+      name: agent.name,
+      desc: agent.desc || '',
+      systemPrompt: agent.systemPrompt,
+      temperature: agent.temperature != null ? String(agent.temperature) : '0.7',
+    })
+    setAgentModalOpen(true)
+  }
+
+  // 保存智能体（新建或更新）
+  const saveAgent = () => {
+    const name = agentForm.name.trim()
+    const systemPrompt = agentForm.systemPrompt.trim()
+    if (!name || !systemPrompt) return
+
+    const payload = {
+      name,
+      desc: agentForm.desc.trim(),
+      systemPrompt,
+      temperature: Number(agentForm.temperature),
+    }
+
+    if (editingAgentId) {
+      setCustomAgents((prev) =>
+        prev.map((a) => (a.id === editingAgentId ? { ...a, ...payload } : a)),
+      )
+    } else {
+      const newAgent = { ...payload, id: `custom-${Date.now()}` }
+      setCustomAgents((prev) => [...prev, newAgent])
+    }
+    setAgentModalOpen(false)
+  }
+
+  // 删除自定义智能体
+  const deleteAgent = (id) => {
+    setCustomAgents((prev) => prev.filter((a) => a.id !== id))
+    if (activeAgentId === id) {
+      setActiveAgentId(null)
+      setSettings((prev) => ({ ...prev, systemPrompt: '' }))
+    }
   }
 
   const clearMessages = () => {
@@ -402,6 +522,71 @@ export default function AIChat() {
           </div>
         </div>
 
+        {/* 智能体选择条 */}
+        <div className="mb-4">
+          <div className="flex items-center gap-1 overflow-x-auto pb-1 -mx-1 px-1">
+            {allAgents.map((agent) => {
+              const AgentIcon = agent.icon || Bot
+              const isActive = activeAgentId === agent.id
+              const isCustom = !agent.builtin
+              return (
+                <div
+                  key={agent.id}
+                  className={cn(
+                    'flex-shrink-0 flex items-stretch rounded-xl border transition-colors',
+                    isActive
+                      ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
+                      : 'border-slate-200 dark:border-slate-700',
+                  )}
+                >
+                  <button
+                    onClick={() => applyAgent(agent)}
+                    title={agent.desc || agent.name}
+                    className={cn(
+                      'flex items-center gap-2 pl-3 pr-2 py-2 text-sm font-medium transition-colors',
+                      isActive
+                        ? 'text-primary-600 dark:text-primary-400'
+                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50',
+                    )}
+                  >
+                    <AgentIcon className="w-4 h-4" />
+                    <span>{agent.name}</span>
+                  </button>
+                  {isCustom && (
+                    <>
+                      <button
+                        onClick={() => openEditAgent(agent)}
+                        title="编辑智能体"
+                        className="px-1.5 text-slate-400 hover:text-primary-500 transition-colors"
+                      >
+                        <Pencil className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => deleteAgent(agent.id)}
+                        title="删除智能体"
+                        className="px-1.5 pr-2 text-slate-400 hover:text-red-500 transition-colors"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </>
+                  )}
+                </div>
+              )
+            })}
+            <button
+              onClick={openCreateAgent}
+              title="新建智能体"
+              className="flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:border-primary-400 hover:text-primary-500 text-sm font-medium transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              自定义
+            </button>
+          </div>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1.5">
+            选择角色即自动套用对应的系统提示词与建议温度，可在「设置」里进一步调整
+          </p>
+        </div>
+
         {/* 设置面板 */}
         {showSettings && (
           <Card hover={false} className="mb-4 p-5">
@@ -668,6 +853,103 @@ export default function AIChat() {
           支持 OpenAI 兼容接口（DeepSeek、Kimi、通义、GLM 等）· 对话历史自动保存到本地，刷新不丢失
         </p>
       </div>
+
+      {/* 新建/编辑智能体弹窗 */}
+      {agentModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setAgentModalOpen(false)} />
+          <div className="relative w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xl p-5 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                {editingAgentId ? '编辑智能体' : '新建智能体'}
+              </h3>
+              <button
+                onClick={() => setAgentModalOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">
+                  名称 <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={agentForm.name}
+                  onChange={(e) => setAgentForm((p) => ({ ...p, name: e.target.value }))}
+                  placeholder="如：法务顾问"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">
+                  简介 <span className="text-slate-400 font-normal">（可选，仅作说明）</span>
+                </label>
+                <input
+                  type="text"
+                  value={agentForm.desc}
+                  onChange={(e) => setAgentForm((p) => ({ ...p, desc: e.target.value }))}
+                  placeholder="如：合同审查、法律咨询"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">
+                  系统提示词 <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  value={agentForm.systemPrompt}
+                  onChange={(e) => setAgentForm((p) => ({ ...p, systemPrompt: e.target.value }))}
+                  placeholder="定义这个智能体的角色、知识范围与回答风格..."
+                  rows={4}
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">
+                  建议温度 <span className="text-slate-400 font-normal">（{agentForm.temperature}）</span>
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="2"
+                  step="0.1"
+                  value={agentForm.temperature}
+                  onChange={(e) => setAgentForm((p) => ({ ...p, temperature: e.target.value }))}
+                  className="w-full accent-primary-500"
+                />
+                <div className="flex justify-between text-xs text-slate-400 mt-1">
+                  <span>0 严谨</span>
+                  <span>0.7 平衡</span>
+                  <span>2.0 创意</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex gap-2 mt-6">
+              <button
+                onClick={() => setAgentModalOpen(false)}
+                className="flex-1 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+              >
+                取消
+              </button>
+              <button
+                onClick={saveAgent}
+                disabled={!agentForm.name.trim() || !agentForm.systemPrompt.trim()}
+                className="flex-1 px-4 py-2 rounded-lg bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {editingAgentId ? '保存修改' : '创建智能体'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
