@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { Send, Settings, Trash2, MessageSquare, User, Bot, Loader2, ChevronDown, Eye, EyeOff, Check, X, Download, FileText, FileJson } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
+import { MarkdownRenderer } from '../components/MarkdownRenderer.jsx'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
 import { cn } from '../utils/helpers.js'
 
@@ -598,7 +599,15 @@ export default function AIChat() {
                           ? 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 rounded-tl-md'
                           : 'bg-slate-100 dark:bg-slate-700/50 text-slate-800 dark:text-slate-200 rounded-tl-md',
                     )}>
-                      <div className="whitespace-pre-wrap">{msg.content || (msg.streaming && '思考中...')}</div>
+                      {msg.role === 'assistant' && !msg.error ? (
+                        msg.content ? (
+                          <MarkdownRenderer content={msg.content} className="prose-sm" />
+                        ) : msg.streaming ? (
+                          <span className="text-slate-400">思考中...</span>
+                        ) : null
+                      ) : (
+                        <div className="whitespace-pre-wrap">{msg.content}</div>
+                      )}
                       {msg.streaming && msg.content && (
                         <span className="inline-block w-1.5 h-4 ml-0.5 bg-primary-500 animate-pulse align-text-bottom" />
                       )}

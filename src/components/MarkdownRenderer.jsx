@@ -3,11 +3,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneLight, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { useTheme } from '../contexts/ThemeContext.jsx'
 
-export function MarkdownRenderer({ content }) {
+export function MarkdownRenderer({ content, className = '' }) {
   const { theme } = useTheme()
 
   return (
-    <div className="prose prose-slate dark:prose-invert max-w-none">
+    <div className={`prose prose-slate dark:prose-invert max-w-none ${className}`}>
       <ReactMarkdown
         components={{
           code({ node, inline, className, children, ...props }) {
