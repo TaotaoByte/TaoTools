@@ -20,5 +20,20 @@ export function useLocalStorage(key, initialValue) {
     }
   }, [key, storedValue])
 
+  // 跨标签页同步：其它标签修改同一 key 时，同步到当前页面，
+  // 避免旧页面内存里仍残留旧的 apiKey / model 继续发请求
+  useEffect(() => {
+    const onStorage = (e) => {
+      if (e.key !== key || e.newValue == null) return
+      try {
+        setStoredValue(JSON.parse(e.newValue))
+      } catch (error) {
+        console.error(`同步 localStorage 失败: ${key}`, error)
+      }
+    }
+    window.addEventListener('storage', onStorage)
+    return () => window.removeEventListener('storage', onStorage)
+  }, [key])
+
   return [storedValue, setStoredValue]
 }

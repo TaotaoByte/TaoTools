@@ -112,7 +112,8 @@ const ROLE_LABELS = {
 
 export default function AIChat() {
   const [settings, setSettings] = useLocalStorage('taotools-ai-settings', DEFAULT_SETTINGS)
-  const [messages, setMessages] = useLocalStorage('taotools-ai-messages', [])
+  const [conversations, setConversations] = useLocalStorage('taotools-ai-conversations', [])
+  const [activeId, setActiveId] = useLocalStorage('taotools-ai-active-chat', null)
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
@@ -131,16 +132,100 @@ export default function AIChat() {
 
   const allAgents = [...PRESET_AGENTS, ...customAgents]
 
-  // 初始问候
+  // —— 多会话 ——
+  const activeConv = conversations.find((c) => c.id === activeId) || null
+  const messages = activeConv ? activeConv.messages : []
+
+  const createConversation = useCallback((messages = null) => ({
+    id: `conv-${Date.now()}`,
+    title: '新对话',
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    messages: messages || [{
+      role: 'assistant',
+      content: '你好！我是 AI 助手。请先点击右上角「设置」配置 API Key 和模型，然后就可以开始对话了。',
+      id: Date.now(),
+    }],
+  }), [])
+
+  // 更新当前会话的非 message 字段（如标题）
+  const updateActive = useCallback((updater) => {
+    setConversations((prev) =>
+      prev.map((c) =>
+        c.id === activeId
+          ? { ...c, ...(typeof updater === 'function' ? updater(c) : updater), updatedAt: Date.now() }
+          : c,
+      ),
+    )
+  }, [activeId, setConversations])
+
+  // 与原 setMessages 用法一致的包装：更新当前会话的消息
+  const setMessages = useCallback((updater) => {
+    updateActive((c) => ({
+      messages: typeof updater === 'function' ? updater(c.messages) : updater,
+    }))
+  }, [updateActive])
+
+  const newConversation = useCallback(() => {
+    const conv = createConversation()
+    setConversations((prev) => [conv, ...prev])
+    setActiveId(conv.id)
+    setError('')
+  }, [createConversation, setConversations, setActiveId])
+
+  const switchConversation = useCallback((id) => {
+    setActiveId(id)
+    setError('')
+  }, [setActiveId])
+
+  const deleteConversation = useCallback((id) => {
+    if (!window.confirm('确定删除该对话？删除后无法恢复。')) return
+    const remaining = conversations.filter((c) => c.id !== id)
+    setConversations(remaining)
+    if (activeId === id) {
+      if (remaining.length) {
+        setActiveId(remaining[0].id)
+      } else {
+        const conv = createConversation()
+        setConversations([conv])
+        setActiveId(conv.id)
+      }
+      setError('')
+    }
+  }, [conversations, activeId, setConversations, setActiveId, createConversation])
+
+  // 迁移旧版「单会话」数据（taotools-ai-messages）到多会话结构
   useEffect(() => {
-    if (messages.length === 0) {
-      setMessages([{
-        role: 'assistant',
-        content: '你好！我是 AI 助手。请先点击右上角「设置」配置 API Key 和模型，然后就可以开始对话了。',
-        id: Date.now(),
-      }])
+    try {
+      const legacyRaw = window.localStorage.getItem('taotools-ai-messages')
+      if (legacyRaw) {
+        const legacy = JSON.parse(legacyRaw)
+        if (Array.isArray(legacy) && legacy.length > 0 && conversations.length === 0) {
+          const firstUser = legacy.find((m) => m.role === 'user')
+          const conv = {
+            ...createConversation(legacy),
+            title: firstUser?.content?.slice(0, 20) || '历史对话',
+          }
+          setConversations([conv])
+          setActiveId(conv.id)
+        }
+        window.localStorage.removeItem('taotools-ai-messages')
+      }
+    } catch {
+      window.localStorage.removeItem('taotools-ai-messages')
     }
   }, [])
+
+  // 确保始终存在一个当前会话
+  useEffect(() => {
+    if (conversations.length === 0) {
+      newConversation()
+      return
+    }
+    if (!activeId || !conversations.some((c) => c.id === activeId)) {
+      setActiveId(conversations[0].id)
+    }
+  }, [conversations, activeId, newConversation, setActiveId])
 
   // 自动滚动到底部
   useEffect(() => {
@@ -322,6 +407,11 @@ export default function AIChat() {
     const history = messages.slice(-20).map(({ role, content }) => ({ role, content }))
     apiMessages.push(...history, { role: 'user', content: trimmed })
 
+    // 首次提问时用问题前 20 字作为会话标题
+    updateActive((c) => {
+      if (c.title && c.title !== '新对话') return {}
+      return { title: trimmed.slice(0, 20) }
+    })
     setMessages((prev) => [...prev, userMessage])
     setInput('')
     setLoading(true)
@@ -431,7 +521,7 @@ export default function AIChat() {
       setLoading(false)
       abortRef.current = null
     }
-  }, [input, loading, settings, messages, streaming, setMessages])
+  }, [input, loading, settings, messages, streaming, setMessages, updateActive])
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -457,7 +547,9 @@ export default function AIChat() {
                 {isConfigured ? (
                   <span className="inline-flex items-center gap-1">
                     <Check className="w-3 h-3 text-emerald-500" />
-                    {settings.model}
+                    <span className="font-medium">{settings.model}</span>
+                    <span className="text-slate-400 dark:text-slate-500">·</span>
+                    <span>key ···{settings.apiKey.slice(-4)}</span>
                   </span>
                 ) : (
                   <span className="inline-flex items-center gap-1 text-amber-500">
@@ -520,6 +612,54 @@ export default function AIChat() {
               <Settings className="w-4 h-4" />
             </button>
           </div>
+        </div>
+
+        {/* 会话列表 */}
+        <div className="mb-4">
+          <div className="flex items-center gap-1 overflow-x-auto pb-1 -mx-1 px-1">
+            <button
+              onClick={newConversation}
+              className="flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:border-primary-400 hover:text-primary-500 text-sm font-medium transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              新对话
+            </button>
+            {conversations.map((c) => (
+              <div
+                key={c.id}
+                className={cn(
+                  'flex-shrink-0 flex items-stretch rounded-xl border transition-colors',
+                  c.id === activeId
+                    ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
+                    : 'border-slate-200 dark:border-slate-700',
+                )}
+              >
+                <button
+                  onClick={() => switchConversation(c.id)}
+                  title={c.title || '新对话'}
+                  className={cn(
+                    'flex items-center gap-2 pl-3 pr-2 py-2 text-sm font-medium transition-colors',
+                    c.id === activeId
+                      ? 'text-primary-600 dark:text-primary-400'
+                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50',
+                  )}
+                >
+                  <MessageSquare className="w-3.5 h-3.5 opacity-60" />
+                  <span className="max-w-[140px] truncate">{c.title || '新对话'}</span>
+                </button>
+                <button
+                  onClick={() => deleteConversation(c.id)}
+                  title="删除会话"
+                  className="px-1.5 pr-2 text-slate-400 hover:text-red-500 transition-colors"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1.5">
+            可新建、切换多个对话，历史记录互不干扰
+          </p>
         </div>
 
         {/* 智能体选择条 */}
@@ -666,27 +806,23 @@ export default function AIChat() {
                   placeholder="deepseek-chat"
                   className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
-                {/* 显示当前服务商可选模型 */}
+                {/* 显示当前服务商可选模型（下拉选择，避免误触） */}
                 {(() => {
                   const preset = PRESETS.find((p) => p.baseUrl === settings.baseUrl)
                   if (!preset) return null
                   return (
-                    <div className="flex flex-wrap gap-1.5 mt-2">
+                    <select
+                      value={preset.models.includes(settings.model) ? settings.model : ''}
+                      onChange={(e) => {
+                        if (e.target.value) updateSetting('model', e.target.value)
+                      }}
+                      className="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    >
+                      <option value="" disabled>选择预设模型…</option>
                       {preset.models.map((m) => (
-                        <button
-                          key={m}
-                          onClick={() => updateSetting('model', m)}
-                          className={cn(
-                            'px-2 py-1 rounded-md text-xs border transition-colors',
-                            settings.model === m
-                              ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
-                              : 'border-slate-200 dark:border-slate-700 text-slate-500 hover:border-primary-300',
-                          )}
-                        >
-                          {m}
-                        </button>
+                        <option key={m} value={m}>{m}</option>
                       ))}
-                    </div>
+                    </select>
                   )
                 })()}
               </div>
