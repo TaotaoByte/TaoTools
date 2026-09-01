@@ -110,13 +110,19 @@ const ROLE_LABELS = {
   system: { icon: Settings, label: '系统', color: 'bg-amber-500' },
 }
 
+// 生成唯一 id，避免 Date.now() 在同毫秒内重复导致会话/消息错乱
+const uid = () =>
+  (globalThis.crypto && typeof crypto.randomUUID === 'function')
+    ? crypto.randomUUID()
+    : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`
+
 export default function AIChat() {
   const [settings, setSettings] = useLocalStorage('taotools-ai-settings', DEFAULT_SETTINGS)
   const [conversations, setConversations] = useLocalStorage('taotools-ai-conversations', [])
   const [activeId, setActiveId] = useLocalStorage('taotools-ai-active-chat', null)
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const [showSettings, setShowSettings] = useState(false)
+  const [showSettings, setShowSettings] = useState(true)
   const [showDownloadMenu, setShowDownloadMenu] = useState(false)
   const [showKey, setShowKey] = useState(false)
   const [error, setError] = useState('')
@@ -137,14 +143,14 @@ export default function AIChat() {
   const messages = activeConv ? activeConv.messages : []
 
   const createConversation = useCallback((messages = null) => ({
-    id: `conv-${Date.now()}`,
+    id: `conv-${uid()}`,
     title: '新对话',
     createdAt: Date.now(),
     updatedAt: Date.now(),
     messages: messages || [{
       role: 'assistant',
       content: '你好！我是 AI 助手。请先点击右上角「设置」配置 API Key 和模型，然后就可以开始对话了。',
-      id: Date.now(),
+      id: uid(),
     }],
   }), [])
 
@@ -194,38 +200,46 @@ export default function AIChat() {
     }
   }, [conversations, activeId, setConversations, setActiveId, createConversation])
 
-  // 迁移旧版「单会话」数据（taotools-ai-messages）到多会话结构
+  // 初始化：迁移旧版数据 + 确保存在当前会话（一次性、幂等）
+  const initializedRef = useRef(false)
   useEffect(() => {
+    if (initializedRef.current) return
+    initializedRef.current = true
+
+    let list = conversations
+    let currentId = activeId
+
+    // 迁移最旧的「单会话」数据 taotools-ai-messages
     try {
       const legacyRaw = window.localStorage.getItem('taotools-ai-messages')
       if (legacyRaw) {
         const legacy = JSON.parse(legacyRaw)
-        if (Array.isArray(legacy) && legacy.length > 0 && conversations.length === 0) {
+        if (Array.isArray(legacy) && legacy.length > 0 && list.length === 0) {
           const firstUser = legacy.find((m) => m.role === 'user')
-          const conv = {
+          list = [{
             ...createConversation(legacy),
             title: firstUser?.content?.slice(0, 20) || '历史对话',
-          }
-          setConversations([conv])
-          setActiveId(conv.id)
+          }]
+          currentId = list[0].id
         }
         window.localStorage.removeItem('taotools-ai-messages')
       }
     } catch {
       window.localStorage.removeItem('taotools-ai-messages')
     }
-  }, [])
 
-  // 确保始终存在一个当前会话
-  useEffect(() => {
-    if (conversations.length === 0) {
-      newConversation()
-      return
+    // 确保至少有一个会话
+    if (list.length === 0) {
+      list = [createConversation()]
     }
-    if (!activeId || !conversations.some((c) => c.id === activeId)) {
-      setActiveId(conversations[0].id)
+    // 确保当前会话 id 有效
+    if (!currentId || !list.some((c) => c.id === currentId)) {
+      currentId = list[0].id
     }
-  }, [conversations, activeId, newConversation, setActiveId])
+
+    setConversations(list)
+    setActiveId(currentId)
+  }, [])
 
   // 自动滚动到底部
   useEffect(() => {
@@ -533,8 +547,8 @@ export default function AIChat() {
   const isConfigured = settings.apiKey && settings.baseUrl && settings.model
 
   return (
-    <div className="min-h-screen pb-6">
-      <div className="max-w-4xl mx-auto section-padding">
+    <div className="min-h-screen pb-6 flex flex-col">
+      <div className="max-w-4xl w-full mx-auto section-padding flex-1 flex flex-col min-h-0">
         {/* 标题栏 */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
@@ -729,7 +743,7 @@ export default function AIChat() {
 
         {/* 设置面板 */}
         {showSettings && (
-          <Card hover={false} className="mb-4 p-5">
+          <Card hover={false} className="mb-4 p-5 max-h-[50vh] overflow-y-auto">
             <div className="space-y-4">
               {/* 预设服务商 */}
               <div>
@@ -892,8 +906,8 @@ export default function AIChat() {
         )}
 
         {/* 对话区域 */}
-        <Card hover={false} className="flex flex-col overflow-hidden">
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 min-h-[50vh] max-h-[60vh]">
+        <Card hover={false} className="flex flex-col overflow-hidden flex-1 min-h-0">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 min-h-[240px]">
             {messages.map((msg) => {
               const roleInfo = ROLE_LABELS[msg.role] || ROLE_LABELS.assistant
               const Icon = roleInfo.icon

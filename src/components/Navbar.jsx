@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Wrench, Search, Heart } from 'lucide-react'
+import { Menu, X, Search, Heart } from 'lucide-react'
 import { ThemeToggle } from './ThemeToggle.jsx'
 import { SearchModal } from './SearchModal.jsx'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -39,9 +39,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40 transition-shadow">
-              <Wrench className="w-5 h-5 text-white" />
-            </div>
+            <img src="/favicon.svg" alt="TaoTools" className="w-9 h-auto group-hover:opacity-90 transition-opacity" />
             <div className="hidden sm:block">
               <span className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">TaoTools</span>
               <p className="text-[10px] text-slate-500 dark:text-slate-400 -mt-0.5">一站式工具导航与知识分享平台</p>
