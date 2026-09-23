@@ -205,7 +205,7 @@ export default function Home() {
           <SectionHeader
             en="Explore"
             zh="探索板块"
-            desc="六大核心板块，覆盖工具、资源、软件、AI 与知识。"
+            desc="核心板块，覆盖工具、资源、软件、小游戏、AI 与知识。"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {categoriesData.homeCards.map((card, index) => (

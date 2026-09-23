@@ -25,6 +25,14 @@
       "color": "from-violet-500 to-purple-600"
     },
     {
+      "id": "games",
+      "title": "小游戏",
+      "description": "内置休闲小游戏与热门游戏网站导航",
+      "icon": "Gamepad2",
+      "link": "/games",
+      "color": "from-fuchsia-500 to-pink-600"
+    },
+    {
       "id": "ai",
       "title": "AI 中心",
       "description": "AI 大模型排名与实用技巧",

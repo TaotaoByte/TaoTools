@@ -1,0 +1,121 @@
+{
+  "categories": [
+    { "id": "all", "name": "全部" },
+    { "id": "builtin", "name": "内置小游戏" },
+    { "id": "external", "name": "外部游戏" }
+  ],
+  "items": [
+    {
+      "id": "game-2048",
+      "name": "2048 数字合并",
+      "description": "滑动合并相同数字，合成 2048 方块，方向键 / 触屏滑动操作",
+      "category": "builtin",
+      "type": "internal",
+      "component": "Game2048",
+      "icon": "Grid2x2",
+      "difficulty": "易"
+    },
+    {
+      "id": "game-snake",
+      "name": "贪吃蛇",
+      "description": "经典街机玩法，键盘方向键控制小蛇吃掉食物不断成长",
+      "category": "builtin",
+      "type": "internal",
+      "component": "SnakeGame",
+      "icon": "Bug",
+      "difficulty": "中"
+    },
+    {
+      "id": "game-minesweeper",
+      "name": "扫雷",
+      "description": "经典推理扫雷，支持简单 / 中等难度切换，数字提示周围地雷数量",
+      "category": "builtin",
+      "type": "internal",
+      "component": "MinesweeperGame",
+      "icon": "Bomb",
+      "difficulty": "中"
+    },
+    {
+      "id": "game-memory",
+      "name": "记忆翻牌",
+      "description": "翻开一对卡片找出相同的图案，考验你的记忆力",
+      "category": "builtin",
+      "type": "internal",
+      "component": "MemoryGame",
+      "icon": "Layers",
+      "difficulty": "易"
+    },
+    {
+      "id": "site-4399",
+      "name": "4399 小游戏",
+      "description": "国民级综合小游戏平台，各类休闲游戏应有尽有",
+      "category": "external",
+      "type": "external",
+      "url": "https://www.4399.com",
+      "icon": "Gamepad2"
+    },
+    {
+      "id": "site-7k7k",
+      "name": "7k7k 小游戏",
+      "description": "海量在线小游戏，动作、益智、儿童游戏一网打尽",
+      "category": "external",
+      "type": "external",
+      "url": "https://www.7k7k.com",
+      "icon": "Gamepad2"
+    },
+    {
+      "id": "site-crazygames",
+      "name": "CrazyGames",
+      "description": "无需下载即可畅玩的高品质网页游戏平台",
+      "category": "external",
+      "type": "external",
+      "url": "https://www.crazygames.com",
+      "icon": "Joystick"
+    },
+    {
+      "id": "site-itch",
+      "name": "itch.io",
+      "description": "全球独立游戏宝藏库，网页版与下载游戏皆可畅玩",
+      "category": "external",
+      "type": "external",
+      "url": "https://itch.io",
+      "icon": "Sparkles"
+    },
+    {
+      "id": "site-chess",
+      "name": "Chess.com 国际象棋",
+      "description": "全球最大的国际象棋对战平台，联机对弈、残局练习与教学",
+      "category": "external",
+      "type": "external",
+      "url": "https://www.chess.com/play/online",
+      "icon": "Trophy"
+    },
+    {
+      "id": "site-lichess",
+      "name": "Lichess",
+      "description": "免费开源的棋牌对弈平台，支持国际象棋、围棋与中国象棋",
+      "category": "external",
+      "type": "external",
+      "url": "https://lichess.org",
+      "icon": "Crown"
+    },
+    {
+      "id": "site-gokgs",
+      "name": "KGS 围棋",
+      "description": "老牌免费在线围棋服务器，与全球棋友实时对弈",
+      "category": "external",
+      "type": "external",
+      "url": "https://www.gokgs.com",
+      "icon": "CircleDot"
+    },
+    {
+      "id": "site-sanguosha",
+      "name": "三国杀 Online",
+      "description": "经典桌游三国杀官方网页版，与好友在线开局",
+      "category": "external",
+      "type": "external",
+      "url": "https://www.sanguosha.com",
+      "icon": "Swords"
+    }
+  ]
+}
