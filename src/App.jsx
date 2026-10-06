@@ -16,6 +16,7 @@ const Knowledge = lazy(() => import('./pages/Knowledge.jsx'))
 const KnowledgeDetail = lazy(() => import('./pages/KnowledgeDetail.jsx'))
 const AIChat = lazy(() => import('./pages/AIChat.jsx'))
 const Favorites = lazy(() => import('./pages/Favorites.jsx'))
+const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -41,6 +42,8 @@ function AppRoutes() {
       <Route path="/knowledge/:slug" element={<KnowledgeDetail />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/chat" element={<AIChat />} />
+      {/* 兜底：没有 path="*" 时，不存在的地址会渲染成空白页 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
