@@ -3,18 +3,16 @@ import { useTheme } from '../contexts/ThemeContext.jsx'
 
 export function ThemeToggle({ className = '' }) {
   const { theme, toggleTheme } = useTheme()
+  const label = theme === 'light' ? '切换到深色模式' : '切换到浅色模式'
 
   return (
     <button
       onClick={toggleTheme}
-      className={`p-2.5 rounded-xl transition-all duration-200 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/50 ${className}`}
-      aria-label={theme === 'light' ? '切换到深色模式' : '切换到浅色模式'}
+      className={`p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/70 transition-colors ${className}`}
+      aria-label={label}
+      title={label}
     >
-      {theme === 'light' ? (
-        <Moon className="w-5 h-5 text-slate-600" />
-      ) : (
-        <Sun className="w-5 h-5 text-amber-400" />
-      )}
+      {theme === 'light' ? <Moon className="w-[18px] h-[18px]" /> : <Sun className="w-[18px] h-[18px]" />}
     </button>
   )
 }

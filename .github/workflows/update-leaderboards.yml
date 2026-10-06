@@ -1,0 +1,74 @@
+name: 自动更新 AI 模型榜单
+
+# 每周一自动抓取 LMArena / Artificial Analysis / SWE-bench / LiveBench 等公开榜单，
+# 生成 src/data/leaderboards.json 并提交。也可以手动触发。
+#
+# 这样站点上的「AI 大模型排名」不需要人工维护。
+
+on:
+  schedule:
+    # 每周一 02:17 UTC（北京时间 10:17）。避开整点，减少被 GitHub 延迟调度的概率。
+    - cron: '17 2 * * 1'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: '只抓取某一个源（lmarena / openrouter / artificialanalysis / swebench / livebench），留空为全部'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-leaderboards
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 抓取榜单
+        run: |
+          if [ -n "${{ github.event.inputs.only }}" ]; then
+            node scripts/fetch-leaderboards.mjs --only=${{ github.event.inputs.only }}
+          else
+            node scripts/fetch-leaderboards.mjs
+          fi
+
+      - name: 确认站点仍能构建
+        run: npm run build
+
+      - name: 提交并推送
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          if git diff --quiet -- src/data/leaderboards.json; then
+            echo "榜单内容没有变化，无需提交。"
+            exit 0
+          fi
+
+          # 把本次抓取摘要写进提交信息，方便回溯
+          SUMMARY=$(node -e "
+            const d = require('./src/data/leaderboards.json');
+            const ok = d.sources.filter(s => s.ok).length;
+            console.log(\`\${ok}/\${d.sources.length} 源成功，\${d.boards.length} 个榜单\`);
+          ")
+
+          git add src/data/leaderboards.json
+          git commit -m "chore(data): 自动更新 AI 模型榜单（${SUMMARY}）[skip ci]"
+          git push

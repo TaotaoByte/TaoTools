@@ -101,7 +101,7 @@ function build() {
       description: a.summary || '',
       category: 'AI 教程',
       tags: a.tags || [],
-      icon: 'Sparkles',
+      icon: 'Bot',
       link: `/ai/tutorials/${a.slug}`,
       external: false,
     })

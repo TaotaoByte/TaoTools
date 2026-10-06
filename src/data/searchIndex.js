@@ -198,7 +198,7 @@ export default [
       "模板",
       "免费"
     ],
-    "icon": "Figma",
+    "icon": "PenTool",
     "link": "https://www.figma.com/community",
     "external": true
   },
@@ -271,7 +271,7 @@ export default [
       "图标",
       "开源"
     ],
-    "icon": "Icons",
+    "icon": "Shapes",
     "link": "https://lucide.dev",
     "external": true
   },
@@ -285,7 +285,7 @@ export default [
       "图标",
       "字体"
     ],
-    "icon": "Font",
+    "icon": "Type",
     "link": "https://fontawesome.com",
     "external": true
   },
@@ -493,7 +493,7 @@ export default [
       "Mac",
       "Web"
     ],
-    "icon": "Figma",
+    "icon": "PenTool",
     "link": "https://www.figma.com",
     "external": true
   },
@@ -818,7 +818,7 @@ export default [
       "选型指南",
       "2026"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/ai-model-guide-2025",
     "external": false
   },
@@ -833,7 +833,7 @@ export default [
       "AI Agent",
       "Cursor"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/ai-coding-agent",
     "external": false
   },
@@ -848,7 +848,7 @@ export default [
       "提示词",
       "AI技巧"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/advanced-prompt",
     "external": false
   },
@@ -863,7 +863,7 @@ export default [
       "Ollama",
       "大模型"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/local-llm",
     "external": false
   },
@@ -877,7 +877,7 @@ export default [
       "Prompt",
       "AI技巧"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/prompt-engineering",
     "external": false
   },
@@ -892,7 +892,7 @@ export default [
       "Cursor",
       "效率"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/ai-coding",
     "external": false
   },
@@ -906,7 +906,7 @@ export default [
       "AI绘图",
       "设计"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/ai-image",
     "external": false
   },
@@ -920,7 +920,7 @@ export default [
       "写作",
       "效率"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/ai-writing",
     "external": false
   },
@@ -935,7 +935,7 @@ export default [
       "效率",
       "周报"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/ai-weekly-report",
     "external": false
   },
@@ -950,7 +950,7 @@ export default [
       "代码审查",
       "Prompt"
     ],
-    "icon": "Sparkles",
+    "icon": "Bot",
     "link": "/ai/tutorials/ai-code-review",
     "external": false
   }

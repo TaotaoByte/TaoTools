@@ -9,11 +9,14 @@
     "preview": "vite preview",
     "build:data": "node scripts/build-data.cjs && node scripts/build-search-index.cjs",
     "build:search": "node scripts/build-search-index.cjs",
+    "update:leaderboards": "node scripts/fetch-leaderboards.mjs",
+    "update:leaderboards:check": "node scripts/fetch-leaderboards.mjs --dry-run",
     "add": "node scripts/add-item.cjs"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.4",
     "autoprefixer": "^10.5.4",
+    "hyparquet": "^1.31.2",
     "postcss": "^8.5.23",
     "tailwindcss": "^3.4.19",
     "typescript": "~6.0.2",

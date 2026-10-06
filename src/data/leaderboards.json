@@ -1,0 +1,2278 @@
+{
+  "generatedAt": "2026-10-06T10:32:01.391Z",
+  "note": "本文件由 scripts/fetch-leaderboards.mjs 自动生成，请勿手工编辑。GitHub Actions 每周自动刷新；本地可运行 npm run update:leaderboards。",
+  "sources": [
+    {
+      "key": "lmarena",
+      "label": "LMArena 官方榜",
+      "ok": true,
+      "ms": 3423,
+      "boards": [
+        "lmarena-overall",
+        "lmarena-chinese",
+        "lmarena-coding"
+      ]
+    },
+    {
+      "key": "openrouter",
+      "label": "OpenRouter 智能指数",
+      "ok": true,
+      "ms": 902,
+      "boards": [
+        "openrouter-intelligence"
+      ]
+    },
+    {
+      "key": "artificialanalysis",
+      "label": "Artificial Analysis",
+      "ok": true,
+      "ms": 901,
+      "boards": [
+        "aa-intelligence"
+      ]
+    },
+    {
+      "key": "swebench",
+      "label": "SWE-bench Verified",
+      "ok": true,
+      "ms": 1865,
+      "boards": [
+        "swebench-verified"
+      ]
+    },
+    {
+      "key": "livebench",
+      "label": "LiveBench",
+      "ok": true,
+      "ms": 919,
+      "boards": [
+        "livebench"
+      ]
+    }
+  ],
+  "boards": [
+    {
+      "id": "lmarena-overall",
+      "name": "综合能力（总榜）",
+      "publisher": "LMArena · 原 Chatbot Arena",
+      "metric": "Elo 评分",
+      "metricHint": "由真人盲测两两对战投票得出，分数越高越强；票数越多越可靠。",
+      "url": "https://lmarena.ai/leaderboard",
+      "license": "CC BY 4.0",
+      "updatedAt": "2026-10-02",
+      "sampleSize": 413,
+      "ranked": [
+        {
+          "rank": 1,
+          "model": "Gemini 4 Argon High",
+          "slug": "gemini-4-argon-high",
+          "vendor": "Google",
+          "score": 1533.5,
+          "votes": 4932,
+          "ci": [
+            1524.7,
+            1542.3
+          ]
+        },
+        {
+          "rank": 2,
+          "model": "Claude Opus 5.5 High",
+          "slug": "claude-opus-5.5-high",
+          "vendor": "Anthropic",
+          "score": 1511.7,
+          "votes": 4552,
+          "ci": [
+            1502.6,
+            1520.7
+          ]
+        },
+        {
+          "rank": 3,
+          "model": "Claude Fable 5.1 Max",
+          "slug": "claude-fable-5.1-max",
+          "vendor": "Anthropic",
+          "score": 1510.6,
+          "votes": 11800,
+          "ci": [
+            1504.2,
+            1517
+          ]
+        },
+        {
+          "rank": 4,
+          "model": "Claude Opus 5 Max",
+          "slug": "claude-opus-5-max",
+          "vendor": "Anthropic",
+          "score": 1507,
+          "votes": 28937,
+          "ci": [
+            1502.1,
+            1512
+          ]
+        },
+        {
+          "rank": 5,
+          "model": "Claude Opus 4.6 High",
+          "slug": "claude-opus-4-6-high",
+          "vendor": "Anthropic",
+          "score": 1503.2,
+          "votes": 77636,
+          "ci": [
+            1499.8,
+            1506.6
+          ]
+        },
+        {
+          "rank": 6,
+          "model": "Claude Opus 5 High",
+          "slug": "claude-opus-5-high",
+          "vendor": "Anthropic",
+          "score": 1502.1,
+          "votes": 59482,
+          "ci": [
+            1498.3,
+            1505.9
+          ]
+        },
+        {
+          "rank": 7,
+          "model": "Claude Opus 4.6",
+          "slug": "claude-opus-4-6",
+          "vendor": "Anthropic",
+          "score": 1497.6,
+          "votes": 82189,
+          "ci": [
+            1494.3,
+            1500.9
+          ]
+        },
+        {
+          "rank": 8,
+          "model": "Gemini 3.8 Flash High",
+          "slug": "gemini-3.8-flash-high",
+          "vendor": "Google",
+          "score": 1497,
+          "votes": 26298,
+          "ci": [
+            1491.9,
+            1502
+          ]
+        },
+        {
+          "rank": 9,
+          "model": "Claude Fable 5 High",
+          "slug": "claude-fable-5-high",
+          "vendor": "Anthropic",
+          "score": 1491.7,
+          "votes": 38387,
+          "ci": [
+            1487.3,
+            1496.1
+          ]
+        },
+        {
+          "rank": 10,
+          "model": "Mimo V2.6 Pro",
+          "slug": "mimo-v2.6-pro",
+          "vendor": "小米",
+          "score": 1491,
+          "votes": 4056,
+          "ci": [
+            1481.7,
+            1500.4
+          ]
+        },
+        {
+          "rank": 11,
+          "model": "Claude Opus 4.7 High",
+          "slug": "claude-opus-4-7-high",
+          "vendor": "Anthropic",
+          "score": 1489.9,
+          "votes": 64946,
+          "ci": [
+            1486.2,
+            1493.7
+          ]
+        },
+        {
+          "rank": 12,
+          "model": "Muse Spark 1.3 Max",
+          "slug": "muse-spark-1.3-max",
+          "vendor": "Meta",
+          "score": 1489.9,
+          "votes": 12343,
+          "ci": [
+            1483.7,
+            1496
+          ]
+        },
+        {
+          "rank": 13,
+          "model": "Gemini 3.7 Flash High",
+          "slug": "gemini-3.7-flash-high",
+          "vendor": "Google",
+          "score": 1487,
+          "votes": 21539,
+          "ci": [
+            1481.8,
+            1492.1
+          ]
+        },
+        {
+          "rank": 14,
+          "model": "Claude Opus 4.7",
+          "slug": "claude-opus-4-7",
+          "vendor": "Anthropic",
+          "score": 1483.3,
+          "votes": 66058,
+          "ci": [
+            1479.6,
+            1487.1
+          ]
+        },
+        {
+          "rank": 15,
+          "model": "muse-spark-1.2 (Xhigh)",
+          "slug": "muse-spark-1.2 (xHigh)",
+          "vendor": "Meta",
+          "score": 1483.2,
+          "votes": 4356,
+          "ci": [
+            1474.1,
+            1492.3
+          ]
+        },
+        {
+          "rank": 16,
+          "model": "Qwen3.8 Max",
+          "slug": "qwen3.8-max",
+          "vendor": "阿里巴巴",
+          "score": 1481.8,
+          "votes": 23353,
+          "ci": [
+            1476.6,
+            1487
+          ]
+        },
+        {
+          "rank": 17,
+          "model": "Gemini 3.5 Flash High",
+          "slug": "gemini-3.5-flash-high",
+          "vendor": "Google",
+          "score": 1481.8,
+          "votes": 48420,
+          "ci": [
+            1477.9,
+            1485.6
+          ]
+        },
+        {
+          "rank": 18,
+          "model": "Gemini 3.1 Pro Preview",
+          "slug": "gemini-3.1-pro-preview",
+          "vendor": "Google",
+          "score": 1480.2,
+          "votes": 121806,
+          "ci": [
+            1477.2,
+            1483.2
+          ]
+        },
+        {
+          "rank": 19,
+          "model": "Gemini 3.6 Flash High",
+          "slug": "gemini-3.6-flash-high",
+          "vendor": "Google",
+          "score": 1479.5,
+          "votes": 36070,
+          "ci": [
+            1475.1,
+            1483.9
+          ]
+        },
+        {
+          "rank": 20,
+          "model": "Gemini 3 Pro",
+          "slug": "gemini-3-pro",
+          "vendor": "Google",
+          "score": 1479.4,
+          "votes": 41910,
+          "ci": [
+            1475.6,
+            1483.2
+          ]
+        },
+        {
+          "rank": 21,
+          "model": "Muse Spark 1.1",
+          "slug": "muse-spark-1.1",
+          "vendor": "Meta",
+          "score": 1479.2,
+          "votes": 37238,
+          "ci": [
+            1474.8,
+            1483.5
+          ]
+        },
+        {
+          "rank": 22,
+          "model": "Gemini 3.5 Flash Medium",
+          "slug": "gemini-3.5-flash-medium",
+          "vendor": "Google",
+          "score": 1477.7,
+          "votes": 47187,
+          "ci": [
+            1473.5,
+            1481.8
+          ]
+        },
+        {
+          "rank": 23,
+          "model": "Kimi K3 Max",
+          "slug": "kimi-k3-max",
+          "vendor": "月之暗面",
+          "score": 1475.9,
+          "votes": 28280,
+          "ci": [
+            1471.2,
+            1480.7
+          ]
+        },
+        {
+          "rank": 24,
+          "model": "Qwen3.7 Max Preview",
+          "slug": "qwen3.7-max-preview",
+          "vendor": "阿里巴巴",
+          "score": 1475.7,
+          "votes": 3920,
+          "ci": [
+            1466,
+            1485.4
+          ]
+        },
+        {
+          "rank": 25,
+          "model": "Muse Spark",
+          "slug": "muse-spark",
+          "vendor": "Meta",
+          "score": 1474.4,
+          "votes": 14120,
+          "ci": [
+            1468.7,
+            1480.1
+          ]
+        },
+        {
+          "rank": 26,
+          "model": "GLM 5.3 Max",
+          "slug": "glm-5.3-max",
+          "vendor": "智谱 AI",
+          "score": 1471.4,
+          "votes": 17857,
+          "ci": [
+            1465.9,
+            1476.9
+          ]
+        },
+        {
+          "rank": 27,
+          "model": "GPT 5.5 High",
+          "slug": "gpt-5.5-high",
+          "vendor": "OpenAI",
+          "score": 1471.3,
+          "votes": 69202,
+          "ci": [
+            1467.6,
+            1475
+          ]
+        },
+        {
+          "rank": 28,
+          "model": "Qwen3.5 Max Preview",
+          "slug": "qwen3.5-max-preview",
+          "vendor": "阿里巴巴",
+          "score": 1470.4,
+          "votes": 22555,
+          "ci": [
+            1465.6,
+            1475.3
+          ]
+        },
+        {
+          "rank": 29,
+          "model": "GLM 5.2 Max",
+          "slug": "glm-5.2-max",
+          "vendor": "智谱 AI",
+          "score": 1470.4,
+          "votes": 45399,
+          "ci": [
+            1466.1,
+            1474.6
+          ]
+        },
+        {
+          "rank": 30,
+          "model": "GLM 5.3 Flash",
+          "slug": "glm-5.3-flash",
+          "vendor": "智谱 AI",
+          "score": 1469.6,
+          "votes": 22971,
+          "ci": [
+            1464.3,
+            1474.9
+          ]
+        }
+      ],
+      "source": "lmarena",
+      "stale": false
+    },
+    {
+      "id": "lmarena-chinese",
+      "name": "中文能力榜",
+      "publisher": "LMArena · 原 Chatbot Arena",
+      "metric": "Elo 评分",
+      "metricHint": "LMArena 官方中文分榜，只统计中文对话对战结果。",
+      "url": "https://lmarena.ai/leaderboard",
+      "license": "CC BY 4.0",
+      "updatedAt": "2026-10-02",
+      "sampleSize": 389,
+      "ranked": [
+        {
+          "rank": 1,
+          "model": "Gemini 4 Argon High",
+          "slug": "gemini-4-argon-high",
+          "vendor": "Google",
+          "score": 1609,
+          "votes": 352,
+          "ci": [
+            1577.5,
+            1640.6
+          ]
+        },
+        {
+          "rank": 2,
+          "model": "Claude Fable 5.1 Max",
+          "slug": "claude-fable-5.1-max",
+          "vendor": "Anthropic",
+          "score": 1588,
+          "votes": 874,
+          "ci": [
+            1567.1,
+            1608.9
+          ]
+        },
+        {
+          "rank": 3,
+          "model": "Claude Opus 5.5 High",
+          "slug": "claude-opus-5.5-high",
+          "vendor": "Anthropic",
+          "score": 1583.5,
+          "votes": 402,
+          "ci": [
+            1554.2,
+            1612.7
+          ]
+        },
+        {
+          "rank": 4,
+          "model": "Claude Opus 5 Max",
+          "slug": "claude-opus-5-max",
+          "vendor": "Anthropic",
+          "score": 1575.7,
+          "votes": 2274,
+          "ci": [
+            1562.3,
+            1589.1
+          ]
+        },
+        {
+          "rank": 5,
+          "model": "Claude Opus 5 High",
+          "slug": "claude-opus-5-high",
+          "vendor": "Anthropic",
+          "score": 1568.8,
+          "votes": 4718,
+          "ci": [
+            1559.1,
+            1578.5
+          ]
+        },
+        {
+          "rank": 6,
+          "model": "Claude Opus 4.6 High",
+          "slug": "claude-opus-4-6-high",
+          "vendor": "Anthropic",
+          "score": 1551.7,
+          "votes": 5342,
+          "ci": [
+            1542.7,
+            1560.7
+          ]
+        },
+        {
+          "rank": 7,
+          "model": "Gemini 3.7 Flash High",
+          "slug": "gemini-3.7-flash-high",
+          "vendor": "Google",
+          "score": 1550.9,
+          "votes": 1681,
+          "ci": [
+            1536,
+            1565.8
+          ]
+        },
+        {
+          "rank": 8,
+          "model": "Gemini 3.8 Flash High",
+          "slug": "gemini-3.8-flash-high",
+          "vendor": "Google",
+          "score": 1550.6,
+          "votes": 2061,
+          "ci": [
+            1536.9,
+            1564.2
+          ]
+        },
+        {
+          "rank": 9,
+          "model": "Claude Opus 4.6",
+          "slug": "claude-opus-4-6",
+          "vendor": "Anthropic",
+          "score": 1546.3,
+          "votes": 5582,
+          "ci": [
+            1537.5,
+            1555.1
+          ]
+        },
+        {
+          "rank": 10,
+          "model": "Claude Fable 5 High",
+          "slug": "claude-fable-5-high",
+          "vendor": "Anthropic",
+          "score": 1544.4,
+          "votes": 2852,
+          "ci": [
+            1532.6,
+            1556.1
+          ]
+        },
+        {
+          "rank": 11,
+          "model": "Qwen3.8 Max",
+          "slug": "qwen3.8-max",
+          "vendor": "阿里巴巴",
+          "score": 1538.5,
+          "votes": 1712,
+          "ci": [
+            1523.7,
+            1553.2
+          ]
+        },
+        {
+          "rank": 12,
+          "model": "GPT 5.5",
+          "slug": "gpt-5.5",
+          "vendor": "OpenAI",
+          "score": 1534.7,
+          "votes": 4451,
+          "ci": [
+            1525,
+            1544.5
+          ]
+        },
+        {
+          "rank": 13,
+          "model": "Qwen3.5 Max Preview",
+          "slug": "qwen3.5-max-preview",
+          "vendor": "阿里巴巴",
+          "score": 1533.9,
+          "votes": 1575,
+          "ci": [
+            1518.5,
+            1549.2
+          ]
+        },
+        {
+          "rank": 14,
+          "model": "Qwen3.7 Max Preview",
+          "slug": "qwen3.7-max-preview",
+          "vendor": "阿里巴巴",
+          "score": 1532.6,
+          "votes": 309,
+          "ci": [
+            1498.3,
+            1566.9
+          ]
+        },
+        {
+          "rank": 15,
+          "model": "Claude Opus 4.7 High",
+          "slug": "claude-opus-4-7-high",
+          "vendor": "Anthropic",
+          "score": 1531.3,
+          "votes": 4149,
+          "ci": [
+            1521.5,
+            1541.2
+          ]
+        },
+        {
+          "rank": 16,
+          "model": "Gemini 3.6 Flash High",
+          "slug": "gemini-3.6-flash-high",
+          "vendor": "Google",
+          "score": 1530.5,
+          "votes": 2712,
+          "ci": [
+            1518.7,
+            1542.4
+          ]
+        },
+        {
+          "rank": 17,
+          "model": "Mimo V2.6 Pro",
+          "slug": "mimo-v2.6-pro",
+          "vendor": "小米",
+          "score": 1529.9,
+          "votes": 297,
+          "ci": [
+            1497.3,
+            1562.6
+          ]
+        },
+        {
+          "rank": 18,
+          "model": "Claude Opus 4.7",
+          "slug": "claude-opus-4-7",
+          "vendor": "Anthropic",
+          "score": 1529.3,
+          "votes": 4133,
+          "ci": [
+            1519.3,
+            1539.3
+          ]
+        },
+        {
+          "rank": 19,
+          "model": "Muse Spark 1.3 Max",
+          "slug": "muse-spark-1.3-max",
+          "vendor": "Meta",
+          "score": 1528.7,
+          "votes": 939,
+          "ci": [
+            1509.2,
+            1548.2
+          ]
+        },
+        {
+          "rank": 20,
+          "model": "Gemini 3.1 Pro Preview",
+          "slug": "gemini-3.1-pro-preview",
+          "vendor": "Google",
+          "score": 1528.4,
+          "votes": 8287,
+          "ci": [
+            1521,
+            1535.9
+          ]
+        },
+        {
+          "rank": 21,
+          "model": "Kimi K3 Max",
+          "slug": "kimi-k3-max",
+          "vendor": "月之暗面",
+          "score": 1527.9,
+          "votes": 2051,
+          "ci": [
+            1514.4,
+            1541.4
+          ]
+        },
+        {
+          "rank": 22,
+          "model": "Claude Sonnet 5.5 Xhigh",
+          "slug": "claude-sonnet-5.5-xhigh",
+          "vendor": "Anthropic",
+          "score": 1527.8,
+          "votes": 244,
+          "ci": [
+            1492.4,
+            1563.3
+          ]
+        },
+        {
+          "rank": 23,
+          "model": "GLM 5.3 Flash",
+          "slug": "glm-5.3-flash",
+          "vendor": "智谱 AI",
+          "score": 1527.7,
+          "votes": 1648,
+          "ci": [
+            1512.6,
+            1542.8
+          ]
+        },
+        {
+          "rank": 24,
+          "model": "Gemini 3.5 Flash High",
+          "slug": "gemini-3.5-flash-high",
+          "vendor": "Google",
+          "score": 1526,
+          "votes": 3640,
+          "ci": [
+            1515.5,
+            1536.5
+          ]
+        },
+        {
+          "rank": 25,
+          "model": "Gemini 3.5 Flash Medium",
+          "slug": "gemini-3.5-flash-medium",
+          "vendor": "Google",
+          "score": 1526,
+          "votes": 3451,
+          "ci": [
+            1515.3,
+            1536.7
+          ]
+        },
+        {
+          "rank": 26,
+          "model": "GPT 5.5 High",
+          "slug": "gpt-5.5-high",
+          "vendor": "OpenAI",
+          "score": 1525,
+          "votes": 4469,
+          "ci": [
+            1515.4,
+            1534.6
+          ]
+        },
+        {
+          "rank": 27,
+          "model": "GLM 5.3 Max",
+          "slug": "glm-5.3-max",
+          "vendor": "智谱 AI",
+          "score": 1524.1,
+          "votes": 1328,
+          "ci": [
+            1507.3,
+            1540.8
+          ]
+        },
+        {
+          "rank": 28,
+          "model": "GPT 5.6 Sol Xhigh",
+          "slug": "gpt-5.6-sol-xhigh",
+          "vendor": "OpenAI",
+          "score": 1522.7,
+          "votes": 2823,
+          "ci": [
+            1510.9,
+            1534.6
+          ]
+        },
+        {
+          "rank": 29,
+          "model": "Gemini 3 Pro",
+          "slug": "gemini-3-pro",
+          "vendor": "Google",
+          "score": 1522.5,
+          "votes": 3444,
+          "ci": [
+            1512.1,
+            1532.9
+          ]
+        },
+        {
+          "rank": 30,
+          "model": "muse-spark-1.2 (Xhigh)",
+          "slug": "muse-spark-1.2 (xHigh)",
+          "vendor": "Meta",
+          "score": 1521.7,
+          "votes": 382,
+          "ci": [
+            1491.1,
+            1552.2
+          ]
+        }
+      ],
+      "source": "lmarena",
+      "stale": false
+    },
+    {
+      "id": "lmarena-coding",
+      "name": "编程能力榜",
+      "publisher": "LMArena · 原 Chatbot Arena",
+      "metric": "Elo 评分",
+      "metricHint": "只统计编程类问题的对战结果。",
+      "url": "https://lmarena.ai/leaderboard",
+      "license": "CC BY 4.0",
+      "updatedAt": "2026-10-02",
+      "sampleSize": 408,
+      "ranked": [
+        {
+          "rank": 1,
+          "model": "Gemini 4 Argon High",
+          "slug": "gemini-4-argon-high",
+          "vendor": "Google",
+          "score": 1547.4,
+          "votes": 1230,
+          "ci": [
+            1530.2,
+            1564.5
+          ]
+        },
+        {
+          "rank": 2,
+          "model": "Mimo V2.6 Pro",
+          "slug": "mimo-v2.6-pro",
+          "vendor": "小米",
+          "score": 1534.9,
+          "votes": 1103,
+          "ci": [
+            1517.3,
+            1552.6
+          ]
+        },
+        {
+          "rank": 3,
+          "model": "Claude Opus 5.5 High",
+          "slug": "claude-opus-5.5-high",
+          "vendor": "Anthropic",
+          "score": 1534.8,
+          "votes": 1060,
+          "ci": [
+            1517.1,
+            1552.5
+          ]
+        },
+        {
+          "rank": 4,
+          "model": "Claude Opus 4.6 High",
+          "slug": "claude-opus-4-6-high",
+          "vendor": "Anthropic",
+          "score": 1534.8,
+          "votes": 20235,
+          "ci": [
+            1529.3,
+            1540.3
+          ]
+        },
+        {
+          "rank": 5,
+          "model": "Claude Opus 4.6",
+          "slug": "claude-opus-4-6",
+          "vendor": "Anthropic",
+          "score": 1534.8,
+          "votes": 22901,
+          "ci": [
+            1529.5,
+            1540
+          ]
+        },
+        {
+          "rank": 6,
+          "model": "Claude Opus 5 Max",
+          "slug": "claude-opus-5-max",
+          "vendor": "Anthropic",
+          "score": 1533.8,
+          "votes": 7382,
+          "ci": [
+            1526,
+            1541.5
+          ]
+        },
+        {
+          "rank": 7,
+          "model": "Claude Opus 5 High",
+          "slug": "claude-opus-5-high",
+          "vendor": "Anthropic",
+          "score": 1532.2,
+          "votes": 15559,
+          "ci": [
+            1526,
+            1538.5
+          ]
+        },
+        {
+          "rank": 8,
+          "model": "Claude Fable 5.1 Max",
+          "slug": "claude-fable-5.1-max",
+          "vendor": "Anthropic",
+          "score": 1525.1,
+          "votes": 2358,
+          "ci": [
+            1512.7,
+            1537.6
+          ]
+        },
+        {
+          "rank": 9,
+          "model": "Claude Fable 5 High",
+          "slug": "claude-fable-5-high",
+          "vendor": "Anthropic",
+          "score": 1519.6,
+          "votes": 10038,
+          "ci": [
+            1512.8,
+            1526.4
+          ]
+        },
+        {
+          "rank": 10,
+          "model": "Claude Sonnet 5.5 Xhigh",
+          "slug": "claude-sonnet-5.5-xhigh",
+          "vendor": "Anthropic",
+          "score": 1518.9,
+          "votes": 779,
+          "ci": [
+            1497.9,
+            1539.9
+          ]
+        },
+        {
+          "rank": 11,
+          "model": "Claude Opus 4.7 High",
+          "slug": "claude-opus-4-7-high",
+          "vendor": "Anthropic",
+          "score": 1518.5,
+          "votes": 18521,
+          "ci": [
+            1512.7,
+            1524.3
+          ]
+        },
+        {
+          "rank": 12,
+          "model": "Claude Opus 4.7",
+          "slug": "claude-opus-4-7",
+          "vendor": "Anthropic",
+          "score": 1515,
+          "votes": 18728,
+          "ci": [
+            1509.2,
+            1520.8
+          ]
+        },
+        {
+          "rank": 13,
+          "model": "Muse Spark 1.3 Max",
+          "slug": "muse-spark-1.3-max",
+          "vendor": "Meta",
+          "score": 1514.8,
+          "votes": 3307,
+          "ci": [
+            1504.2,
+            1525.4
+          ]
+        },
+        {
+          "rank": 14,
+          "model": "Mimo V2.6 Flash",
+          "slug": "mimo-v2.6-flash",
+          "vendor": "小米",
+          "score": 1511.2,
+          "votes": 1508,
+          "ci": [
+            1496,
+            1526.3
+          ]
+        },
+        {
+          "rank": 15,
+          "model": "Kimi K3 Max",
+          "slug": "kimi-k3-max",
+          "vendor": "月之暗面",
+          "score": 1509.8,
+          "votes": 7285,
+          "ci": [
+            1502.2,
+            1517.4
+          ]
+        },
+        {
+          "rank": 16,
+          "model": "Gemini 3.8 Flash High",
+          "slug": "gemini-3.8-flash-high",
+          "vendor": "Google",
+          "score": 1509.5,
+          "votes": 7067,
+          "ci": [
+            1501.6,
+            1517.4
+          ]
+        },
+        {
+          "rank": 17,
+          "model": "DeepSeek V4.1 Flash Max",
+          "slug": "deepseek-v4.1-flash-max",
+          "vendor": "DeepSeek",
+          "score": 1506.5,
+          "votes": 2469,
+          "ci": [
+            1494.6,
+            1518.5
+          ]
+        },
+        {
+          "rank": 18,
+          "model": "GLM 5.3 Flash",
+          "slug": "glm-5.3-flash",
+          "vendor": "智谱 AI",
+          "score": 1506.3,
+          "votes": 6157,
+          "ci": [
+            1498.1,
+            1514.6
+          ]
+        },
+        {
+          "rank": 19,
+          "model": "Claude Sonnet 4.6",
+          "slug": "claude-sonnet-4-6",
+          "vendor": "Anthropic",
+          "score": 1503.7,
+          "votes": 19686,
+          "ci": [
+            1498.1,
+            1509.2
+          ]
+        },
+        {
+          "rank": 20,
+          "model": "Claude Opus 4.5 20251101 High 32k",
+          "slug": "claude-opus-4-5-20251101-high-32k",
+          "vendor": "Anthropic",
+          "score": 1503.4,
+          "votes": 7793,
+          "ci": [
+            1496.2,
+            1510.5
+          ]
+        },
+        {
+          "rank": 21,
+          "model": "Qwen3.8 Max",
+          "slug": "qwen3.8-max",
+          "vendor": "阿里巴巴",
+          "score": 1502,
+          "votes": 6611,
+          "ci": [
+            1494.1,
+            1510
+          ]
+        },
+        {
+          "rank": 22,
+          "model": "Mimo V2.5 Pro",
+          "slug": "mimo-v2.5-pro",
+          "vendor": "小米",
+          "score": 1501.9,
+          "votes": 19324,
+          "ci": [
+            1496.3,
+            1507.4
+          ]
+        },
+        {
+          "rank": 23,
+          "model": "Claude Opus 4.5 20251101",
+          "slug": "claude-opus-4-5-20251101",
+          "vendor": "Anthropic",
+          "score": 1498.7,
+          "votes": 17962,
+          "ci": [
+            1493.4,
+            1504
+          ]
+        },
+        {
+          "rank": 24,
+          "model": "Gemini 3.7 Flash High",
+          "slug": "gemini-3.7-flash-high",
+          "vendor": "Google",
+          "score": 1498,
+          "votes": 6041,
+          "ci": [
+            1489.7,
+            1506.3
+          ]
+        },
+        {
+          "rank": 25,
+          "model": "Muse Spark 1.1",
+          "slug": "muse-spark-1.1",
+          "vendor": "Meta",
+          "score": 1497.5,
+          "votes": 10537,
+          "ci": [
+            1490.8,
+            1504.1
+          ]
+        },
+        {
+          "rank": 26,
+          "model": "Qwen3.7 Max Preview",
+          "slug": "qwen3.7-max-preview",
+          "vendor": "阿里巴巴",
+          "score": 1497.1,
+          "votes": 1165,
+          "ci": [
+            1479.2,
+            1515.1
+          ]
+        },
+        {
+          "rank": 27,
+          "model": "GLM 5.3 Max",
+          "slug": "glm-5.3-max",
+          "vendor": "智谱 AI",
+          "score": 1496.7,
+          "votes": 4424,
+          "ci": [
+            1487.4,
+            1506
+          ]
+        },
+        {
+          "rank": 28,
+          "model": "GPT 5.4 High",
+          "slug": "gpt-5.4-high",
+          "vendor": "OpenAI",
+          "score": 1496.6,
+          "votes": 17566,
+          "ci": [
+            1490.8,
+            1502.4
+          ]
+        },
+        {
+          "rank": 29,
+          "model": "GPT 5.6 Sol Xhigh",
+          "slug": "gpt-5.6-sol-xhigh",
+          "vendor": "OpenAI",
+          "score": 1496,
+          "votes": 9943,
+          "ci": [
+            1489.2,
+            1502.9
+          ]
+        },
+        {
+          "rank": 30,
+          "model": "GPT 5.5 High",
+          "slug": "gpt-5.5-high",
+          "vendor": "OpenAI",
+          "score": 1494.1,
+          "votes": 19110,
+          "ci": [
+            1488.5,
+            1499.8
+          ]
+        }
+      ],
+      "source": "lmarena",
+      "stale": false
+    },
+    {
+      "id": "openrouter-intelligence",
+      "name": "智能指数榜",
+      "publisher": "OpenRouter（透传 Artificial Analysis 指数）",
+      "metric": "AA 智能指数",
+      "metricHint": "Artificial Analysis 的综合智能指数，覆盖推理、代码、数学等多项评测。",
+      "url": "https://openrouter.ai/models?order=intelligence-high-to-low",
+      "license": "公开 API",
+      "updatedAt": null,
+      "sampleSize": 30,
+      "ranked": [
+        {
+          "rank": 1,
+          "model": "Claude Opus 5.5",
+          "slug": "anthropic/claude-opus-5.5",
+          "vendor": "Anthropic",
+          "score": 57.6,
+          "context": 1000000,
+          "priceIn": 4,
+          "priceOut": 20
+        },
+        {
+          "rank": 2,
+          "model": "Claude Sonnet 5.5",
+          "slug": "anthropic/claude-sonnet-5.5",
+          "vendor": "Anthropic",
+          "score": 56,
+          "context": 1000000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 3,
+          "model": "Claude Fable 5.1",
+          "slug": "anthropic/claude-fable-5.1",
+          "vendor": "Anthropic",
+          "score": 53.4,
+          "context": 1000000,
+          "priceIn": 10,
+          "priceOut": 50
+        },
+        {
+          "rank": 4,
+          "model": "GPT-6 Astra",
+          "slug": "openai/gpt-6-astra",
+          "vendor": "OpenAI",
+          "score": 52.7,
+          "context": 1050000,
+          "priceIn": 10,
+          "priceOut": 50
+        },
+        {
+          "rank": 5,
+          "model": "GPT-6.1 Sol",
+          "slug": "openai/gpt-6.1-sol",
+          "vendor": "OpenAI",
+          "score": 51.8,
+          "context": 1050000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 6,
+          "model": "Claude Opus 5",
+          "slug": "anthropic/claude-opus-5",
+          "vendor": "Anthropic",
+          "score": 50.8,
+          "context": 1000000,
+          "priceIn": 5,
+          "priceOut": 25
+        },
+        {
+          "rank": 7,
+          "model": "Claude Fable 5",
+          "slug": "anthropic/claude-fable-5",
+          "vendor": "Anthropic",
+          "score": 49.6,
+          "context": 1000000,
+          "priceIn": 10,
+          "priceOut": 50
+        },
+        {
+          "rank": 8,
+          "model": "Muse Spark 1.3",
+          "slug": "meta/muse-spark-1.3",
+          "vendor": "Meta",
+          "score": 48.1,
+          "context": 1048576,
+          "priceIn": 1.25,
+          "priceOut": 4.25
+        },
+        {
+          "rank": 9,
+          "model": "GPT-6 Sol",
+          "slug": "openai/gpt-6-sol",
+          "vendor": "OpenAI",
+          "score": 47.6,
+          "context": 1050000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 10,
+          "model": "GPT-5.6 Sol",
+          "slug": "openai/gpt-5.6-sol",
+          "vendor": "OpenAI",
+          "score": 47,
+          "context": 1050000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 11,
+          "model": "Grok 4.7",
+          "slug": "x-ai/grok-4.7",
+          "vendor": "SpaceXAI",
+          "score": 46.4,
+          "context": 500000,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 12,
+          "model": "MiMo-V2.6-Pro",
+          "slug": "xiaomi/mimo-v2.6-pro",
+          "vendor": "小米",
+          "score": 46.3,
+          "context": 1050000,
+          "priceIn": 0.435,
+          "priceOut": 0.87
+        },
+        {
+          "rank": 13,
+          "model": "Qwen3.8 Max (0902)",
+          "slug": "qwen/qwen3.8-max-0902",
+          "vendor": "阿里巴巴",
+          "score": 45.4,
+          "context": 1000000,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 14,
+          "model": "GLM 5.3",
+          "slug": "z-ai/glm-5.3",
+          "vendor": "智谱 AI",
+          "score": 44.8,
+          "context": 1048576,
+          "priceIn": 0.07,
+          "priceOut": 7
+        },
+        {
+          "rank": 15,
+          "model": "Grok 4.6",
+          "slug": "x-ai/grok-4.6",
+          "vendor": "SpaceXAI",
+          "score": 44.3,
+          "context": 500000,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 16,
+          "model": "Kimi K3",
+          "slug": "moonshotai/kimi-k3",
+          "vendor": "月之暗面",
+          "score": 43.6,
+          "context": 1048576,
+          "priceIn": 0.83,
+          "priceOut": 14
+        },
+        {
+          "rank": 17,
+          "model": "GPT-5.6 Terra",
+          "slug": "openai/gpt-5.6-terra",
+          "vendor": "OpenAI",
+          "score": 42.1,
+          "context": 1050000,
+          "priceIn": 2,
+          "priceOut": 12
+        },
+        {
+          "rank": 18,
+          "model": "GLM 5.3 Flash",
+          "slug": "z-ai/glm-5.3-flash",
+          "vendor": "智谱 AI",
+          "score": 41.8,
+          "context": 1048576,
+          "priceIn": 0.15,
+          "priceOut": 0.5
+        },
+        {
+          "rank": 19,
+          "model": "Claude Opus 4.8",
+          "slug": "anthropic/claude-opus-4.8",
+          "vendor": "Anthropic",
+          "score": 41.8,
+          "context": 1000000,
+          "priceIn": 5,
+          "priceOut": 25
+        },
+        {
+          "rank": 20,
+          "model": "Ling 3.1 Flash",
+          "slug": "inclusionai/ling-3.1-flash",
+          "vendor": "InclusionAI",
+          "score": 41.1,
+          "context": 262144,
+          "priceIn": 0,
+          "priceOut": 0
+        },
+        {
+          "rank": 21,
+          "model": "Gemini 3.8 Flash",
+          "slug": "google/gemini-3.8-flash",
+          "vendor": "Google",
+          "score": 40.9,
+          "context": 1048576,
+          "priceIn": 0.75,
+          "priceOut": 3.75
+        },
+        {
+          "rank": 22,
+          "model": "Claude Opus 4.7",
+          "slug": "anthropic/claude-opus-4.7",
+          "vendor": "Anthropic",
+          "score": 40.7,
+          "context": 1000000,
+          "priceIn": 5,
+          "priceOut": 25
+        },
+        {
+          "rank": 23,
+          "model": "Qwen3.8 2.4T A95B",
+          "slug": "qwen/qwen3.8-2.4t-a95b",
+          "vendor": "阿里巴巴",
+          "score": 39.9,
+          "context": 1048576,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 24,
+          "model": "Gemini 3.7 Flash",
+          "slug": "google/gemini-3.7-flash",
+          "vendor": "Google",
+          "score": 39.6,
+          "context": 1048576,
+          "priceIn": 0.75,
+          "priceOut": 3.75
+        },
+        {
+          "rank": 25,
+          "model": "Muse Spark 1.2",
+          "slug": "meta/muse-spark-1.2",
+          "vendor": "Meta",
+          "score": 39.6,
+          "context": 1048576,
+          "priceIn": 1.25,
+          "priceOut": 4.25
+        },
+        {
+          "rank": 26,
+          "model": "DeepSeek V4.1 Flash",
+          "slug": "deepseek/deepseek-v4.1-flash",
+          "vendor": "DeepSeek",
+          "score": 39.5,
+          "context": 1048576,
+          "priceIn": 0.04345,
+          "priceOut": 1.32
+        },
+        {
+          "rank": 27,
+          "model": "GPT-5.4",
+          "slug": "openai/gpt-5.4",
+          "vendor": "OpenAI",
+          "score": 39,
+          "context": 1050000,
+          "priceIn": 2.5,
+          "priceOut": 15
+        },
+        {
+          "rank": 28,
+          "model": "Grok 4.5",
+          "slug": "x-ai/grok-4.5",
+          "vendor": "SpaceXAI",
+          "score": 38.8,
+          "context": 500000,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 29,
+          "model": "GPT-5.5",
+          "slug": "openai/gpt-5.5",
+          "vendor": "OpenAI",
+          "score": 38.4,
+          "context": 1050000,
+          "priceIn": 5,
+          "priceOut": 30
+        },
+        {
+          "rank": 30,
+          "model": "Claude Sonnet 5",
+          "slug": "anthropic/claude-sonnet-5",
+          "vendor": "Anthropic",
+          "score": 38.2,
+          "context": 1000000,
+          "priceIn": 2,
+          "priceOut": 10
+        }
+      ],
+      "source": "openrouter",
+      "stale": false
+    },
+    {
+      "id": "aa-intelligence",
+      "name": "智能指数榜（去重）",
+      "publisher": "Artificial Analysis",
+      "metric": "Intelligence Index",
+      "metricHint": "Artificial Analysis 官方智能指数。同一模型的多个推理档位已合并，保留最高分。",
+      "url": "https://artificialanalysis.ai/leaderboards/models",
+      "license": "公开页面数据",
+      "updatedAt": null,
+      "sampleSize": 30,
+      "ranked": [
+        {
+          "rank": 1,
+          "model": "Claude Opus 5.5",
+          "slug": "claude-opus-5-5",
+          "vendor": "Anthropic",
+          "score": 57.6,
+          "context": 1000000,
+          "priceIn": 4,
+          "priceOut": 20
+        },
+        {
+          "rank": 2,
+          "model": "Claude Sonnet 5.5",
+          "slug": "claude-sonnet-5-5",
+          "vendor": "Anthropic",
+          "score": 56,
+          "context": 1000000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 3,
+          "model": "Claude Fable 5.1",
+          "slug": "claude-fable-5-1",
+          "vendor": "Anthropic",
+          "score": 53.4,
+          "context": 1000000,
+          "priceIn": 10,
+          "priceOut": 50
+        },
+        {
+          "rank": 4,
+          "model": "GPT-6 Astra",
+          "slug": "gpt-6-astra",
+          "vendor": "OpenAI",
+          "score": 52.7,
+          "context": 1000000,
+          "priceIn": 10,
+          "priceOut": 50
+        },
+        {
+          "rank": 5,
+          "model": "Gemini 4 Argon",
+          "slug": "gemini-4-argon",
+          "vendor": "Google",
+          "score": 52.6,
+          "context": 1000000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 6,
+          "model": "GPT-6.1 Sol",
+          "slug": "gpt-6-1-sol",
+          "vendor": "OpenAI",
+          "score": 51.8,
+          "context": 1000000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 7,
+          "model": "Claude Opus 5",
+          "slug": "claude-opus-5",
+          "vendor": "Anthropic",
+          "score": 50.8,
+          "context": 1000000,
+          "priceIn": 5,
+          "priceOut": 25
+        },
+        {
+          "rank": 8,
+          "model": "Claude Fable 5",
+          "slug": "claude-fable-5",
+          "vendor": "Anthropic",
+          "score": 49.6,
+          "context": 1000000,
+          "priceIn": 10,
+          "priceOut": 50
+        },
+        {
+          "rank": 9,
+          "model": "Muse Spark 1.3",
+          "slug": "muse-spark-1-3",
+          "vendor": "Meta",
+          "score": 48.1,
+          "context": 1000000,
+          "priceIn": 1.25,
+          "priceOut": 4.25
+        },
+        {
+          "rank": 10,
+          "model": "GPT-6 Sol",
+          "slug": "gpt-6-sol",
+          "vendor": "OpenAI",
+          "score": 47.6,
+          "context": 1050000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 11,
+          "model": "GPT-5.6 Sol",
+          "slug": "gpt-5-6-sol",
+          "vendor": "OpenAI",
+          "score": 47,
+          "context": 1000000,
+          "priceIn": 4,
+          "priceOut": 20
+        },
+        {
+          "rank": 12,
+          "model": "Grok 4.7",
+          "slug": "grok-4-7",
+          "vendor": "SpaceXAI",
+          "score": 46.4,
+          "context": 500000,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 13,
+          "model": "MiMo-V2.6-Pro",
+          "slug": "mimo-v2-6-pro",
+          "vendor": "小米",
+          "score": 46.3,
+          "context": 1000000,
+          "priceIn": 0.435,
+          "priceOut": 0.87
+        },
+        {
+          "rank": 14,
+          "model": "Qwen3.8 Max (0902)",
+          "slug": "qwen3-8-max",
+          "vendor": "阿里巴巴",
+          "score": 45.4,
+          "context": 983616,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 15,
+          "model": "GLM-5.3",
+          "slug": "glm-5-3",
+          "vendor": "智谱 AI",
+          "score": 44.8,
+          "context": 1000000,
+          "priceIn": 1.4,
+          "priceOut": 4.4
+        },
+        {
+          "rank": 16,
+          "model": "Grok 4.6",
+          "slug": "grok-4-6",
+          "vendor": "SpaceXAI",
+          "score": 44.3,
+          "context": 500000,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 17,
+          "model": "Step 5 Preview",
+          "slug": "step-5",
+          "vendor": "阶跃星辰",
+          "score": 43.7,
+          "context": 1000000,
+          "priceIn": 1,
+          "priceOut": 2.7
+        },
+        {
+          "rank": 18,
+          "model": "Kimi K3",
+          "slug": "kimi-k3",
+          "vendor": "月之暗面",
+          "score": 43.6,
+          "context": 1048576,
+          "priceIn": 3,
+          "priceOut": 15
+        },
+        {
+          "rank": 19,
+          "model": "GPT-5.6 Terra",
+          "slug": "gpt-5-6-terra",
+          "vendor": "OpenAI",
+          "score": 42.1,
+          "context": 1000000,
+          "priceIn": 2,
+          "priceOut": 12
+        },
+        {
+          "rank": 20,
+          "model": "GLM 5.3 Flash",
+          "slug": "glm-5-3-flash",
+          "vendor": "智谱 AI",
+          "score": 41.8,
+          "context": 1000000,
+          "priceIn": 0.15,
+          "priceOut": 0.5
+        },
+        {
+          "rank": 21,
+          "model": "Claude Opus 4.8",
+          "slug": "claude-opus-4-8",
+          "vendor": "Anthropic",
+          "score": 41.8,
+          "context": 1000000,
+          "priceIn": 5,
+          "priceOut": 25
+        },
+        {
+          "rank": 22,
+          "model": "Ling 3.1 Flash",
+          "slug": "ling-3-1-flash",
+          "vendor": "InclusionAI",
+          "score": 41.1,
+          "context": 1000000,
+          "priceIn": 0.3,
+          "priceOut": 0.9
+        },
+        {
+          "rank": 23,
+          "model": "Gemini 3.8 Flash",
+          "slug": "gemini-3-8-flash",
+          "vendor": "Google",
+          "score": 40.9,
+          "context": 1000000,
+          "priceIn": 0.75,
+          "priceOut": 3.75
+        },
+        {
+          "rank": 24,
+          "model": "Claude Opus 4.7",
+          "slug": "claude-opus-4-7",
+          "vendor": "Anthropic",
+          "score": 40.7,
+          "context": 1000000,
+          "priceIn": 5,
+          "priceOut": 25
+        },
+        {
+          "rank": 25,
+          "model": "Qwen3.8 Max",
+          "slug": "qwen3-8-max-0803",
+          "vendor": "阿里巴巴",
+          "score": 40.2,
+          "context": 1000000,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 26,
+          "model": "Qwen3.8 2.4T A95B",
+          "slug": "qwen3-8-2-4t-a95b",
+          "vendor": "阿里巴巴",
+          "score": 39.9,
+          "context": 262000,
+          "priceIn": 2,
+          "priceOut": 6
+        },
+        {
+          "rank": 27,
+          "model": "Qwen3.8-Flash-Next",
+          "slug": "qwen3-8-flash-next",
+          "vendor": "阿里巴巴",
+          "score": 39.8,
+          "context": 256000,
+          "priceIn": 0.15,
+          "priceOut": 0.47
+        },
+        {
+          "rank": 28,
+          "model": "Gemini 3.7 Flash",
+          "slug": "gemini-3-7-flash-medium",
+          "vendor": "Google",
+          "score": 39.6,
+          "context": 1000000,
+          "priceIn": 0.75,
+          "priceOut": 3.75
+        },
+        {
+          "rank": 29,
+          "model": "Muse Spark 1.2",
+          "slug": "muse-spark-1-2",
+          "vendor": "Meta",
+          "score": 39.6,
+          "context": 1048576,
+          "priceIn": 1.25,
+          "priceOut": 4.25
+        },
+        {
+          "rank": 30,
+          "model": "DeepSeek V4.1 Flash",
+          "slug": "deepseek-v4-1-flash",
+          "vendor": "DeepSeek",
+          "score": 39.5,
+          "context": 1000000,
+          "priceIn": 0.3,
+          "priceOut": 1.2
+        }
+      ],
+      "source": "artificialanalysis",
+      "stale": false
+    },
+    {
+      "id": "swebench-verified",
+      "name": "代码修复能力榜",
+      "publisher": "SWE-bench Verified",
+      "metric": "解决率 %",
+      "metricHint": "在真实 GitHub issue 上「改对并通过测试」的比例。注意榜单条目多为「智能体 + 模型」组合，不等于模型裸分。",
+      "url": "https://www.swebench.com/",
+      "license": "公开数据",
+      "updatedAt": null,
+      "sampleSize": 30,
+      "ranked": [
+        {
+          "rank": 1,
+          "model": "Sonar Foundation Agent + Claude 4.5 Opus",
+          "slug": "Sonar Foundation Agent + Claude 4.5 Opus",
+          "vendor": "",
+          "score": 79.2,
+          "note": "未复核"
+        },
+        {
+          "rank": 2,
+          "model": "live-SWE-agent + Claude 4.5 Opus medium (20251101)",
+          "slug": "live-SWE-agent + Claude 4.5 Opus medium (20251101)",
+          "vendor": "",
+          "score": 79.2,
+          "note": "未复核"
+        },
+        {
+          "rank": 3,
+          "model": "TRAE + Doubao-Seed-Code",
+          "slug": "TRAE + Doubao-Seed-Code",
+          "vendor": "",
+          "score": 78.8,
+          "note": "未复核"
+        },
+        {
+          "rank": 4,
+          "model": "live-SWE-agent + Gemini 3 Pro Preview (2025-11-18)",
+          "slug": "live-SWE-agent + Gemini 3 Pro Preview (2025-11-18)",
+          "vendor": "",
+          "score": 77.4
+        },
+        {
+          "rank": 5,
+          "model": "EPAM AI/Run Developer Agent v20250719 + Claude 4 Sonnet",
+          "slug": "EPAM AI/Run Developer Agent v20250719 + Claude 4 Sonnet",
+          "vendor": "",
+          "score": 76.8,
+          "note": "未复核"
+        },
+        {
+          "rank": 6,
+          "model": "Atlassian Rovo Dev (2025-09-02)",
+          "slug": "Atlassian Rovo Dev (2025-09-02)",
+          "vendor": "",
+          "score": 76.8,
+          "note": "未复核"
+        },
+        {
+          "rank": 7,
+          "model": "Claude 4.5 Opus (high)",
+          "slug": "Claude 4.5 Opus (high)",
+          "vendor": "",
+          "score": 76.8
+        },
+        {
+          "rank": 8,
+          "model": "ACoder",
+          "slug": "ACoder",
+          "vendor": "",
+          "score": 76.4,
+          "note": "未复核"
+        },
+        {
+          "rank": 9,
+          "model": "Gemini 3 Flash (high)",
+          "slug": "Gemini 3 Flash (high)",
+          "vendor": "",
+          "score": 75.8
+        },
+        {
+          "rank": 10,
+          "model": "MiniMax M2.5 (high)",
+          "slug": "MiniMax M2.5 (high)",
+          "vendor": "",
+          "score": 75.8
+        },
+        {
+          "rank": 11,
+          "model": "Warp",
+          "slug": "Warp",
+          "vendor": "",
+          "score": 75.6,
+          "note": "未复核"
+        },
+        {
+          "rank": 12,
+          "model": "Claude 4.6 Opus",
+          "slug": "Claude 4.6 Opus",
+          "vendor": "",
+          "score": 75.6
+        },
+        {
+          "rank": 13,
+          "model": "TRAE + Claude Sonnet 4 + Opus 4 + Sonnet 3.7 + Gemini 2.5 Pro",
+          "slug": "TRAE + Claude Sonnet 4 + Opus 4 + Sonnet 3.7 + Gemini 2.5 Pro",
+          "vendor": "",
+          "score": 75.2,
+          "note": "未复核"
+        },
+        {
+          "rank": 14,
+          "model": "Harness AI",
+          "slug": "Harness AI",
+          "vendor": "",
+          "score": 74.8,
+          "note": "未复核"
+        },
+        {
+          "rank": 15,
+          "model": "Sonar Foundation Agent + Claude 4.5 Sonnet",
+          "slug": "Sonar Foundation Agent + Claude 4.5 Sonnet",
+          "vendor": "",
+          "score": 74.8,
+          "note": "未复核"
+        },
+        {
+          "rank": 16,
+          "model": "Lingxi-v1.5_claude-4-sonnet-20250514",
+          "slug": "Lingxi-v1.5_claude-4-sonnet-20250514",
+          "vendor": "",
+          "score": 74.6,
+          "note": "未复核"
+        },
+        {
+          "rank": 17,
+          "model": "JoyCode + Claude 4 Sonnet + GPT-4.1",
+          "slug": "JoyCode + Claude 4 Sonnet + GPT-4.1",
+          "vendor": "",
+          "score": 74.6,
+          "note": "未复核"
+        },
+        {
+          "rank": 18,
+          "model": "Refact.ai Agent + Claude 4 Sonnet + o4-mini",
+          "slug": "Refact.ai Agent + Claude 4 Sonnet + o4-mini",
+          "vendor": "",
+          "score": 74.4,
+          "note": "未复核"
+        },
+        {
+          "rank": 19,
+          "model": "Prometheus-v1.2.1 + GPT-5",
+          "slug": "Prometheus-v1.2.1 + GPT-5",
+          "vendor": "",
+          "score": 74.4,
+          "note": "未复核"
+        },
+        {
+          "rank": 20,
+          "model": "Claude 4.5 Opus (20251101) (medium)",
+          "slug": "Claude 4.5 Opus (20251101) (medium)",
+          "vendor": "",
+          "score": 74.4
+        },
+        {
+          "rank": 21,
+          "model": "Gemini 3 Pro Preview (2025-11-18)",
+          "slug": "Gemini 3 Pro Preview (2025-11-18)",
+          "vendor": "",
+          "score": 74.2
+        },
+        {
+          "rank": 22,
+          "model": "Salesforce AI Research SAGE (OpenHands)",
+          "slug": "Salesforce AI Research SAGE (OpenHands)",
+          "vendor": "",
+          "score": 73.8,
+          "note": "未复核"
+        },
+        {
+          "rank": 23,
+          "model": "Tools + Claude 4 Opus (2025-05-22)",
+          "slug": "Tools + Claude 4 Opus (2025-05-22)",
+          "vendor": "",
+          "score": 73.2,
+          "note": "未复核"
+        },
+        {
+          "rank": 24,
+          "model": "Salesforce AI Research SAGE (bash-only)",
+          "slug": "Salesforce AI Research SAGE (bash-only)",
+          "vendor": "",
+          "score": 73,
+          "note": "未复核"
+        },
+        {
+          "rank": 25,
+          "model": "GLM 5 (high)",
+          "slug": "GLM 5 (high)",
+          "vendor": "",
+          "score": 72.8
+        },
+        {
+          "rank": 26,
+          "model": "GPT 5.2 (high)",
+          "slug": "GPT 5.2 (high)",
+          "vendor": "",
+          "score": 72.8
+        },
+        {
+          "rank": 27,
+          "model": "GPT 5.2 Codex",
+          "slug": "GPT 5.2 Codex",
+          "vendor": "",
+          "score": 72.8
+        },
+        {
+          "rank": 28,
+          "model": "Tools + Claude 4 Sonnet (2025-05-22)",
+          "slug": "Tools + Claude 4 Sonnet (2025-05-22)",
+          "vendor": "",
+          "score": 72.4,
+          "note": "未复核"
+        },
+        {
+          "rank": 29,
+          "model": "OpenHands + GPT-5",
+          "slug": "OpenHands + GPT-5",
+          "vendor": "",
+          "score": 71.8
+        },
+        {
+          "rank": 30,
+          "model": "GPT 5.2 (2025-12-11) (high)",
+          "slug": "GPT 5.2 (2025-12-11) (high)",
+          "vendor": "",
+          "score": 71.8
+        }
+      ],
+      "source": "swebench",
+      "stale": false
+    },
+    {
+      "id": "livebench",
+      "name": "多任务综合榜",
+      "publisher": "LiveBench",
+      "metric": "平均分",
+      "metricHint": "涵盖推理、编程、数学、数据分析、语言、指令遵循等 7 大类，取各类均值的平均。",
+      "url": "https://livebench.ai/",
+      "license": "公开数据",
+      "updatedAt": "2026-06-25",
+      "sampleSize": 30,
+      "ranked": [
+        {
+          "rank": 1,
+          "model": "Claude Fable 5.1 Max Effort",
+          "slug": "claude-fable-5-1-max-effort",
+          "vendor": "",
+          "score": 83.4
+        },
+        {
+          "rank": 2,
+          "model": "Claude Opus 5.5 Max Effort",
+          "slug": "claude-opus-5-5-max-effort",
+          "vendor": "",
+          "score": 83.2
+        },
+        {
+          "rank": 3,
+          "model": "Claude Fable 5 Max Effort",
+          "slug": "claude-fable-5-max-effort",
+          "vendor": "",
+          "score": 83
+        },
+        {
+          "rank": 4,
+          "model": "GPT 6 Astra Max",
+          "slug": "gpt-6-astra-max",
+          "vendor": "",
+          "score": 82.2
+        },
+        {
+          "rank": 5,
+          "model": "Claude Opus 5.5 Xhigh Effort",
+          "slug": "claude-opus-5-5-xhigh-effort",
+          "vendor": "",
+          "score": 82.1
+        },
+        {
+          "rank": 6,
+          "model": "GPT 6.1 Sol Max",
+          "slug": "gpt-6.1-sol-max",
+          "vendor": "",
+          "score": 81.6
+        },
+        {
+          "rank": 7,
+          "model": "Muse Spark 1.3 Xhigh",
+          "slug": "muse-spark-1.3-xhigh",
+          "vendor": "",
+          "score": 81.6
+        },
+        {
+          "rank": 8,
+          "model": "GPT 6.1 Sol Xhigh",
+          "slug": "gpt-6.1-sol-xhigh",
+          "vendor": "",
+          "score": 81.1
+        },
+        {
+          "rank": 9,
+          "model": "DeepSeek V4.1 Flash Max",
+          "slug": "deepseek-v4.1-flash-max",
+          "vendor": "",
+          "score": 81.1
+        },
+        {
+          "rank": 10,
+          "model": "GPT 5.6 Sol Max",
+          "slug": "gpt-5.6-sol-max",
+          "vendor": "",
+          "score": 81.1
+        },
+        {
+          "rank": 11,
+          "model": "GPT 5.5 Xhigh",
+          "slug": "gpt-5.5-xhigh",
+          "vendor": "",
+          "score": 80.2
+        },
+        {
+          "rank": 12,
+          "model": "Claude Opus 5 Max Effort",
+          "slug": "claude-opus-5-max-effort",
+          "vendor": "",
+          "score": 80.1
+        },
+        {
+          "rank": 13,
+          "model": "Smaug Agentic",
+          "slug": "smaug-agentic",
+          "vendor": "",
+          "score": 79.5
+        },
+        {
+          "rank": 14,
+          "model": "GPT 6 Sol Max",
+          "slug": "gpt-6-sol-max",
+          "vendor": "",
+          "score": 79.2
+        },
+        {
+          "rank": 15,
+          "model": "Kimi K3",
+          "slug": "kimi-k3",
+          "vendor": "",
+          "score": 79.2
+        },
+        {
+          "rank": 16,
+          "model": "Gemini 3.7 Flash High",
+          "slug": "gemini-3.7-flash-high",
+          "vendor": "",
+          "score": 78.8
+        },
+        {
+          "rank": 17,
+          "model": "Qwen3.8 Max",
+          "slug": "qwen3.8-max",
+          "vendor": "",
+          "score": 78.5
+        },
+        {
+          "rank": 18,
+          "model": "Grok 4.6",
+          "slug": "grok-4.6",
+          "vendor": "",
+          "score": 78
+        },
+        {
+          "rank": 19,
+          "model": "GPT 5.4 Xhigh",
+          "slug": "gpt-5.4-xhigh",
+          "vendor": "",
+          "score": 78
+        },
+        {
+          "rank": 20,
+          "model": "Muse Spark 1.2 Xhigh",
+          "slug": "muse-spark-1.2-xhigh",
+          "vendor": "",
+          "score": 78
+        },
+        {
+          "rank": 21,
+          "model": "GPT 5.6 Terra Max",
+          "slug": "gpt-5.6-terra-max",
+          "vendor": "",
+          "score": 77.9
+        },
+        {
+          "rank": 22,
+          "model": "Claude Sonnet 5.5 Xhigh Effort",
+          "slug": "claude-sonnet-5-5-xhigh-effort",
+          "vendor": "",
+          "score": 77.8
+        },
+        {
+          "rank": 23,
+          "model": "DeepSeek V4 Pro 0813",
+          "slug": "deepseek-v4-pro-0813",
+          "vendor": "",
+          "score": 77.4
+        },
+        {
+          "rank": 24,
+          "model": "Smaug Flash",
+          "slug": "smaug-flash",
+          "vendor": "",
+          "score": 77.4
+        },
+        {
+          "rank": 25,
+          "model": "Grok 4.7 Xhigh",
+          "slug": "grok-4.7-xhigh",
+          "vendor": "",
+          "score": 77.4
+        },
+        {
+          "rank": 26,
+          "model": "Gemini 3.1 Pro Preview High",
+          "slug": "gemini-3.1-pro-preview-high",
+          "vendor": "",
+          "score": 77
+        },
+        {
+          "rank": 27,
+          "model": "Smaug Mini",
+          "slug": "smaug-mini",
+          "vendor": "",
+          "score": 76.9
+        },
+        {
+          "rank": 28,
+          "model": "DeepSeek V4 Flash Vision Exp",
+          "slug": "deepseek-v4-flash-vision-exp",
+          "vendor": "",
+          "score": 76.8
+        },
+        {
+          "rank": 29,
+          "model": "Claude Opus 4.7 Xhigh Effort",
+          "slug": "claude-opus-4-7-xhigh-effort",
+          "vendor": "",
+          "score": 76.5
+        },
+        {
+          "rank": 30,
+          "model": "Claude Opus 4.8 Max Effort",
+          "slug": "claude-opus-4-8-max-effort",
+          "vendor": "",
+          "score": 76.2
+        }
+      ],
+      "source": "livebench",
+      "stale": false
+    }
+  ]
+}

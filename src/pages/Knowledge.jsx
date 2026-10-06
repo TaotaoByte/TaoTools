@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { Search, Clock, Calendar } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
@@ -21,92 +21,107 @@ export default function Knowledge() {
     })
   }, [search, activeCategory])
 
-  return (
-    <div className="page-container">
-      <SectionTitle
-        title="知识库"
-        subtitle="Markdown 语法、开发笔记、软件配置与效率技巧沉淀"
-      />
+  const categoryName = (id) => knowledgeData.categories.find((c) => c.id === id)?.name
 
-      {/* 搜索框 */}
-      <div className="max-w-2xl mb-8">
-        <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+  return (
+    <div className="page-container space-y-12">
+      <header>
+        <p className="label-mono">Knowledge Base</p>
+        <h1 className="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
+          技术笔记
+        </h1>
+        <p className="mt-3 text-sm leading-relaxed text-slate-500 dark:text-slate-400 max-w-2xl">
+          共 <span className="tnum">{knowledgeData.items.length}</span> 篇笔记，内容为 Markdown 语法、开发流程、软件安装配置与效率技巧。
+        </p>
+      </header>
+
+      <section>
+        <SectionTitle
+          index="01"
+          title="全部笔记"
+          subtitle="按分类筛选，或直接搜索标题与摘要。"
+          action={<span className="label-mono tnum">{filteredArticles.length} 篇</span>}
+        />
+
+        {/* 搜索框 */}
+        <div className="relative max-w-md mb-4">
+          <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="搜索文章标题或摘要..."
-            className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            placeholder="搜索标题或摘要"
+            aria-label="搜索笔记"
+            className="w-full pl-9 pr-3 py-2 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-primary-600 dark:focus:border-primary-500 transition-colors"
           />
         </div>
-      </div>
 
-      {/* 分类标签 */}
-      <div className="flex flex-wrap gap-2 mb-8">
-        {knowledgeData.categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setActiveCategory(cat.id)}
-            className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-              activeCategory === cat.id
-                ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/20'
-                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
-            }`}
-          >
-            {cat.name}
-          </button>
-        ))}
-      </div>
-
-      {/* 文章网格 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-        {filteredArticles.map((item, index) => (
-          <ScrollReveal key={item.id} delay={index * 0.05}>
-            <Link to={`/knowledge/${item.slug}`}>
-              <Card className="overflow-hidden h-full group flex flex-col">
-                {item.cover && (
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img
-                      src={item.cover}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                )}
-                <div className="p-5 flex-1 flex flex-col">
-                  <span className="inline-block px-2.5 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-medium mb-3">
-                    {knowledgeData.categories.find((c) => c.id === item.category)?.name}
-                  </span>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-4">
-                    {item.summary}
-                  </p>
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-700/50 mt-auto">
-                    <div className="flex items-center gap-3 text-xs text-slate-400 dark:text-slate-500">
-                      <span className="inline-flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" /> {item.date}
-                      </span>
-                      <span className="inline-flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" /> {item.readTime}
-                      </span>
-                    </div>
-                    <LikeButton id={item.id} initialCount={item.likes ?? 0} size="sm" />
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          </ScrollReveal>
-        ))}
-      </div>
-
-      {filteredArticles.length === 0 && (
-        <div className="text-center py-16">
-          <p className="text-slate-500 dark:text-slate-400">没有找到匹配的文章</p>
+        {/* 分类标签 */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {knowledgeData.categories.map((cat) => {
+            const active = activeCategory === cat.id
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                aria-pressed={active}
+                className={`px-3 py-1.5 rounded-md text-[13px] border transition-colors ${
+                  active
+                    ? 'border-primary-600 dark:border-primary-500 bg-primary-50 dark:bg-primary-950/40 text-primary-700 dark:text-primary-400 font-medium'
+                    : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                {cat.name}
+              </button>
+            )
+          })}
         </div>
-      )}
+
+        {/* 文章网格 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredArticles.map((item) => (
+            <ScrollReveal key={item.id}>
+              <Link to={`/knowledge/${item.slug}`} className="group block h-full">
+                <Card className="h-full overflow-hidden flex flex-col">
+                  {item.cover && (
+                    <div className="aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
+                      <img
+                        src={item.cover}
+                        alt=""
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-4 flex-1 flex flex-col">
+                    <p className="label-mono">{categoryName(item.category)}</p>
+                    <h3 className="mt-2 text-[15px] font-medium leading-snug text-slate-900 dark:text-white line-clamp-2 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-relaxed text-slate-500 dark:text-slate-400 line-clamp-3 flex-1">
+                      {item.summary}
+                    </p>
+                    <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between gap-2">
+                      <span className="label-mono tnum">
+                        {item.date} · {item.readTime}
+                      </span>
+                      <LikeButton id={item.id} initialCount={item.likes ?? 0} size="sm" />
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {filteredArticles.length === 0 && (
+          <div className="border-t border-slate-200 dark:border-slate-800 py-16 text-center">
+            <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+              没有匹配的笔记。换一个关键词，或把分类切回「全部」。
+            </p>
+          </div>
+        )}
+      </section>
     </div>
   )
 }

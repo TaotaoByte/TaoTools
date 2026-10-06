@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Heart, ExternalLink, Trash2, HeartOff } from 'lucide-react'
+import { ExternalLink, Trash2, Heart, HeartOff } from 'lucide-react'
 import { Card } from '../components/Card.jsx'
 import { SectionTitle } from '../components/SectionTitle.jsx'
 import { ScrollReveal } from '../components/ScrollReveal.jsx'
@@ -26,103 +26,128 @@ export default function Favorites() {
     setFavorites([])
   }
 
+  const hasFavorites = favoriteItems.length > 0
+
   return (
-    <div className="page-container">
-      <div className="flex items-start justify-between mb-10">
+    <div className="page-container space-y-12">
+      <header>
+        <p className="label-mono">Favorites</p>
+        <h1 className="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
+          我的收藏
+        </h1>
+        <p className="mt-3 text-sm leading-relaxed text-slate-500 dark:text-slate-400 max-w-2xl">
+          {hasFavorites
+            ? `已收藏 ${favoriteItems.length} 个资源，收藏记录保存在本机浏览器。`
+            : '在资源库收藏的站点会汇总到这里，记录保存在本机浏览器。'}
+        </p>
+      </header>
+
+      <section>
         <SectionTitle
-          title="我的收藏"
-          subtitle={
-            favoriteItems.length > 0
-              ? `共收藏 ${favoriteItems.length} 个资源`
-              : '收藏你喜欢的资源，随时回来查看'
+          index="01"
+          title="已收藏资源"
+          subtitle={hasFavorites ? '点卡片直接在新标签页打开站点。' : '收藏后会在这里列出。'}
+          action={
+            hasFavorites ? (
+              <button
+                onClick={clearAll}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[13px] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-800 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+              >
+                <Trash2 className="w-3.5 h-3.5" /> 清空收藏
+              </button>
+            ) : undefined
           }
         />
-        {favoriteItems.length > 0 && (
-          <button
-            onClick={clearAll}
-            className="inline-flex items-center gap-1.5 shrink-0 mt-1 px-3 py-2 rounded-xl text-sm text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors"
-          >
-            <Trash2 className="w-4 h-4" /> 清空收藏
-          </button>
-        )}
-      </div>
 
-      {favoriteItems.length === 0 ? (
-        <div className="text-center py-24">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-            <HeartOff className="w-9 h-9 text-slate-400 dark:text-slate-500" />
+        {!hasFavorites ? (
+          <div className="py-16 text-center">
+            <span className="w-10 h-10 mx-auto flex items-center justify-center rounded-md border border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500">
+              <HeartOff className="w-[18px] h-[18px]" />
+            </span>
+            <p className="mt-4 text-[15px] font-medium text-slate-900 dark:text-white">
+              还没有收藏任何资源
+            </p>
+            <p className="mt-2 text-[13px] leading-relaxed text-slate-500 dark:text-slate-400">
+              在资源库点击卡片右上角的 ♥，收藏的站点就会出现在这里。
+            </p>
+            <Link to="/resources" className="btn-primary mt-6">
+              浏览资源库
+            </Link>
           </div>
-          <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-2">还没有收藏任何资源</h3>
-          <p className="text-slate-500 dark:text-slate-400 mb-8">
-            在「资源库」中点击卡片右上角的 ♥ 即可收藏
-          </p>
-          <Link to="/resources" className="btn-primary text-sm">
-            去逛逛资源库
-          </Link>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {favoriteItems.map((item, index) => (
-            <ScrollReveal key={item.id} delay={index * 0.05}>
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block h-full group"
-              >
-                <Card className="p-5 h-full group relative flex flex-col cursor-pointer hover:border-primary-200 dark:hover:border-primary-800">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault()
-                      e.stopPropagation()
-                      toggleFavorite(item.id)
-                    }}
-                    className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors z-10"
-                    aria-label="取消收藏"
-                    title="取消收藏"
-                  >
-                    <Heart className="w-4 h-4 fill-rose-500 text-rose-500" />
-                  </button>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {favoriteItems.map((item) => (
+              <ScrollReveal key={item.id}>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block h-full"
+                >
+                  <Card className="relative p-4 h-full flex flex-col">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        toggleFavorite(item.id)
+                      }}
+                      className="absolute top-3 right-3 z-10 p-1.5 rounded-md text-slate-400 dark:text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700/60 hover:text-primary-700 dark:hover:text-primary-400 transition-colors"
+                      aria-label="取消收藏"
+                      title="取消收藏"
+                    >
+                      <Heart className="w-4 h-4 fill-current" />
+                    </button>
 
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/20 flex items-center justify-center shrink-0">
-                      <Favicon id={item.id} url={item.url} fallbackIcon={item.icon} className="w-7 h-7 rounded" />
-                    </div>
-                    <div className="flex-1 min-w-0 pr-6">
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                        {item.name}
-                      </h3>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {item.tags.map((tag) => (
+                    <div className="flex items-start gap-3 pr-8">
                       <span
-                        key={tag}
-                        className="text-xs px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                        className="w-10 h-10 shrink-0 rounded-md border border-slate-200 dark:border-slate-700
+                                   flex items-center justify-center p-2.5 text-slate-500 dark:text-slate-400 transition-colors
+                                   group-hover:border-primary-300 dark:group-hover:border-primary-800"
                       >
-                        {tag}
+                        <Favicon
+                          id={item.id}
+                          url={item.url}
+                          fallbackIcon={item.icon}
+                          className="w-full h-full object-contain"
+                        />
                       </span>
-                    ))}
-                  </div>
+                      <div className="min-w-0">
+                        <h3 className="text-[15px] font-medium leading-snug text-slate-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
+                          {item.name}
+                        </h3>
+                        <p className="mt-1 text-[13px] leading-relaxed text-slate-500 dark:text-slate-400 line-clamp-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
 
-                  <div className="mt-auto flex items-center justify-between">
-                    <span className="text-xs text-slate-400 dark:text-slate-500">
-                      {resourcesData.categories.find((c) => c.id === item.category)?.name}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 dark:text-primary-400 group-hover:translate-x-1 transition-transform">
-                      访问 <ExternalLink className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </Card>
-              </a>
-            </ScrollReveal>
-          ))}
-        </div>
-      )}
+                    <div className="mt-4 mb-3 flex flex-wrap gap-1.5">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[11px] px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between gap-2">
+                      <span className="label-mono">
+                        {resourcesData.categories.find((c) => c.id === item.category)?.name}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-[13px] font-medium text-slate-500 dark:text-slate-400 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
+                        访问
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </Card>
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   )
 }

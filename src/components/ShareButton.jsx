@@ -46,13 +46,13 @@ export function ShareButton({ title, className = '' }) {
   }
 
   const itemClass =
-    'w-full flex items-center gap-2.5 px-4 py-2.5 text-left text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 transition-colors'
+    'w-full flex items-center gap-2.5 px-3 py-2 text-left text-[13px] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors'
 
   return (
     <div ref={ref} className={`relative ${className}`}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-primary-300 dark:hover:border-primary-700 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[13px] font-medium border bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-primary-300 dark:hover:border-primary-800 hover:text-primary-700 dark:hover:text-primary-400 transition-colors duration-150"
         aria-label="分享"
       >
         <Share2 className="w-4 h-4" />
@@ -60,7 +60,7 @@ export function ShareButton({ title, className = '' }) {
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full mt-2 z-50 w-44 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl">
+        <div className="absolute left-0 top-full mt-1 z-50 w-44 py-1 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm overflow-hidden">
           <button className={itemClass} onClick={copyLink}>
             {copied ? (
               <Check className="w-4 h-4 text-emerald-500" />

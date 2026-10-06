@@ -2,39 +2,39 @@
   "items": [
     {
       "id": "latest-1",
-      "type": "tool",
-      "tag": "新工具",
-      "title": "JSON 格式化工具上线",
-      "description": "支持 JSON 格式化、压缩、转义，开发调试更高效。",
-      "date": "2025-02-25",
-      "link": "/tools"
+      "type": "ai",
+      "tag": "AI 榜单",
+      "title": "AI 大模型榜单改为自动同步",
+      "description": "接入 LMArena、Artificial Analysis、SWE-bench、LiveBench 等公开榜单，由 GitHub Actions 每周自动抓取更新，不再手工维护。",
+      "date": "2026-10-06",
+      "link": "/ai"
     },
     {
       "id": "latest-2",
-      "type": "article",
-      "tag": "知识库",
-      "title": "Docker 常用命令入门",
-      "description": "整理了 Docker 镜像、容器、数据卷和 Compose 的常用命令。",
-      "date": "2025-02-20",
-      "link": "/knowledge/docker-basic"
+      "type": "site",
+      "tag": "站点",
+      "title": "界面改版",
+      "description": "重做配色与排版，收敛圆角与阴影，去掉装饰性动效；字体改为系统字体栈，不再依赖 Google Fonts。",
+      "date": "2026-10-06",
+      "link": "/"
     },
     {
       "id": "latest-3",
-      "type": "resource",
-      "tag": "资源库",
-      "title": "新增免费素材网站合集",
-      "description": "精选 Pexels、Unsplash、Coverr 等高质量免费素材站。",
-      "date": "2025-02-18",
-      "link": "/resources"
+      "type": "tool",
+      "tag": "工具",
+      "title": "JSON 工具",
+      "description": "支持 JSON 格式化、压缩、转义，全部在浏览器本地完成，不上传数据。",
+      "date": "2026-07-26",
+      "link": "/tools?tool=json-tool"
     },
     {
       "id": "latest-4",
-      "type": "ai",
-      "tag": "AI 中心",
-      "title": "AI 大模型排名更新",
-      "description": "新增 Kimi K2、DeepSeek-V3、豆包等最新模型信息。",
-      "date": "2025-02-15",
-      "link": "/ai"
+      "type": "article",
+      "tag": "笔记",
+      "title": "Docker 常用命令入门",
+      "description": "整理了 Docker 镜像、容器、数据卷和 Compose 的常用命令。",
+      "date": "2026-07-26",
+      "link": "/knowledge/docker-basic"
     }
   ]
 }

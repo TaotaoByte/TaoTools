@@ -1,19 +1,17 @@
-import { motion } from 'framer-motion'
+import { cn } from '../utils/helpers.js'
 
-export function ScrollReveal({ children, className = '', delay = 0 }) {
+/**
+ * 内容始终可见：不再用 IntersectionObserver 把内容先隐藏再淡入。
+ * 只保留一次极短的淡入，延迟上限 0.2s，避免长时间留白。
+ */
+export function ScrollReveal({ children, className = '', delay = 0, as: Tag = 'div' }) {
+  const capped = Math.min(delay, 0.2)
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration: 0.5,
-        delay,
-        ease: [0.25, 0.1, 0.25, 1],
-      }}
-      className={className}
+    <Tag
+      className={cn('animate-fade-in-up', className)}
+      style={capped ? { animationDelay: `${capped}s` } : undefined}
     >
       {children}
-    </motion.div>
+    </Tag>
   )
 }

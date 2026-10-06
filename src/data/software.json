@@ -56,7 +56,7 @@
       "platforms": ["Win", "Mac", "Web"],
       "price": "免费版",
       "url": "https://www.figma.com",
-      "icon": "Figma"
+      "icon": "PenTool"
     },
     {
       "id": "blender",

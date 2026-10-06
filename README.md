@@ -1,28 +1,36 @@
 # TaoTools
 
-一站式工具导航与知识分享平台。
+一个放在浏览器里的开发者工具站：本地运行的小工具、自动同步的 AI 模型榜单，以及持续整理的中文技术笔记。
 
-TaoTools 是一个聚合实用工具、精选资源、效率软件、AI 内容与开发知识的个人网站。项目采用 React 18 + Vite + Tailwind CSS 构建，输出为静态文件，适合部署到任意静态托管服务或 Nginx 服务器。
+项目采用 React + Vite + Tailwind CSS 构建，输出为纯静态文件，可部署到任意静态托管服务或 Nginx。所有内置工具都在浏览器本地执行，不上传任何数据。
 
 ## 功能特性
 
-- **工具箱**：内置文本对比、JSON 格式化/压缩/转义、Base64 编解码、时间戳转换、正则测试、颜色转换器、密码生成器、文本字数统计等实用小工具。
-- **资源库**：精选设计模板、视频素材、图片壁纸、图标字体与学习资源，支持收藏。
+- **工具箱**：内置文本对比、JSON 格式化/压缩/转义、Base64 编解码、时间戳转换、正则测试、颜色转换器、密码生成器、文本字数统计等工具，全部本地运行。
+- **AI 模型榜单**：自动抓取并展示 LMArena、Artificial Analysis、SWE-bench、LiveBench 等权威榜单，标注出处、榜单日期与评分口径，**不需要人工维护**（详见下文）。
+- **资源库**：设计模板、视频素材、图片壁纸、图标字体与学习资源，支持收藏。
 - **软件推荐**：开发、办公、设计、系统、媒体类软件推荐，含平台与价格标签。
-- **AI 中心**：主流大模型排名对比、AI 教学文章、Prompt 模板一键复制。
-- **知识库**：Markdown 语法、开发笔记、软件配置、效率技巧等文章，支持分类筛选与目录导航。
-- **主题切换**：浅色/深色模式，默认跟随系统，localStorage 保存偏好。
+- **AI 教程与 Prompt 模板**：AI 教学文章、即拿即用的 Prompt 模板一键复制。
+- **技术笔记**：Markdown 语法、开发笔记、软件配置、效率技巧等文章，支持分类筛选与目录导航。
+- **AI 对话**：自带 API Key，支持多会话、流式输出与 Markdown 渲染，历史记录仅存本地。
+- **小游戏**：内置 2048、贪吃蛇、扫雷、记忆翻牌。
+- **主题切换**：浅色/深色模式，localStorage 保存偏好。
 - **响应式设计**：适配桌面、平板、移动端。
-- **性能优化**：路由懒加载、组件按需加载、滚动渐入动画。
+
+## 视觉规范
+
+界面遵循 [`docs/design-language.md`](docs/design-language.md) 中定义的规范：纸／墨／朱砂配色、发丝描边、克制的圆角与阴影、系统字体栈（**不依赖 Google Fonts**，国内访问不会阻塞渲染）。
+
+改动界面请先读这份文档，避免重新引入渐变光斑、大圆角、玻璃拟态、装饰性图标这类模板化写法。
 
 ## 技术栈
 
-- 前端框架：[React 18](https://react.dev/) + [Vite](https://vitejs.dev/)
+- 前端框架：[React](https://react.dev/) + [Vite](https://vitejs.dev/)
 - 样式方案：[Tailwind CSS](https://tailwindcss.com/)
 - 路由：[React Router](https://reactrouter.com/)（Hash 模式）
 - 图标：[Lucide React](https://lucide.dev/)
-- 动画：[Framer Motion](https://www.framer.com/motion/)
 - Markdown 渲染：[react-markdown](https://github.com/remarkjs/react-markdown) + [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+- 榜单抓取：[hyparquet](https://github.com/hyparam/hyparquet)（解析 LMArena 的 Parquet 数据集，仅构建期使用）
 - 部署：Nginx 静态托管
 
 ## 本地开发
@@ -49,6 +57,37 @@ npm run build
 
 构建产物输出到 `dist/` 目录，可直接部署到 Nginx 或任意静态托管服务。
 
+## AI 模型榜单（自动更新）
+
+`src/data/leaderboards.json` 由 `scripts/fetch-leaderboards.mjs` 自动生成，**不要手工编辑**。
+
+### 数据来源
+
+| 榜单 | 来源 | 说明 |
+| --- | --- | --- |
+| 综合能力 / 中文能力 / 编程能力 | LMArena（原 Chatbot Arena） | 真人盲测 Elo，官方数据集，CC BY 4.0 |
+| 智能指数（两份） | OpenRouter / Artificial Analysis | Artificial Analysis Intelligence Index |
+| 代码修复能力 | SWE-bench Verified | 真实 GitHub issue 的解决率 |
+| 多任务综合 | LiveBench | 7 大类均值的平均 |
+
+### 更新方式
+
+**自动（推荐）**：仓库内的 GitHub Actions 工作流 `.github/workflows/update-leaderboards.yml` 每周一自动抓取、验证构建、并提交变更。也可以到 Actions 页面手动触发（可指定只抓某一个源）。
+
+**手动**：
+
+```bash
+npm run update:leaderboards        # 抓取并写入 src/data/leaderboards.json
+npm run update:leaderboards:check  # 只抓取并打印结果，不写文件
+```
+
+### 设计要点
+
+- **单源失败不影响整体**：任一数据源抓取失败时会保留上一次的缓存并标记 `stale`，页面上会提示「本次同步失败，显示的是上一次缓存」，构建不会中断。
+- **字段校验**：每个源都校验关键字段是否存在，结构变化时丢弃该源而不是写入坏数据。
+- **镜像回退**：部分网络会按 TLS SNI 阻断 `huggingface.co`，脚本会先试官方地址再回退到镜像。
+- **名字规范化**：统一处理版本号（`claude-opus-4-5` → `Claude Opus 4.5`）、厂商前缀、推理档位去重。
+
 ## Nginx 部署
 
 将 `dist/` 目录上传到服务器，例如 `/home/tao/TaoTools`。
@@ -68,25 +107,34 @@ sudo systemctl reload nginx
 
 ```
 TaoTools/
+├── .github/workflows/
+│   └── update-leaderboards.yml  # 每周自动更新榜单的 workflow
+├── docs/
+│   └── design-language.md       # 视觉规范（改界面前必读）
 ├── public/
 │   ├── articles/           # Markdown 文章源文件
 │   │   ├── knowledge/
 │   │   └── ai/
-│   └── covers/             # 文章封面图
+│   ├── covers/             # 文章封面图（由 scripts/generate-cover-art.py 生成）
+│   └── favicons/           # 外部资源站点的本地图标
 ├── scripts/                # 数据生成与管理脚本
 │   ├── build-data.cjs      # 扫描 Markdown 生成 JSON
+│   ├── fetch-leaderboards.mjs   # 抓取 AI 榜单
+│   ├── generate-cover-art.py    # 生成文章封面
+│   ├── check-icons.mjs     # 校验数据里的图标名在 lucide 中存在
 │   └── add-item.cjs        # 交互式添加工具/资源/软件/文章
 ├── src/
 │   ├── components/         # 可复用组件
 │   ├── contexts/           # React Context
 │   ├── data/               # JSON 数据文件
+│   ├── games/              # 内置小游戏组件
 │   ├── hooks/              # 自定义 Hooks
 │   ├── pages/              # 路由页面
 │   ├── tools/              # 内置工具组件
 │   ├── utils/              # 工具函数
 │   ├── App.jsx             # 路由与布局
 │   ├── main.jsx            # 应用入口
-│   └── index.css           # 全局样式
+│   └── index.css           # 全局样式与设计令牌
 ├── nginx/
 │   └── taotools.conf       # Nginx 配置示例
 ├── index.html
@@ -164,15 +212,21 @@ date: 2025-01-10
 
 ```bash
 # 1. 添加文章 Markdown 文件或运行 npm run add 添加工具/资源/软件
-# 2. 重新生成文章数据
+# 2. 重新生成文章数据与搜索索引
 npm run build:data
 
-# 3. 构建
+# 3.（可选）手动刷新 AI 榜单；平时由 GitHub Actions 每周自动更新
+npm run update:leaderboards
+
+# 4. 校验数据里的图标名都存在
+node scripts/check-icons.mjs
+
+# 5. 构建
 npm run build
 
-# 4. 部署 dist/ 目录到服务器
+# 6. 部署 dist/ 目录到服务器
 ```
 
 ## 许可证
 
-MIT License © 2025 TaoTools
+MIT License © 2026 TaoTools
