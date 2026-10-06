@@ -175,6 +175,17 @@ readTime: 5 分钟
 npm run build:data
 ```
 
+**两个容易踩的坑（脚本已经做了防护，但最好知道）：**
+
+1. **换行符必须是 LF。** 仓库里带了 `.gitattributes`（`* text=auto eol=lf`），正常检出就是 LF。
+   如果你的编辑器把 markdown 存成了 CRLF，frontmatter 有可能会解析失败 —— 脚本现在会
+   先把 `\r\n` 归一化，所以不会再出问题，但保持 LF 更稳妥。
+2. **`cover` 字段别漏写。** 如果 frontmatter 里没有 `cover`，重新生成会把它清空。
+   脚本现在会沿用上一次生成的封面并打印警告，但正确的做法是在 frontmatter 里写清楚。
+
+如果重新生成后 `git diff` 里出现了"标题变成未命名文章""封面变空"这类改动，先别提交，
+检查一下对应 markdown 的换行符和 frontmatter 是否完整。
+
 ### 工具 / 资源 / 软件
 
 提供交互式命令行脚本，自动写入对应 JSON 文件：

@@ -16,8 +16,13 @@ const ARTICLES_DIR = path.join(ROOT, 'public', 'articles')
 const DATA_DIR = path.join(ROOT, 'src', 'data')
 
 function parseFrontmatter(content) {
-  const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/)
-  if (!match) return { meta: {}, body: content }
+  const raw = content.charCodeAt(0) === 0xfeff ? content.slice(1) : content
+  // 统一换行符。Windows 上（或 core.autocrlf=true 时 git 检出）markdown 会是 CRLF，
+  // 而 JS 正则里的 . 不匹配 \r，导致 /^(\w+):\s*(.*)$/ 这类行根本匹配不上：
+  // frontmatter 会整段静默失效，标题变成「未命名文章」、封面被清空、日期丢失。
+  const clean = raw.replace(/\r\n?/g, '\n')
+  const match = clean.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
+  if (!match) return { meta: {}, body: clean }
 
   const metaText = match[1]
   const body = match[2]
@@ -57,7 +62,7 @@ function parseFrontmatter(content) {
   return { meta, body }
 }
 
-function scanArticles(type) {
+function scanArticles(type, previousCoverBySlug = new Map()) {
   const dir = path.join(ARTICLES_DIR, type)
   if (!fs.existsSync(dir)) return []
 
@@ -68,13 +73,25 @@ function scanArticles(type) {
       const filePath = path.join(dir, file)
       const raw = fs.readFileSync(filePath, 'utf-8')
       const { meta, body } = parseFrontmatter(raw)
+      const id = meta.id || path.basename(file, '.md')
+
+      // 封面兜底：frontmatter 里没写 cover 时，沿用上一次生成的结果。
+      // 否则只要有人漏写 cover，重新生成就会把已有封面清空（曾经真的发生过：
+      // ssh-github-setup / regex-cheatsheet / devtools-tips 三篇的封面被抹掉）。
+      let cover = meta.cover || ''
+      if (!cover && previousCoverBySlug.has(id)) {
+        cover = previousCoverBySlug.get(id)
+        console.warn(
+          `⚠️  ${file} 的 frontmatter 没有 cover 字段，沿用上次生成的封面：${cover}`,
+        )
+      }
 
       return {
-        id: meta.id || path.basename(file, '.md'),
-        slug: meta.slug || meta.id || path.basename(file, '.md'),
+        id,
+        slug: meta.slug || id,
         title: meta.title || '未命名文章',
         category: meta.category || 'other',
-        cover: meta.cover || '',
+        cover,
         summary: meta.summary || '',
         date: meta.date || '',
         readTime: meta.readTime || '',
@@ -90,9 +107,23 @@ function scanArticles(type) {
     })
 }
 
+/** 读取已生成的数据文件，取出 slug → cover 映射，供封面兜底使用 */
+function readPreviousCovers(fileName) {
+  const map = new Map()
+  try {
+    const prev = JSON.parse(fs.readFileSync(path.join(DATA_DIR, fileName), 'utf-8'))
+    ;(prev.items || []).forEach((it) => {
+      if (it.slug && it.cover) map.set(it.slug, it.cover)
+    })
+  } catch {
+    // 首次生成时文件还不存在，正常
+  }
+  return map
+}
+
 function buildKnowledge() {
   const existing = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'knowledge.json'), 'utf-8'))
-  const items = scanArticles('knowledge')
+  const items = scanArticles('knowledge', readPreviousCovers('knowledge.json'))
 
   const output = {
     categories: existing.categories,
@@ -104,7 +135,7 @@ function buildKnowledge() {
 }
 
 function buildAiTutorials() {
-  const items = scanArticles('ai')
+  const items = scanArticles('ai', readPreviousCovers('aiTutorials.json'))
 
   const output = {
     items,

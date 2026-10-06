@@ -3,6 +3,7 @@ id: ssh-github-setup
 slug: ssh-github-setup
 title: SSH 密钥登录与 GitHub 配置
 category: dev
+cover: /covers/ssh-github-setup.jpg
 summary: 从零生成 SSH 密钥、配置 GitHub 免密登录，解决 443 超时、多个密钥冲突等常见问题。
 date: 2025-08-05
 readTime: 8 分钟

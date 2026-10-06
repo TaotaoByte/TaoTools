@@ -3,6 +3,7 @@ id: regex-cheatsheet
 slug: regex-cheatsheet
 title: 常用正则表达式速查
 category: efficiency
+cover: /covers/regex-cheatsheet.jpg
 summary: 系统整理正则的元字符、量词、分组与断言，附常用场景（手机号、邮箱、URL、日期等）的现成正则。
 date: 2025-08-12
 readTime: 7 分钟

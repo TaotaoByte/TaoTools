@@ -3,6 +3,7 @@ id: ai-weekly-report
 slug: ai-weekly-report
 title: 用 AI 高效输出周报与工作总结
 category: other
+cover: /covers/ai-weekly-report.jpg
 summary: 教你用结构化提示词把零散的工作记录整理成有重点、有数据、可复用的周报与总结。
 date: 2026-07-28
 readTime: 7 分钟

@@ -437,7 +437,7 @@ export default [
     "type": "software",
     "id": "cursor",
     "title": "Cursor",
-    "description": "AI 驱动的代码编辑器，支持 Claude Opus 5 / Fable 5、GPT-5.6 Sol 等模型辅助编程",
+    "description": "AI 原生代码编辑器，可切换多家主流大模型辅助编程，支持 Agent 模式跨文件改代码",
     "category": "开发工具",
     "tags": [
       "Win",

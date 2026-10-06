@@ -3,6 +3,7 @@ id: ai-code-review
 slug: ai-code-review
 title: 用 AI 进行代码审查的提示词
 category: other
+cover: /covers/ai-code-review.jpg
 summary: 一套可复用的代码审查提示词模板，覆盖安全、性能、可维护性与边界情况，提升审查质量与效率。
 date: 2026-08-02
 readTime: 8 分钟

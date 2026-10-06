@@ -3,6 +3,7 @@ id: devtools-tips
 slug: devtools-tips
 title: Chrome DevTools 调试技巧
 category: dev
+cover: /covers/devtools-tips.jpg
 summary: 掌握 Elements、Console、Network、Sources、Performance 等面板的高效用法，提升前端调试效率。
 date: 2025-08-18
 readTime: 9 分钟
