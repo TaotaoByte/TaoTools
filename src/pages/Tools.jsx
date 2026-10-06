@@ -87,13 +87,24 @@ export default function Tools() {
     }
   }
 
-  // 支持 ?tool=<id> 深链：自动打开对应内置工具
+  // 支持 ?tool=<id> 深链：自动打开对应内置工具。
+  // 注意：参数消失时（浏览器后退、点导航里的「工具箱」）也要关掉详情，
+  // 否则地址已经回到列表，页面却还停在上一个工具上。
   const toolParam = searchParams.get('tool')
   useEffect(() => {
-    if (!toolParam) return
+    const close = () => {
+      setActiveTool(null)
+      setToolComponent(null)
+    }
+    if (!toolParam) {
+      close()
+      return
+    }
     const tool = toolsData.items.find((t) => t.id === toolParam)
     if (tool && tool.type === 'internal') {
       openTool(tool)
+    } else {
+      close()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toolParam])

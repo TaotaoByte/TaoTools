@@ -71,13 +71,23 @@ export default function Games() {
     }
   }
 
-  // 支持 ?game=<id> 深链：自动打开对应内置游戏
+  // 支持 ?game=<id> 深链：自动打开对应内置游戏。
+  // 参数消失时同样要关掉详情，避免地址回到列表而页面还停在上一个游戏上。
   const gameParam = searchParams.get('game')
   useEffect(() => {
-    if (!gameParam) return
+    const close = () => {
+      setActiveGame(null)
+      setGameComponent(null)
+    }
+    if (!gameParam) {
+      close()
+      return
+    }
     const game = gamesData.items.find((g) => g.id === gameParam)
     if (game && game.type === 'internal') {
       openGame(game)
+    } else {
+      close()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameParam])
