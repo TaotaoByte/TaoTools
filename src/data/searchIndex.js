@@ -450,6 +450,19 @@ export default [
   },
   {
     "type": "software",
+    "id": "agent-qa",
+    "title": "agent-qa",
+    "description": "自然语言测试 Web、Android 与 iOS，结合 memidex 持久记忆与经验证的自我改进",
+    "category": "开发工具",
+    "tags": [
+      "Node.js 24+"
+    ],
+    "icon": "Terminal",
+    "link": "https://vostride.com",
+    "external": true
+  },
+  {
+    "type": "software",
     "id": "obsidian",
     "title": "Obsidian",
     "description": "本地优先的 Markdown 知识库工具，支持双向链接",
