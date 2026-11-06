@@ -8,6 +8,12 @@ export function Card({ children, className = '', hover = true, onClick }) {
   return (
     <div
       onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (event) => {
+        if (event.target !== event.currentTarget) return
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onClick(event) }
+      } : undefined}
       className={cn(
         'bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700',
         hover && 'card-hover',

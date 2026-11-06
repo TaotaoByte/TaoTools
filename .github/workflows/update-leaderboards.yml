@@ -35,16 +35,18 @@ jobs:
       - name: 安装 Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: npm
 
       - name: 安装依赖
         run: npm ci
 
       - name: 抓取榜单
+        env:
+          LEADERBOARD_SOURCE: ${{ github.event.inputs.only }}
         run: |
-          if [ -n "${{ github.event.inputs.only }}" ]; then
-            node scripts/fetch-leaderboards.mjs --only=${{ github.event.inputs.only }}
+          if [ -n "$LEADERBOARD_SOURCE" ]; then
+            node scripts/fetch-leaderboards.mjs --only="$LEADERBOARD_SOURCE"
           else
             node scripts/fetch-leaderboards.mjs
           fi

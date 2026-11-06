@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { convertBase } from '../utils/numberBase.js'
 
 const bases = [
   { id: '2', name: '二进制 Bin' },
@@ -16,19 +17,13 @@ export default function NumberBaseTool() {
 
   const convert = () => {
     setError('')
-    const raw = input.trim().replace(/\s+/g, '')
+    const raw = input.trim()
     if (!raw) {
       setOutput('')
       return
     }
     try {
-      const value = parseInt(raw, Number(fromBase))
-      if (Number.isNaN(value)) {
-        setError('输入不是合法的' + bases.find((b) => b.id === fromBase)?.name + '数字')
-        setOutput('')
-        return
-      }
-      setOutput(value.toString(Number(toBase)).toUpperCase())
+      setOutput(convertBase(raw, Number(fromBase), Number(toBase)))
     } catch (e) {
       setError('转换失败：' + e.message)
     }

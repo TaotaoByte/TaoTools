@@ -1,13 +1,42 @@
 {
   "categories": [
-    { "id": "all", "name": "全部" },
-    { "id": "text", "name": "文本处理" },
-    { "id": "encode", "name": "编码转换" },
-    { "id": "image", "name": "图片工具" },
-    { "id": "calc", "name": "计算工具" },
-    { "id": "other", "name": "其他" }
+    {
+      "id": "all",
+      "name": "全部"
+    },
+    {
+      "id": "text",
+      "name": "文本处理"
+    },
+    {
+      "id": "encode",
+      "name": "编码转换"
+    },
+    {
+      "id": "image",
+      "name": "图片工具"
+    },
+    {
+      "id": "calc",
+      "name": "计算工具"
+    },
+    {
+      "id": "other",
+      "name": "其他"
+    }
   ],
   "items": [
+    {
+      "id": "image-compress",
+      "name": "图片压缩与缩放",
+      "description": "本地压缩 JPG、PNG、WebP，调整尺寸并导出 WebP / JPEG，无需上传",
+      "category": "image",
+      "type": "internal",
+      "component": "ImageCompressTool",
+      "icon": "Image",
+      "featured": true,
+      "likes": 0
+    },
     {
       "id": "qrcode",
       "name": "二维码生成器",

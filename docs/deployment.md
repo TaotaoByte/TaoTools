@@ -25,11 +25,11 @@ sudo apt upgrade -y
 
 ## 2. 安装 Node.js 与 npm
 
-TaoTools 使用 Vite 构建，需要 Node.js 18 或以上版本。
+TaoTools 使用 Vite 构建，需要 Node.js 22.12 或以上版本。
 
 ```bash
-# 安装 NodeSource 源并安装 Node.js 20
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+# 安装 NodeSource 源并安装 Node.js 22
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt install -y nodejs
 
 # 验证安装

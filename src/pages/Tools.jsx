@@ -10,6 +10,7 @@ import toolsData from '../data/tools.json'
 
 // 动态导入内置工具组件
 const toolComponents = {
+  ImageCompressTool: () => import('../tools/ImageCompressTool.jsx'),
   TextDiff: () => import('../tools/TextDiff.jsx'),
   JsonTool: () => import('../tools/JsonTool.jsx'),
   Base64Tool: () => import('../tools/Base64Tool.jsx'),
@@ -29,8 +30,8 @@ const toolComponents = {
 function GlyphBox({ children }) {
   return (
     <span
-      className="w-10 h-10 shrink-0 rounded-md border border-slate-200 dark:border-slate-700 flex items-center justify-center
-                 text-slate-500 dark:text-slate-400 transition-colors
+      className="w-11 h-11 shrink-0 rounded-lg bg-primary-50 dark:bg-slate-800 border border-primary-100 dark:border-slate-700 flex items-center justify-center
+                 text-primary-600 dark:text-primary-300 transition-colors
                  group-hover:border-primary-300 dark:group-hover:border-primary-800
                  group-hover:text-primary-700 dark:group-hover:text-primary-400"
     >
@@ -49,11 +50,12 @@ function chipClass(active) {
 }
 
 export default function Tools() {
-  const [search, setSearch] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [search, setSearch] = useState(() => searchParams.get('q') || '')
   const [activeCategory, setActiveCategory] = useState('all')
   const [activeTool, setActiveTool] = useState(null)
   const [ToolComponent, setToolComponent] = useState(null)
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [loadError, setLoadError] = useState('')
 
   const filteredTools = useMemo(() => {
     return toolsData.items.filter((tool) => {
@@ -70,13 +72,7 @@ export default function Tools() {
       window.open(tool.url, '_blank', 'noopener,noreferrer')
       return
     }
-    const importFn = toolComponents[tool.component]
-    if (importFn) {
-      const module = await importFn()
-      setToolComponent(() => module.default)
-      setActiveTool(tool)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
+    setSearchParams({ tool: tool.id })
   }
 
   const closeTool = () => {
@@ -92,22 +88,22 @@ export default function Tools() {
   // 否则地址已经回到列表，页面却还停在上一个工具上。
   const toolParam = searchParams.get('tool')
   useEffect(() => {
-    const close = () => {
-      setActiveTool(null)
-      setToolComponent(null)
-    }
-    if (!toolParam) {
-      close()
-      return
-    }
-    const tool = toolsData.items.find((t) => t.id === toolParam)
-    if (tool && tool.type === 'internal') {
-      openTool(tool)
-    } else {
-      close()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    let cancelled = false
+    setActiveTool(null)
+    setToolComponent(null)
+    setLoadError('')
+    const tool = toolsData.items.find(t => t.id === toolParam && t.type === 'internal')
+    const loader = tool && toolComponents[tool.component]
+    if (loader) loader().then(module => {
+      if (cancelled) return
+      setToolComponent(() => module.default)
+      setActiveTool(tool)
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }).catch(() => { if (!cancelled) setLoadError('工具加载失败，请刷新页面后重试。') })
+    return () => { cancelled = true }
   }, [toolParam])
+
+  useEffect(() => { setSearch(searchParams.get('q') || '') }, [searchParams.get('q')])
 
   // 列表数量直接由数据推导，避免页头文案与数据脱节
   const internalCount = toolsData.items.filter((t) => t.type === 'internal').length
@@ -207,6 +203,7 @@ export default function Tools() {
           </div>
         </div>
 
+        {loadError && <p role="alert" className="p-4 bg-red-50 text-red-700 rounded-lg">{loadError}</p>}
         {/* 工具网格 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {filteredTools.map((tool, index) => {

@@ -110,6 +110,7 @@ export function Navbar() {
                 onClick={() => setIsOpen(!isOpen)}
                 className="lg:hidden p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/70 transition-colors"
                 aria-label="切换菜单"
+                aria-expanded={isOpen}
               >
                 {isOpen ? <X className="w-[18px] h-[18px]" /> : <Menu className="w-[18px] h-[18px]" />}
               </button>

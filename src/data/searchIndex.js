@@ -2,6 +2,17 @@
 export default [
   {
     "type": "tool",
+    "id": "image-compress",
+    "title": "图片压缩与缩放",
+    "description": "本地压缩 JPG、PNG、WebP，调整尺寸并导出 WebP / JPEG，无需上传",
+    "category": "图片工具",
+    "tags": [],
+    "icon": "Image",
+    "link": "/tools?tool=image-compress",
+    "external": false
+  },
+  {
+    "type": "tool",
     "id": "qrcode",
     "title": "二维码生成器",
     "description": "生成二维码，支持自定义尺寸、颜色与纠错等级，可下载 PNG / SVG",
@@ -638,6 +649,36 @@ export default [
     "icon": "Share2",
     "link": "https://localsend.org",
     "external": true
+  },
+  {
+    "type": "knowledge",
+    "id": "image-compression-notes",
+    "title": "图片怎么压才合适：格式、尺寸与质量",
+    "description": "先缩尺寸，再选格式和质量。用一张博客配图说明压缩顺序、透明背景和导出后变大的原因。",
+    "category": "效率技巧",
+    "tags": [
+      "图片压缩",
+      "WebP",
+      "博客配图"
+    ],
+    "icon": "BookOpen",
+    "link": "/knowledge/image-compression-notes",
+    "external": false
+  },
+  {
+    "type": "knowledge",
+    "id": "release-checklist",
+    "title": "个人网站上线前，我会检查的十件事",
+    "description": "从手机布局、深链接到本地后台与线上前端分离，整理一份可以实际执行的发布检查表。",
+    "category": "开发笔记",
+    "tags": [
+      "网站维护",
+      "发布检查",
+      "排错"
+    ],
+    "icon": "BookOpen",
+    "link": "/knowledge/release-checklist",
+    "external": false
   },
   {
     "type": "knowledge",
