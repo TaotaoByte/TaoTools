@@ -29,6 +29,16 @@
       "icon": "Terminal"
     },
     {
+      "id": "agent-qa",
+      "name": "agent-qa",
+      "description": "自然语言测试 Web、Android 与 iOS，结合 memidex 持久记忆与经验证的自我改进",
+      "category": "dev",
+      "platforms": ["Node.js 24+"],
+      "price": "免费使用；模型费用另计",
+      "url": "https://vostride.com",
+      "icon": "Terminal"
+    },
+    {
       "id": "obsidian",
       "name": "Obsidian",
       "description": "本地优先的 Markdown 知识库工具，支持双向链接",
