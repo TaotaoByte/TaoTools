@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-16T09:51:58.504Z",
+  "generatedAt": "2026-11-23T10:52:36.123Z",
   "note": "本文件由 scripts/fetch-leaderboards.mjs 自动生成，请勿手工编辑。GitHub Actions 每周自动刷新；本地可运行 npm run update:leaderboards。",
   "sources": [
     {
       "key": "lmarena",
       "label": "LMArena 官方榜",
       "ok": true,
-      "ms": 417,
+      "ms": 333,
       "boards": [
         "lmarena-overall",
         "lmarena-chinese",
@@ -17,7 +17,7 @@
       "key": "openrouter",
       "label": "OpenRouter 智能指数",
       "ok": true,
-      "ms": 60,
+      "ms": 85,
       "boards": [
         "openrouter-intelligence"
       ]
@@ -27,7 +27,7 @@
       "label": "Artificial Analysis",
       "ok": false,
       "error": "未能在载荷中定位含 intelligenceIndex 的 models 数组",
-      "ms": 83,
+      "ms": 397,
       "boards": [
         "aa-intelligence"
       ]
@@ -36,7 +36,7 @@
       "key": "swebench",
       "label": "SWE-bench Verified",
       "ok": true,
-      "ms": 168,
+      "ms": 154,
       "boards": [
         "swebench-verified"
       ]
@@ -46,7 +46,7 @@
       "label": "LiveBench",
       "ok": false,
       "error": "HTTP 404 Not Found",
-      "ms": 312,
+      "ms": 353,
       "boards": [
         "livebench"
       ]
@@ -61,19 +61,19 @@
       "metricHint": "由真人盲测两两对战投票得出，分数越高越强；票数越多越可靠。",
       "url": "https://lmarena.ai/leaderboard",
       "license": "CC BY 4.0",
-      "updatedAt": "2026-11-11",
-      "sampleSize": 421,
+      "updatedAt": "2026-11-22",
+      "sampleSize": 427,
       "ranked": [
         {
           "rank": 1,
           "model": "Gemini 4 Carbon (High)",
           "slug": "Gemini 4 Carbon (High)",
           "vendor": "Google",
-          "score": 1538.4,
-          "votes": 4273,
+          "score": 1538.9,
+          "votes": 4255,
           "ci": [
-            1528.8,
-            1547.9
+            1529.3,
+            1548.4
           ]
         },
         {
@@ -81,131 +81,131 @@
           "model": "Gemini 4 Argon (High)",
           "slug": "Gemini 4 Argon (High)",
           "vendor": "Google",
-          "score": 1529.5,
-          "votes": 20779,
+          "score": 1527.7,
+          "votes": 28856,
           "ci": [
-            1524.1,
-            1534.8
+            1522.7,
+            1532.7
           ]
         },
         {
           "rank": 3,
-          "model": "Claude Opus 5.5 (High)",
-          "slug": "Claude Opus 5.5 (High)",
-          "vendor": "Anthropic",
-          "score": 1513.7,
-          "votes": 15793,
+          "model": "Gemini 4 Neon (High)",
+          "slug": "Gemini 4 Neon (High)",
+          "vendor": "Google",
+          "score": 1522.9,
+          "votes": 5611,
           "ci": [
-            1507.7,
-            1519.6
+            1514.5,
+            1531.3
           ]
         },
         {
           "rank": 4,
-          "model": "Claude Fable 5.1 (Max)",
-          "slug": "Claude Fable 5.1 (Max)",
+          "model": "Claude Opus 5.5 (High)",
+          "slug": "Claude Opus 5.5 (High)",
           "vendor": "Anthropic",
-          "score": 1512,
-          "votes": 20511,
+          "score": 1514.1,
+          "votes": 18959,
           "ci": [
-            1506.6,
-            1517.5
+            1508.5,
+            1519.8
           ]
         },
         {
           "rank": 5,
-          "model": "Claude Opus 5 (Max)",
-          "slug": "Claude Opus 5 (Max)",
+          "model": "Claude Fable 5.1 (Max)",
+          "slug": "Claude Fable 5.1 (Max)",
           "vendor": "Anthropic",
-          "score": 1506.5,
-          "votes": 35670,
+          "score": 1511.8,
+          "votes": 22920,
           "ci": [
-            1501.8,
-            1511.2
+            1506.5,
+            1517
           ]
         },
         {
           "rank": 6,
-          "model": "Muse Wonder (Max)",
-          "slug": "Muse Wonder (Max)",
-          "vendor": "Meta",
-          "score": 1503,
-          "votes": 12696,
+          "model": "Claude Opus 5 (Max)",
+          "slug": "Claude Opus 5 (Max)",
+          "vendor": "Anthropic",
+          "score": 1506.2,
+          "votes": 35495,
           "ci": [
-            1496.8,
-            1509.1
+            1501.5,
+            1510.9
           ]
         },
         {
           "rank": 7,
+          "model": "Muse Wonder (Max)",
+          "slug": "Muse Wonder (Max)",
+          "vendor": "Meta",
+          "score": 1503.7,
+          "votes": 17102,
+          "ci": [
+            1498,
+            1509.3
+          ]
+        },
+        {
+          "rank": 8,
           "model": "Claude Opus 5 (High)",
           "slug": "Claude Opus 5 (High)",
           "vendor": "Anthropic",
           "score": 1502.2,
-          "votes": 73632,
+          "votes": 73350,
           "ci": [
             1498.6,
             1505.8
           ]
         },
         {
-          "rank": 8,
+          "rank": 9,
           "model": "Gemini 4 Hydrogen (High)",
           "slug": "Gemini 4 Hydrogen (High)",
           "vendor": "Google",
           "score": 1502.1,
-          "votes": 4741,
+          "votes": 4737,
           "ci": [
-            1493.1,
+            1493.2,
             1511.1
           ]
         },
         {
-          "rank": 9,
+          "rank": 10,
           "model": "Claude Opus 4.6 (High)",
           "slug": "Claude Opus 4.6 (High)",
           "vendor": "Anthropic",
           "score": 1501.5,
-          "votes": 84375,
+          "votes": 84109,
           "ci": [
-            1498.2,
-            1504.7
-          ]
-        },
-        {
-          "rank": 10,
-          "model": "Gemini 3.8 Flash (High)",
-          "slug": "Gemini 3.8 Flash (High)",
-          "vendor": "Google",
-          "score": 1499.6,
-          "votes": 62675,
-          "ci": [
-            1495.4,
-            1503.8
+            1498.3,
+            1504.8
           ]
         },
         {
           "rank": 11,
-          "model": "Claude Opus 4.6",
-          "slug": "Claude Opus 4.6",
-          "vendor": "Anthropic",
-          "score": 1496.7,
-          "votes": 89177,
+          "model": "Gemini 3.8 Flash (High)",
+          "slug": "Gemini 3.8 Flash (High)",
+          "vendor": "Google",
+          "score": 1500.9,
+          "votes": 76031,
           "ci": [
-            1493.6,
-            1499.9
+            1496.9,
+            1504.9
           ]
         },
         {
           "rank": 12,
-          "model": "Claude Fable 5 (High)",
-          "slug": "Claude Fable 5 (High)",
+          "model": "Claude Opus 4.6",
+          "slug": "Claude Opus 4.6",
           "vendor": "Anthropic",
-          "score": 1491.7,
-          "votes": 45469,
+          "score": 1496.8,
+          "votes": 88895,
           "ci": [
-            1487.5,
-            1495.8
+            1493.6,
+            1500
           ]
         },
         {
@@ -213,11 +213,11 @@
           "model": "Muse Spark 1.3 (Max)",
           "slug": "Muse Spark 1.3 (Max)",
           "vendor": "Meta",
-          "score": 1491.6,
-          "votes": 26806,
+          "score": 1492.9,
+          "votes": 31093,
           "ci": [
-            1486.7,
-            1496.6
+            1488.1,
+            1497.7
           ]
         },
         {
@@ -225,167 +225,167 @@
           "model": "MiMo V2.6 Pro",
           "slug": "MiMo-V2.6-Pro",
           "vendor": "小米",
-          "score": 1491.6,
-          "votes": 4064,
+          "score": 1492.9,
+          "votes": 4047,
           "ci": [
-            1482.2,
-            1501
+            1483.4,
+            1502.3
           ]
         },
         {
           "rank": 15,
-          "model": "Claude Opus 4.7 (High)",
-          "slug": "Claude Opus 4.7 (High)",
+          "model": "Claude Fable 5 (High)",
+          "slug": "Claude Fable 5 (High)",
           "vendor": "Anthropic",
-          "score": 1489.8,
-          "votes": 64260,
+          "score": 1491.8,
+          "votes": 45277,
           "ci": [
-            1486,
-            1493.5
+            1487.6,
+            1495.9
           ]
         },
         {
           "rank": 16,
-          "model": "Gemini 3.7 Flash (High)",
-          "slug": "Gemini 3.7 Flash (High)",
-          "vendor": "Google",
-          "score": 1488.7,
-          "votes": 33251,
+          "model": "Claude Opus 4.7 (High)",
+          "slug": "Claude Opus 4.7 (High)",
+          "vendor": "Anthropic",
+          "score": 1489.8,
+          "votes": 64030,
           "ci": [
-            1484,
-            1493.4
+            1486.1,
+            1493.6
           ]
         },
         {
           "rank": 17,
-          "model": "Qwen3.8 Max",
-          "slug": "Qwen3.8-Max",
-          "vendor": "阿里巴巴",
-          "score": 1485.3,
-          "votes": 36936,
+          "model": "Gemini 3.7 Flash (High)",
+          "slug": "Gemini 3.7 Flash (High)",
+          "vendor": "Google",
+          "score": 1489.1,
+          "votes": 33059,
           "ci": [
-            1480.7,
-            1489.8
+            1484.5,
+            1493.8
           ]
         },
         {
           "rank": 18,
-          "model": "Muse Spark 1.2 (Xhigh)",
-          "slug": "Muse Spark 1.2 (xHigh)",
-          "vendor": "Meta",
-          "score": 1483.4,
-          "votes": 15563,
+          "model": "Qwen3.8 Max",
+          "slug": "Qwen3.8-Max",
+          "vendor": "阿里巴巴",
+          "score": 1484.9,
+          "votes": 41147,
           "ci": [
-            1477.7,
-            1489.2
+            1480.5,
+            1489.3
           ]
         },
         {
           "rank": 19,
-          "model": "Claude Opus 4.7",
-          "slug": "Claude Opus 4.7",
-          "vendor": "Anthropic",
-          "score": 1483.2,
-          "votes": 65309,
+          "model": "Muse Spark 1.2 (Xhigh)",
+          "slug": "Muse Spark 1.2 (xHigh)",
+          "vendor": "Meta",
+          "score": 1483.5,
+          "votes": 18973,
           "ci": [
-            1479.5,
-            1487
+            1478.1,
+            1488.9
           ]
         },
         {
           "rank": 20,
-          "model": "Gemini 3.5 Flash (High)",
-          "slug": "Gemini 3.5 Flash (High)",
-          "vendor": "Google",
-          "score": 1482.9,
-          "votes": 47588,
+          "model": "Claude Opus 4.7",
+          "slug": "Claude Opus 4.7",
+          "vendor": "Anthropic",
+          "score": 1483.4,
+          "votes": 65114,
           "ci": [
-            1479,
-            1486.8
+            1479.6,
+            1487.1
           ]
         },
         {
           "rank": 21,
-          "model": "Gemini 3.1 Pro Preview",
-          "slug": "Gemini 3.1 Pro Preview",
+          "model": "Gemini 3.5 Flash (High)",
+          "slug": "Gemini 3.5 Flash (High)",
           "vendor": "Google",
-          "score": 1480.1,
-          "votes": 132181,
+          "score": 1482.8,
+          "votes": 47406,
           "ci": [
-            1477.1,
-            1483
+            1478.9,
+            1486.7
           ]
         },
         {
           "rank": 22,
-          "model": "Gemini 3 Pro",
-          "slug": "Gemini 3 Pro",
+          "model": "Gemini 3.1 Pro Preview",
+          "slug": "Gemini 3.1 Pro Preview",
           "vendor": "Google",
-          "score": 1479.5,
-          "votes": 41803,
+          "score": 1480,
+          "votes": 131773,
           "ci": [
-            1475.7,
-            1483.3
+            1477.1,
+            1482.9
           ]
         },
         {
           "rank": 23,
-          "model": "Gemini 3.6 Flash (High)",
-          "slug": "Gemini 3.6 Flash (High)",
+          "model": "Gemini 3 Pro",
+          "slug": "Gemini 3 Pro",
           "vendor": "Google",
-          "score": 1479.4,
-          "votes": 35362,
+          "score": 1479.7,
+          "votes": 41794,
           "ci": [
-            1475,
-            1483.8
+            1476,
+            1483.5
           ]
         },
         {
           "rank": 24,
-          "model": "Muse Spark 1.1",
-          "slug": "Muse Spark 1.1",
-          "vendor": "Meta",
-          "score": 1478.9,
-          "votes": 45519,
+          "model": "Gemini 3.6 Flash (High)",
+          "slug": "Gemini 3.6 Flash (High)",
+          "vendor": "Google",
+          "score": 1479.3,
+          "votes": 35239,
           "ci": [
-            1474.7,
-            1483
+            1474.9,
+            1483.7
           ]
         },
         {
           "rank": 25,
-          "model": "Gemini 3.5 Flash (Medium)",
-          "slug": "Gemini 3.5 Flash (Medium)",
-          "vendor": "Google",
-          "score": 1477.8,
-          "votes": 46329,
+          "model": "Muse Spark 1.1",
+          "slug": "Muse Spark 1.1",
+          "vendor": "Meta",
+          "score": 1479.2,
+          "votes": 45294,
           "ci": [
-            1473.7,
-            1482
+            1475,
+            1483.3
           ]
         },
         {
           "rank": 26,
-          "model": "GLM-5.3 (Max)",
-          "slug": "GLM-5.3 (Max)",
-          "vendor": "智谱 AI",
-          "score": 1474.9,
-          "votes": 31604,
+          "model": "Gemini 3.5 Flash (Medium)",
+          "slug": "Gemini 3.5 Flash (Medium)",
+          "vendor": "Google",
+          "score": 1477.7,
+          "votes": 46115,
           "ci": [
-            1470.3,
-            1479.6
+            1473.6,
+            1481.9
           ]
         },
         {
           "rank": 27,
-          "model": "Qwen3.7 Max Preview",
-          "slug": "Qwen3.7-Max-Preview",
-          "vendor": "阿里巴巴",
-          "score": 1474.7,
-          "votes": 3896,
+          "model": "Claude Fable 5.2 (Max)",
+          "slug": "Claude Fable 5.2 (Max)",
+          "vendor": "Anthropic",
+          "score": 1477.2,
+          "votes": 5842,
           "ci": [
-            1465,
-            1484.4
+            1468.8,
+            1485.6
           ]
         },
         {
@@ -393,35 +393,35 @@
           "model": "Kimi K3 (Max)",
           "slug": "Kimi K3 (Max)",
           "vendor": "月之暗面",
-          "score": 1474.6,
-          "votes": 41402,
+          "score": 1474.8,
+          "votes": 45111,
           "ci": [
-            1470.3,
+            1470.6,
             1478.9
           ]
         },
         {
           "rank": 29,
-          "model": "Muse Spark",
-          "slug": "Muse Spark",
-          "vendor": "Meta",
-          "score": 1474.2,
-          "votes": 13985,
+          "model": "Qwen3.7 Max Preview",
+          "slug": "Qwen3.7-Max-Preview",
+          "vendor": "阿里巴巴",
+          "score": 1474.8,
+          "votes": 3888,
           "ci": [
-            1468.5,
-            1480
+            1465,
+            1484.5
           ]
         },
         {
           "rank": 30,
-          "model": "GLM 5.3 Flash",
-          "slug": "GLM-5.3-Flash",
+          "model": "GLM-5.3 (Max)",
+          "slug": "GLM-5.3 (Max)",
           "vendor": "智谱 AI",
-          "score": 1471.7,
-          "votes": 51019,
+          "score": 1474.6,
+          "votes": 35486,
           "ci": [
-            1467.3,
-            1476.1
+            1470.1,
+            1479.1
           ]
         }
       ],
@@ -436,8 +436,8 @@
       "metricHint": "LMArena 官方中文分榜，只统计中文对话对战结果。",
       "url": "https://lmarena.ai/leaderboard",
       "license": "CC BY 4.0",
-      "updatedAt": "2026-11-11",
-      "sampleSize": 395,
+      "updatedAt": "2026-11-22",
+      "sampleSize": 399,
       "ranked": [
         {
           "rank": 1,
@@ -445,10 +445,10 @@
           "slug": "Gemini 4 Hydrogen (High)",
           "vendor": "Google",
           "score": 1630.6,
-          "votes": 329,
+          "votes": 345,
           "ci": [
-            1597.2,
-            1664
+            1598.1,
+            1663.1
           ]
         },
         {
@@ -456,11 +456,11 @@
           "model": "Gemini 4 Carbon (High)",
           "slug": "Gemini 4 Carbon (High)",
           "vendor": "Google",
-          "score": 1613.1,
-          "votes": 426,
+          "score": 1616.3,
+          "votes": 424,
           "ci": [
-            1583.7,
-            1642.6
+            1586.7,
+            1645.8
           ]
         },
         {
@@ -468,35 +468,35 @@
           "model": "Gemini 4 Argon (High)",
           "slug": "Gemini 4 Argon (High)",
           "vendor": "Google",
-          "score": 1605.2,
-          "votes": 1676,
+          "score": 1609.3,
+          "votes": 2380,
           "ci": [
-            1589.6,
-            1620.8
+            1595.9,
+            1622.7
           ]
         },
         {
           "rank": 4,
-          "model": "Claude Fable 5.1 (Max)",
-          "slug": "Claude Fable 5.1 (Max)",
-          "vendor": "Anthropic",
-          "score": 1582.2,
-          "votes": 1622,
+          "model": "Gemini 4 Neon (High)",
+          "slug": "Gemini 4 Neon (High)",
+          "vendor": "Google",
+          "score": 1591,
+          "votes": 438,
           "ci": [
-            1566.5,
-            1597.9
+            1561.2,
+            1620.7
           ]
         },
         {
           "rank": 5,
-          "model": "Claude Opus 5 (Max)",
-          "slug": "Claude Opus 5 (Max)",
+          "model": "Claude Fable 5.1 (Max)",
+          "slug": "Claude Fable 5.1 (Max)",
           "vendor": "Anthropic",
-          "score": 1574.5,
-          "votes": 2771,
+          "score": 1585.7,
+          "votes": 1804,
           "ci": [
-            1562.3,
-            1586.7
+            1570.7,
+            1600.7
           ]
         },
         {
@@ -504,119 +504,119 @@
           "model": "Claude Opus 5.5 (High)",
           "slug": "Claude Opus 5.5 (High)",
           "vendor": "Anthropic",
-          "score": 1572.5,
-          "votes": 1349,
+          "score": 1574.9,
+          "votes": 1643,
           "ci": [
-            1555.4,
-            1589.7
+            1559.1,
+            1590.7
           ]
         },
         {
           "rank": 7,
-          "model": "Claude Opus 5 (High)",
-          "slug": "Claude Opus 5 (High)",
+          "model": "Claude Opus 5 (Max)",
+          "slug": "Claude Opus 5 (Max)",
           "vendor": "Anthropic",
-          "score": 1570.2,
-          "votes": 5811,
+          "score": 1574.7,
+          "votes": 2776,
           "ci": [
-            1561.2,
-            1579.2
+            1562.5,
+            1586.9
           ]
         },
         {
           "rank": 8,
-          "model": "Gemini 3.8 Flash (High)",
-          "slug": "Gemini 3.8 Flash (High)",
-          "vendor": "Google",
-          "score": 1557.1,
-          "votes": 5123,
+          "model": "Claude Opus 5 (High)",
+          "slug": "Claude Opus 5 (High)",
+          "vendor": "Anthropic",
+          "score": 1569.9,
+          "votes": 5818,
           "ci": [
-            1547.7,
-            1566.6
+            1560.9,
+            1578.8
           ]
         },
         {
           "rank": 9,
-          "model": "Gemini 3.7 Flash (High)",
-          "slug": "Gemini 3.7 Flash (High)",
+          "model": "Gemini 3.8 Flash (High)",
+          "slug": "Gemini 3.8 Flash (High)",
           "vendor": "Google",
-          "score": 1552.9,
-          "votes": 2597,
+          "score": 1562.5,
+          "votes": 6301,
           "ci": [
-            1540.5,
-            1565.4
+            1553.6,
+            1571.5
           ]
         },
         {
           "rank": 10,
-          "model": "Claude Opus 4.6 (High)",
-          "slug": "Claude Opus 4.6 (High)",
-          "vendor": "Anthropic",
-          "score": 1550,
-          "votes": 5899,
+          "model": "Gemini 3.7 Flash (High)",
+          "slug": "Gemini 3.7 Flash (High)",
+          "vendor": "Google",
+          "score": 1554.5,
+          "votes": 2595,
           "ci": [
-            1541.4,
-            1558.6
+            1542,
+            1567
           ]
         },
         {
           "rank": 11,
-          "model": "Claude Opus 4.6",
-          "slug": "Claude Opus 4.6",
+          "model": "Claude Opus 4.6 (High)",
+          "slug": "Claude Opus 4.6 (High)",
           "vendor": "Anthropic",
-          "score": 1546.8,
-          "votes": 6130,
+          "score": 1550.2,
+          "votes": 5875,
           "ci": [
-            1538.4,
-            1555.2
+            1541.6,
+            1558.7
           ]
         },
         {
           "rank": 12,
-          "model": "Claude Fable 5 (High)",
-          "slug": "Claude Fable 5 (High)",
+          "model": "Claude Opus 4.6",
+          "slug": "Claude Opus 4.6",
           "vendor": "Anthropic",
-          "score": 1544.5,
-          "votes": 3322,
+          "score": 1546.3,
+          "votes": 6118,
           "ci": [
-            1533.6,
-            1555.4
+            1537.9,
+            1554.7
           ]
         },
         {
           "rank": 13,
-          "model": "Qwen3.8 Max",
-          "slug": "Qwen3.8-Max",
-          "vendor": "阿里巴巴",
-          "score": 1543.1,
-          "votes": 2752,
+          "model": "Claude Fable 5 (High)",
+          "slug": "Claude Fable 5 (High)",
+          "vendor": "Anthropic",
+          "score": 1544.6,
+          "votes": 3322,
           "ci": [
-            1531.1,
-            1555
+            1533.7,
+            1555.5
           ]
         },
         {
           "rank": 14,
-          "model": "Muse Wonder (Max)",
-          "slug": "Muse Wonder (Max)",
-          "vendor": "Meta",
-          "score": 1535.7,
-          "votes": 1023,
+          "model": "Qwen3.8 Max",
+          "slug": "Qwen3.8-Max",
+          "vendor": "阿里巴巴",
+          "score": 1543.9,
+          "votes": 3112,
           "ci": [
-            1516.9,
-            1554.5
+            1532.5,
+            1555.3
           ]
         },
         {
           "rank": 15,
-          "model": "GLM-5.3 (Max)",
-          "slug": "GLM-5.3 (Max)",
-          "vendor": "智谱 AI",
-          "score": 1534.6,
-          "votes": 2406,
+          "model": "Muse Wonder (Max)",
+          "slug": "Muse Wonder (Max)",
+          "vendor": "Meta",
+          "score": 1537.2,
+          "votes": 1412,
           "ci": [
-            1521.8,
-            1547.4
+            1520.8,
+            1553.6
           ]
         },
         {
@@ -624,23 +624,23 @@
           "model": "Qwen3.5 Max Preview",
           "slug": "Qwen3.5-Max-Preview",
           "vendor": "阿里巴巴",
-          "score": 1533.6,
-          "votes": 1569,
+          "score": 1534.4,
+          "votes": 1568,
           "ci": [
-            1518.2,
-            1549
+            1519,
+            1549.8
           ]
         },
         {
           "rank": 17,
-          "model": "GPT 5.5",
-          "slug": "GPT-5.5",
-          "vendor": "OpenAI",
-          "score": 1533.5,
-          "votes": 4347,
+          "model": "GLM-5.3 (Max)",
+          "slug": "GLM-5.3 (Max)",
+          "vendor": "智谱 AI",
+          "score": 1534.4,
+          "votes": 2712,
           "ci": [
-            1523.8,
-            1543.3
+            1522.2,
+            1546.5
           ]
         },
         {
@@ -648,23 +648,23 @@
           "model": "Gemini 3.6 Flash (High)",
           "slug": "Gemini 3.6 Flash (High)",
           "vendor": "Google",
-          "score": 1533.1,
-          "votes": 2586,
+          "score": 1533.8,
+          "votes": 2569,
           "ci": [
-            1521,
-            1545.1
+            1521.8,
+            1545.9
           ]
         },
         {
           "rank": 19,
-          "model": "Claude Sonnet 5.5 (Xhigh)",
-          "slug": "Claude Sonnet 5.5 (xHigh)",
-          "vendor": "Anthropic",
-          "score": 1532.7,
-          "votes": 1195,
+          "model": "GPT 5.5",
+          "slug": "GPT-5.5",
+          "vendor": "OpenAI",
+          "score": 1533.8,
+          "votes": 4333,
           "ci": [
-            1514.8,
-            1550.7
+            1524,
+            1543.6
           ]
         },
         {
@@ -672,131 +672,131 @@
           "model": "Claude Opus 4.7 (High)",
           "slug": "Claude Opus 4.7 (High)",
           "vendor": "Anthropic",
-          "score": 1532,
-          "votes": 4098,
+          "score": 1532.6,
+          "votes": 4080,
           "ci": [
-            1522.1,
-            1541.9
+            1522.7,
+            1542.5
           ]
         },
         {
           "rank": 21,
-          "model": "Claude Opus 4.7",
-          "slug": "Claude Opus 4.7",
+          "model": "Claude Sonnet 5.5 (Xhigh)",
+          "slug": "Claude Sonnet 5.5 (xHigh)",
           "vendor": "Anthropic",
-          "score": 1529.8,
-          "votes": 4057,
+          "score": 1531,
+          "votes": 1467,
           "ci": [
-            1519.8,
-            1539.9
+            1514.6,
+            1547.3
           ]
         },
         {
           "rank": 22,
-          "model": "Muse Spark 1.3 (Max)",
-          "slug": "Muse Spark 1.3 (Max)",
-          "vendor": "Meta",
-          "score": 1528.5,
-          "votes": 2047,
+          "model": "MiMo V2.6 Pro",
+          "slug": "MiMo-V2.6-Pro",
+          "vendor": "小米",
+          "score": 1530.9,
+          "votes": 294,
           "ci": [
-            1514.9,
-            1542.1
+            1497.5,
+            1564.2
           ]
         },
         {
           "rank": 23,
-          "model": "Gemini 3.1 Pro Preview",
-          "slug": "Gemini 3.1 Pro Preview",
-          "vendor": "Google",
-          "score": 1528.3,
-          "votes": 9096,
+          "model": "Claude Fable 5.2 (Max)",
+          "slug": "Claude Fable 5.2 (Max)",
+          "vendor": "Anthropic",
+          "score": 1530.3,
+          "votes": 475,
           "ci": [
-            1521.2,
-            1535.5
+            1502.8,
+            1557.7
           ]
         },
         {
           "rank": 24,
-          "model": "MiMo V2.6 Pro",
-          "slug": "MiMo-V2.6-Pro",
-          "vendor": "小米",
-          "score": 1528.1,
-          "votes": 294,
+          "model": "Claude Opus 4.7",
+          "slug": "Claude Opus 4.7",
+          "vendor": "Anthropic",
+          "score": 1530.3,
+          "votes": 4046,
           "ci": [
-            1494.8,
-            1561.4
+            1520.2,
+            1540.3
           ]
         },
         {
           "rank": 25,
-          "model": "GLM 5.3 Flash",
-          "slug": "GLM-5.3-Flash",
-          "vendor": "智谱 AI",
-          "score": 1528,
-          "votes": 3886,
+          "model": "Gemini 3.1 Pro Preview",
+          "slug": "Gemini 3.1 Pro Preview",
+          "vendor": "Google",
+          "score": 1528.5,
+          "votes": 9084,
           "ci": [
-            1517.6,
-            1538.4
+            1521.4,
+            1535.6
           ]
         },
         {
           "rank": 26,
-          "model": "Gemini 3.5 Flash (Medium)",
-          "slug": "Gemini 3.5 Flash (Medium)",
-          "vendor": "Google",
-          "score": 1527.1,
-          "votes": 3325,
+          "model": "Kimi K3 (Max)",
+          "slug": "Kimi K3 (Max)",
+          "vendor": "月之暗面",
+          "score": 1527.9,
+          "votes": 3307,
           "ci": [
-            1516.3,
-            1537.9
+            1517,
+            1538.8
           ]
         },
         {
           "rank": 27,
-          "model": "Kimi K3 (Max)",
-          "slug": "Kimi K3 (Max)",
-          "vendor": "月之暗面",
-          "score": 1526.9,
-          "votes": 3019,
+          "model": "GLM 5.3 Flash",
+          "slug": "GLM-5.3-Flash",
+          "vendor": "智谱 AI",
+          "score": 1527.9,
+          "votes": 4405,
           "ci": [
-            1515.7,
-            1538.2
+            1518,
+            1537.9
           ]
         },
         {
           "rank": 28,
-          "model": "Qwen3.7 Max Preview",
-          "slug": "Qwen3.7-Max-Preview",
-          "vendor": "阿里巴巴",
-          "score": 1526.1,
-          "votes": 320,
+          "model": "Muse Spark 1.3 (Max)",
+          "slug": "Muse Spark 1.3 (Max)",
+          "vendor": "Meta",
+          "score": 1527.2,
+          "votes": 2398,
           "ci": [
-            1492.2,
-            1559.9
+            1514.5,
+            1539.9
           ]
         },
         {
           "rank": 29,
-          "model": "Gemini 3.5 Flash (High)",
-          "slug": "Gemini 3.5 Flash (High)",
+          "model": "Gemini 3.5 Flash (Medium)",
+          "slug": "Gemini 3.5 Flash (Medium)",
           "vendor": "Google",
-          "score": 1525.7,
-          "votes": 3478,
+          "score": 1526.8,
+          "votes": 3305,
           "ci": [
-            1515,
-            1536.4
+            1516,
+            1537.7
           ]
         },
         {
           "rank": 30,
-          "model": "GPT-5.6 Sol (Xhigh)",
-          "slug": "GPT-5.6 Sol (xHigh)",
-          "vendor": "OpenAI",
-          "score": 1525.5,
-          "votes": 3370,
+          "model": "Gemini 3.5 Flash (High)",
+          "slug": "Gemini 3.5 Flash (High)",
+          "vendor": "Google",
+          "score": 1525.7,
+          "votes": 3476,
           "ci": [
-            1514.6,
-            1536.4
+            1515,
+            1536.3
           ]
         }
       ],
@@ -811,55 +811,55 @@
       "metricHint": "只统计编程类问题的对战结果。",
       "url": "https://lmarena.ai/leaderboard",
       "license": "CC BY 4.0",
-      "updatedAt": "2026-11-11",
-      "sampleSize": 416,
+      "updatedAt": "2026-11-22",
+      "sampleSize": 422,
       "ranked": [
         {
           "rank": 1,
           "model": "Gemini 4 Carbon (High)",
           "slug": "Gemini 4 Carbon (High)",
           "vendor": "Google",
-          "score": 1564.4,
-          "votes": 1069,
+          "score": 1563.4,
+          "votes": 1059,
           "ci": [
-            1545.7,
-            1583
+            1544.7,
+            1582.2
           ]
         },
         {
           "rank": 2,
-          "model": "Claude Opus 5.5 (High)",
-          "slug": "Claude Opus 5.5 (High)",
-          "vendor": "Anthropic",
-          "score": 1543.4,
-          "votes": 3460,
+          "model": "Gemini 4 Neon (High)",
+          "slug": "Gemini 4 Neon (High)",
+          "vendor": "Google",
+          "score": 1555,
+          "votes": 1320,
           "ci": [
-            1532.5,
-            1554.3
+            1538,
+            1571.9
           ]
         },
         {
           "rank": 3,
-          "model": "Gemini 4 Argon (High)",
-          "slug": "Gemini 4 Argon (High)",
-          "vendor": "Google",
-          "score": 1540.2,
-          "votes": 4833,
+          "model": "Claude Opus 5.5 (High)",
+          "slug": "Claude Opus 5.5 (High)",
+          "vendor": "Anthropic",
+          "score": 1542.8,
+          "votes": 4152,
           "ci": [
-            1530.9,
-            1549.6
+            1532.6,
+            1553
           ]
         },
         {
           "rank": 4,
-          "model": "Claude Opus 4.6",
-          "slug": "Claude Opus 4.6",
-          "vendor": "Anthropic",
-          "score": 1534,
-          "votes": 24530,
+          "model": "Gemini 4 Argon (High)",
+          "slug": "Gemini 4 Argon (High)",
+          "vendor": "Google",
+          "score": 1540.2,
+          "votes": 6727,
           "ci": [
-            1528.9,
-            1539
+            1531.9,
+            1548.5
           ]
         },
         {
@@ -867,35 +867,35 @@
           "model": "MiMo V2.6 Pro",
           "slug": "MiMo-V2.6-Pro",
           "vendor": "小米",
-          "score": 1533.6,
-          "votes": 1091,
+          "score": 1534.6,
+          "votes": 1087,
           "ci": [
-            1515.7,
-            1551.5
+            1516.6,
+            1552.5
           ]
         },
         {
           "rank": 6,
-          "model": "Claude Opus 5 (Max)",
-          "slug": "Claude Opus 5 (Max)",
+          "model": "Claude Opus 4.6",
+          "slug": "Claude Opus 4.6",
           "vendor": "Anthropic",
-          "score": 1532,
-          "votes": 8842,
+          "score": 1534,
+          "votes": 24458,
           "ci": [
-            1524.7,
-            1539.3
+            1528.9,
+            1539
           ]
         },
         {
           "rank": 7,
-          "model": "Claude Opus 5 (High)",
-          "slug": "Claude Opus 5 (High)",
+          "model": "Claude Opus 5 (Max)",
+          "slug": "Claude Opus 5 (Max)",
           "vendor": "Anthropic",
-          "score": 1530.8,
-          "votes": 18770,
+          "score": 1532,
+          "votes": 8804,
           "ci": [
-            1525,
-            1536.7
+            1524.7,
+            1539.2
           ]
         },
         {
@@ -903,71 +903,71 @@
           "model": "Claude Opus 4.6 (High)",
           "slug": "Claude Opus 4.6 (High)",
           "vendor": "Anthropic",
-          "score": 1530.6,
-          "votes": 21711,
+          "score": 1531,
+          "votes": 21651,
           "ci": [
-            1525.4,
-            1535.8
+            1525.8,
+            1536.2
           ]
         },
         {
           "rank": 9,
-          "model": "Claude Fable 5.1 (Max)",
-          "slug": "Claude Fable 5.1 (Max)",
+          "model": "Claude Opus 5 (High)",
+          "slug": "Claude Opus 5 (High)",
           "vendor": "Anthropic",
-          "score": 1527.4,
-          "votes": 4008,
+          "score": 1530.7,
+          "votes": 18683,
           "ci": [
-            1517.4,
-            1537.3
+            1524.9,
+            1536.6
           ]
         },
         {
           "rank": 10,
-          "model": "Claude Opus 4.7 (High)",
-          "slug": "Claude Opus 4.7 (High)",
+          "model": "Claude Fable 5.1 (Max)",
+          "slug": "Claude Fable 5.1 (Max)",
           "vendor": "Anthropic",
-          "score": 1518.9,
-          "votes": 18334,
+          "score": 1528.1,
+          "votes": 4418,
           "ci": [
-            1513.1,
-            1524.8
+            1518.6,
+            1537.7
           ]
         },
         {
           "rank": 11,
-          "model": "Claude Fable 5 (High)",
-          "slug": "Claude Fable 5 (High)",
-          "vendor": "Anthropic",
-          "score": 1518.8,
-          "votes": 11651,
+          "model": "Muse Wonder (Max)",
+          "slug": "Muse Wonder (Max)",
+          "vendor": "Meta",
+          "score": 1522.5,
+          "votes": 4087,
           "ci": [
             1512.4,
-            1525.2
+            1532.5
           ]
         },
         {
           "rank": 12,
-          "model": "Gemini 4 Hydrogen (High)",
-          "slug": "Gemini 4 Hydrogen (High)",
-          "vendor": "Google",
-          "score": 1515.9,
-          "votes": 1044,
+          "model": "Claude Opus 4.7 (High)",
+          "slug": "Claude Opus 4.7 (High)",
+          "vendor": "Anthropic",
+          "score": 1519,
+          "votes": 18273,
           "ci": [
-            1497.5,
-            1534.2
+            1513.2,
+            1524.8
           ]
         },
         {
           "rank": 13,
-          "model": "Muse Wonder (Max)",
-          "slug": "Muse Wonder (Max)",
-          "vendor": "Meta",
-          "score": 1515.6,
-          "votes": 3042,
+          "model": "Claude Fable 5 (High)",
+          "slug": "Claude Fable 5 (High)",
+          "vendor": "Anthropic",
+          "score": 1518.6,
+          "votes": 11602,
           "ci": [
-            1504.3,
-            1526.9
+            1512.3,
+            1525
           ]
         },
         {
@@ -975,83 +975,83 @@
           "model": "Claude Opus 4.7",
           "slug": "Claude Opus 4.7",
           "vendor": "Anthropic",
-          "score": 1515.4,
-          "votes": 18521,
+          "score": 1515.1,
+          "votes": 18499,
           "ci": [
-            1509.6,
-            1521.2
+            1509.3,
+            1520.9
           ]
         },
         {
           "rank": 15,
-          "model": "Gemini 3.8 Flash (High)",
-          "slug": "Gemini 3.8 Flash (High)",
+          "model": "Gemini 4 Hydrogen (High)",
+          "slug": "Gemini 4 Hydrogen (High)",
           "vendor": "Google",
-          "score": 1510.1,
-          "votes": 15812,
+          "score": 1512.4,
+          "votes": 1075,
           "ci": [
-            1504,
-            1516.2
+            1494.3,
+            1530.5
           ]
         },
         {
           "rank": 16,
-          "model": "GLM 5.3 Flash",
-          "slug": "GLM-5.3-Flash",
-          "vendor": "智谱 AI",
-          "score": 1509.4,
-          "votes": 12885,
+          "model": "Muse Spark 1.3 (Max)",
+          "slug": "Muse Spark 1.3 (Max)",
+          "vendor": "Meta",
+          "score": 1509.6,
+          "votes": 7796,
           "ci": [
-            1502.9,
-            1515.9
+            1502,
+            1517.2
           ]
         },
         {
           "rank": 17,
-          "model": "Muse Spark 1.3 (Max)",
-          "slug": "Muse Spark 1.3 (Max)",
-          "vendor": "Meta",
-          "score": 1508.7,
-          "votes": 6830,
+          "model": "Gemini 3.8 Flash (High)",
+          "slug": "Gemini 3.8 Flash (High)",
+          "vendor": "Google",
+          "score": 1509.4,
+          "votes": 19012,
           "ci": [
-            1500.7,
-            1516.6
+            1503.5,
+            1515.2
           ]
         },
         {
           "rank": 18,
-          "model": "Kimi K3 (Max)",
-          "slug": "Kimi K3 (Max)",
-          "vendor": "月之暗面",
-          "score": 1506.3,
-          "votes": 10247,
+          "model": "GLM 5.3 Flash",
+          "slug": "GLM-5.3-Flash",
+          "vendor": "智谱 AI",
+          "score": 1509.4,
+          "votes": 14221,
           "ci": [
-            1499.6,
-            1513
+            1503.1,
+            1515.6
           ]
         },
         {
           "rank": 19,
-          "model": "Muse Spark 1.2 (Xhigh)",
-          "slug": "Muse Spark 1.2 (xHigh)",
-          "vendor": "Meta",
-          "score": 1505.9,
-          "votes": 3912,
+          "model": "Kimi K3 (Max)",
+          "slug": "Kimi K3 (Max)",
+          "vendor": "月之暗面",
+          "score": 1505.6,
+          "votes": 11065,
           "ci": [
-            1495.7,
-            1516.1
+            1499.1,
+            1512.1
           ]
         },
         {
           "rank": 20,
-          "model": "DeepSeek-V4.1-Flash-20260910 (Max)",
-          "slug": "DeepSeek-V4.1-Flash-20260910 (Max)",
-          "vendor": "DeepSeek",
-          "score": 1503.8,
-          "votes": 3709,
+          "model": "Muse Spark 1.2 (Xhigh)",
+          "slug": "Muse Spark 1.2 (xHigh)",
+          "vendor": "Meta",
+          "score": 1504.4,
+          "votes": 4703,
           "ci": [
-            1493.7,
-            1513.8
+            1494.9,
+            1513.9
           ]
         },
         {
@@ -1059,11 +1059,11 @@
           "model": "Claude Sonnet 4.6",
           "slug": "Claude Sonnet 4.6",
           "vendor": "Anthropic",
-          "score": 1503.5,
-          "votes": 19428,
+          "score": 1503.6,
+          "votes": 19370,
           "ci": [
-            1497.9,
-            1509
+            1498.1,
+            1509.1
           ]
         },
         {
@@ -1071,107 +1071,107 @@
           "model": "Claude Opus 4.5 (High, 32K, 20251101)",
           "slug": "Claude Opus 4.5 (High, 32K, 20251101)",
           "vendor": "Anthropic",
-          "score": 1503.3,
-          "votes": 7749,
+          "score": 1503.2,
+          "votes": 7750,
           "ci": [
-            1496.2,
-            1510.5
+            1496.1,
+            1510.4
           ]
         },
         {
           "rank": 23,
-          "model": "Qwen3.8 Max",
-          "slug": "Qwen3.8-Max",
-          "vendor": "阿里巴巴",
-          "score": 1501.7,
-          "votes": 9849,
+          "model": "DeepSeek-V4.1-Flash-20260910 (Max)",
+          "slug": "DeepSeek-V4.1-Flash-20260910 (Max)",
+          "vendor": "DeepSeek",
+          "score": 1503.2,
+          "votes": 3693,
           "ci": [
-            1494.8,
-            1508.6
+            1493.1,
+            1513.3
           ]
         },
         {
           "rank": 24,
-          "model": "Claude Sonnet 5.5 (Xhigh)",
-          "slug": "Claude Sonnet 5.5 (xHigh)",
-          "vendor": "Anthropic",
-          "score": 1500.9,
-          "votes": 3301,
+          "model": "Qwen3.8 Max",
+          "slug": "Qwen3.8-Max",
+          "vendor": "阿里巴巴",
+          "score": 1502.7,
+          "votes": 10866,
           "ci": [
-            1489.8,
-            1512
+            1496.1,
+            1509.3
           ]
         },
         {
           "rank": 25,
-          "model": "MiMo V2.5 Pro",
-          "slug": "MiMo-V2.5-Pro",
-          "vendor": "小米",
-          "score": 1500.6,
-          "votes": 20596,
+          "model": "Gemini 3.7 Flash (High)",
+          "slug": "Gemini 3.7 Flash (High)",
+          "vendor": "Google",
+          "score": 1500.8,
+          "votes": 8882,
           "ci": [
-            1495.2,
-            1506
+            1493.5,
+            1508.1
           ]
         },
         {
           "rank": 26,
-          "model": "Gemini 3.7 Flash (High)",
-          "slug": "Gemini 3.7 Flash (High)",
-          "vendor": "Google",
-          "score": 1500.4,
-          "votes": 8953,
+          "model": "MiMo V2.5 Pro",
+          "slug": "MiMo-V2.5-Pro",
+          "vendor": "小米",
+          "score": 1500.5,
+          "votes": 20520,
           "ci": [
-            1493.2,
-            1507.7
+            1495.1,
+            1505.9
           ]
         },
         {
           "rank": 27,
-          "model": "Claude Opus 4.5 (20251101)",
-          "slug": "Claude Opus 4.5 (20251101)",
-          "vendor": "Anthropic",
-          "score": 1498.7,
-          "votes": 17807,
+          "model": "GLM-5.3 (Max)",
+          "slug": "GLM-5.3 (Max)",
+          "vendor": "智谱 AI",
+          "score": 1499.7,
+          "votes": 8144,
           "ci": [
-            1493.5,
-            1504
+            1492.3,
+            1507.1
           ]
         },
         {
           "rank": 28,
-          "model": "GLM-5.3 (Max)",
-          "slug": "GLM-5.3 (Max)",
-          "vendor": "智谱 AI",
-          "score": 1498.5,
-          "votes": 7348,
+          "model": "Claude Sonnet 5.5 (Xhigh)",
+          "slug": "Claude Sonnet 5.5 (xHigh)",
+          "vendor": "Anthropic",
+          "score": 1499.6,
+          "votes": 3993,
           "ci": [
-            1490.8,
-            1506.2
+            1489.4,
+            1509.8
           ]
         },
         {
           "rank": 29,
-          "model": "Muse Spark 1.1",
-          "slug": "Muse Spark 1.1",
-          "vendor": "Meta",
-          "score": 1498.1,
-          "votes": 12519,
+          "model": "Claude Opus 4.5 (20251101)",
+          "slug": "Claude Opus 4.5 (20251101)",
+          "vendor": "Anthropic",
+          "score": 1498.6,
+          "votes": 17794,
           "ci": [
-            1491.8,
-            1504.4
+            1493.3,
+            1503.9
           ]
         },
         {
           "rank": 30,
-          "model": "Qwen3.7 Max Preview",
-          "slug": "Qwen3.7-Max-Preview",
-          "vendor": "阿里巴巴",
-          "score": 1498,
-          "votes": 1145,
+          "model": "Muse Spark 1.1",
+          "slug": "Muse Spark 1.1",
+          "vendor": "Meta",
+          "score": 1498.2,
+          "votes": 12447,
           "ci": [
-            1479.8,
-            1516.1
+            1491.9,
+            1504.5
           ]
         }
       ],
@@ -1201,6 +1201,26 @@
         },
         {
           "rank": 2,
+          "model": "GPT-6.2 Astra",
+          "slug": "openai/gpt-6.2-astra",
+          "vendor": "OpenAI",
+          "score": 62.1,
+          "context": 1050000,
+          "priceIn": 8,
+          "priceOut": 40
+        },
+        {
+          "rank": 3,
+          "model": "Gemini 4 Neon",
+          "slug": "google/gemini-4-neon",
+          "vendor": "Google",
+          "score": 61.4,
+          "context": 1048576,
+          "priceIn": 3,
+          "priceOut": 15
+        },
+        {
+          "rank": 4,
           "model": "Gemini 4 Carbon",
           "slug": "google/gemini-4-carbon",
           "vendor": "Google",
@@ -1210,7 +1230,7 @@
           "priceOut": 10
         },
         {
-          "rank": 3,
+          "rank": 5,
           "model": "Claude Opus 5.5",
           "slug": "anthropic/claude-opus-5.5",
           "vendor": "Anthropic",
@@ -1220,7 +1240,17 @@
           "priceOut": 20
         },
         {
-          "rank": 4,
+          "rank": 6,
+          "model": "GPT-6.2 Sol",
+          "slug": "openai/gpt-6.2-sol",
+          "vendor": "OpenAI",
+          "score": 57.3,
+          "context": 1050000,
+          "priceIn": 2,
+          "priceOut": 10
+        },
+        {
+          "rank": 7,
           "model": "GPT-6 Astra",
           "slug": "openai/gpt-6-astra",
           "vendor": "OpenAI",
@@ -1230,7 +1260,7 @@
           "priceOut": 50
         },
         {
-          "rank": 5,
+          "rank": 8,
           "model": "GPT-6.1 Sol",
           "slug": "openai/gpt-6.1-sol",
           "vendor": "OpenAI",
@@ -1240,7 +1270,7 @@
           "priceOut": 10
         },
         {
-          "rank": 6,
+          "rank": 9,
           "model": "Claude Sonnet 5.5",
           "slug": "anthropic/claude-sonnet-5.5",
           "vendor": "Anthropic",
@@ -1250,7 +1280,7 @@
           "priceOut": 10
         },
         {
-          "rank": 7,
+          "rank": 10,
           "model": "Gemini 4 Hydrogen",
           "slug": "google/gemini-4-hydrogen",
           "vendor": "Google",
@@ -1260,7 +1290,7 @@
           "priceOut": 7.5
         },
         {
-          "rank": 8,
+          "rank": 11,
           "model": "GPT-6.1 Terra",
           "slug": "openai/gpt-6.1-terra",
           "vendor": "OpenAI",
@@ -1270,7 +1300,7 @@
           "priceOut": 5
         },
         {
-          "rank": 9,
+          "rank": 12,
           "model": "Gemini 4 Argon",
           "slug": "google/gemini-4-argon",
           "vendor": "Google",
@@ -1280,7 +1310,7 @@
           "priceOut": 10
         },
         {
-          "rank": 10,
+          "rank": 13,
           "model": "Claude Fable 5.1",
           "slug": "anthropic/claude-fable-5.1",
           "vendor": "Anthropic",
@@ -1290,7 +1320,7 @@
           "priceOut": 50
         },
         {
-          "rank": 11,
+          "rank": 14,
           "model": "Kimi K3.1 Pro",
           "slug": "moonshotai/kimi-k3.1-pro",
           "vendor": "月之暗面",
@@ -1300,7 +1330,7 @@
           "priceOut": 8.402299999999999
         },
         {
-          "rank": 12,
+          "rank": 15,
           "model": "GPT-6 Sol",
           "slug": "openai/gpt-6-sol",
           "vendor": "OpenAI",
@@ -1310,7 +1340,7 @@
           "priceOut": 10
         },
         {
-          "rank": 13,
+          "rank": 16,
           "model": "Claude Opus 5",
           "slug": "anthropic/claude-opus-5",
           "vendor": "Anthropic",
@@ -1320,7 +1350,7 @@
           "priceOut": 25
         },
         {
-          "rank": 14,
+          "rank": 17,
           "model": "Muse Wonder",
           "slug": "meta/muse-wonder",
           "vendor": "Meta",
@@ -1330,7 +1360,17 @@
           "priceOut": 20
         },
         {
-          "rank": 15,
+          "rank": 18,
+          "model": "Qwen4 Max",
+          "slug": "qwen/qwen4-max",
+          "vendor": "阿里巴巴",
+          "score": 42.9,
+          "context": 1000000,
+          "priceIn": 1.4249999999999998,
+          "priceOut": 4.2749999999999995
+        },
+        {
+          "rank": 19,
           "model": "Muse Spark 1.3",
           "slug": "meta/muse-spark-1.3",
           "vendor": "Meta",
@@ -1340,7 +1380,7 @@
           "priceOut": 4.25
         },
         {
-          "rank": 16,
+          "rank": 20,
           "model": "Claude Haiku 5.5",
           "slug": "anthropic/claude-haiku-5.5",
           "vendor": "Anthropic",
@@ -1350,17 +1390,27 @@
           "priceOut": 0.5
         },
         {
-          "rank": 17,
+          "rank": 21,
+          "model": "Muse Ember",
+          "slug": "meta/muse-ember",
+          "vendor": "Meta",
+          "score": 36,
+          "context": 1048576,
+          "priceIn": 0.09999999999999999,
+          "priceOut": 0.5
+        },
+        {
+          "rank": 22,
           "model": "Grok 4.7",
           "slug": "x-ai/grok-4.7",
-          "vendor": "SpaceXAI",
+          "vendor": "SpaceXSI",
           "score": 35.5,
           "context": 500000,
           "priceIn": 2,
           "priceOut": 6
         },
         {
-          "rank": 18,
+          "rank": 23,
           "model": "Hy4",
           "slug": "tencent/hy4",
           "vendor": "腾讯",
@@ -1370,7 +1420,7 @@
           "priceOut": 1.2505
         },
         {
-          "rank": 19,
+          "rank": 24,
           "model": "Qwen3.8 Max (0902)",
           "slug": "qwen/qwen3.8-max-0902",
           "vendor": "阿里巴巴",
@@ -1380,7 +1430,17 @@
           "priceOut": 6
         },
         {
-          "rank": 20,
+          "rank": 25,
+          "model": "DeepSeek V4.1 Flash 1017",
+          "slug": "deepseek/deepseek-v4.1-flash-1017",
+          "vendor": "DeepSeek",
+          "score": 32.6,
+          "context": 1048576,
+          "priceIn": 0.15,
+          "priceOut": 0.6
+        },
+        {
+          "rank": 26,
           "model": "GPT-5.6 Terra",
           "slug": "openai/gpt-5.6-terra",
           "vendor": "OpenAI",
@@ -1390,7 +1450,7 @@
           "priceOut": 12
         },
         {
-          "rank": 21,
+          "rank": 27,
           "model": "GLM 5.3",
           "slug": "z-ai/glm-5.3",
           "vendor": "智谱 AI",
@@ -1400,17 +1460,17 @@
           "priceOut": 1.4
         },
         {
-          "rank": 22,
+          "rank": 28,
           "model": "Grok 4.6",
           "slug": "x-ai/grok-4.6",
-          "vendor": "SpaceXAI",
+          "vendor": "SpaceXSI",
           "score": 31,
           "context": 500000,
           "priceIn": 2,
           "priceOut": 6
         },
         {
-          "rank": 23,
+          "rank": 29,
           "model": "Gemini 3.8 Flash",
           "slug": "google/gemini-3.8-flash",
           "vendor": "Google",
@@ -1420,7 +1480,7 @@
           "priceOut": 4.125
         },
         {
-          "rank": 24,
+          "rank": 30,
           "model": "Inkling 2 Small",
           "slug": "thinkingmachines/inkling-2-small",
           "vendor": "Thinking Machines",
@@ -1428,66 +1488,6 @@
           "context": 1048576,
           "priceIn": 0.3,
           "priceOut": 1
-        },
-        {
-          "rank": 25,
-          "model": "MiMo-V2.6-Pro",
-          "slug": "xiaomi/mimo-v2.6-pro",
-          "vendor": "小米",
-          "score": 29.9,
-          "context": 1050000,
-          "priceIn": 0.435,
-          "priceOut": 0.87
-        },
-        {
-          "rank": 26,
-          "model": "Ling 3.1 Flash",
-          "slug": "inclusionai/ling-3.1-flash",
-          "vendor": "InclusionAI",
-          "score": 29.6,
-          "context": 1000000,
-          "priceIn": 0.045,
-          "priceOut": 0.135
-        },
-        {
-          "rank": 27,
-          "model": "MiniMax M3.1 Flash",
-          "slug": "minimax/minimax-m3.1-flash",
-          "vendor": "MiniMax",
-          "score": 29.1,
-          "context": 1048576,
-          "priceIn": 0.15,
-          "priceOut": 0.6
-        },
-        {
-          "rank": 28,
-          "model": "DeepSeek V4.1 Flash 1017",
-          "slug": "deepseek/deepseek-v4.1-flash-1017",
-          "vendor": "DeepSeek",
-          "score": 28.6,
-          "context": 1048576,
-          "priceIn": 0.3,
-          "priceOut": 1.2
-        },
-        {
-          "rank": 29,
-          "model": "Step 5 Preview",
-          "slug": "stepfun/step-5-preview",
-          "vendor": "阶跃星辰",
-          "score": 28.5,
-          "context": 1000000,
-          "priceIn": 1,
-          "priceOut": 2.7
-        },
-        {
-          "rank": 30,
-          "model": "Solar Pro 4",
-          "slug": "upstage/solar-pro4",
-          "vendor": "Upstage",
-          "score": 28.2,
-          "context": 524288,
-          "priceIn": 0.15,
-          "priceOut": 0.6
         }
       ],
       "source": "openrouter",
